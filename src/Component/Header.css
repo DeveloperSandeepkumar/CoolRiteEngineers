@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fcfcfc;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar {
+
+  position: absolute;
+  left: 0;
+  top: 20px;
+  padding: 15px;
+  width: 100%;
+  z-index: 2;
+  background-color: #FFF;
+
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+
+
+.menu-icon {
+  display: none;
+}
+
+.nav-elements ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  color: white;
+  margin-bottom: 0;
+}
+
+.nav-elements ul li:not(:last-child) {
+  margin-right: 40px;
+ 
+}
+
+.nav-elements ul a {
+  font-size: 13px;
+  font-weight: 400;
+  color: black;
+  text-decoration: none;
+}
+
+.nav-elements ul a.active {
+  /* color:; */
+  /* font-weight: 500; */
+  position: relative;
+}
+
+.nav-elements ul a:hover {
+  border-bottom: 3px solid white;
+
+  /* text-decoration:underline;
+bottom: -4px;
+color: aliceblue; */
+
+}
+
+
+/* .nav-elements ul a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+} */
+
+@media (max-width: 768px) {
+  .nav-elements ul li:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+
+  .nav-elements {
+    position: absolute;
+    text-align:left;
+  
+    left: 0;
+    top: 50px;
+    background-color: white;
+    width: 0px;
+    height: calc(100vh);
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+  }
+
+  .nav-elements.active {
+    width: 270px;
+    z-index: 10;
+  }
+
+  .nav-elements ul {
+    /* display: flex; */
+    flex-direction: column;
+
+  }
+
+
+  .nav-elements ul li {
+    margin-right: unset;
+    /* margin-top: 22px; */
+    border-bottom: 1px solid  black;
+  }
+}
+
+.MenuBar {
+  width: 25px;
+}
+
+.dropbtn {
+  padding: 16px;
+  /* font-size: 16px; */
+  border: none;
+  min-width: 500px;
+  background-color: white;
+ 
+}
+
+/* Style for the dropdown container */
+.dropdown {
+  position: relative;
+  width: 120%;
+}
+
+/* Initially hide the dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+
+  background-color: #fff;
+  border: 1px solid #ddd;
+  /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); */
+  z-index: 1;
+}
+
+/* Show the dropdown when the parent li is hovered */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Styling for each dropdown item */
+.dropdown-content li {
+  list-style: none;
+  /* padding: 10px 20px; */
+}
+
+.dropdown-content li:hover {
+  background-color: #f1f1f1;
+}
+
+.close-icon {
+  cursor: pointer;
+  font-size: 30px;
+  color:black;
+}
+
+.nav-elements ul li a:hover {
+  background-color: #ff5e14; /* Highlight color on hover */
+  border-radius: 5px;
+}
+
+
+
+
+
+
+/* Base Styles */
+
+
+.nav-elements {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.nav-elements li {
+  padding: 10px;
+}
+
+.nav-elements .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+ 
+  background-color: #fff;
+  list-style: none;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.nav-elements .dropdown:hover .dropdown-content {
+  display: block;
+
+}
+
+/* Mobile Styles (up to 768px) */
+@media (max-width: 768px) {
+  .nav-elements {
+    display: block;
+ 
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-elements ul {
+    display: none;
+    /* flex-direction: column; */
+    /* position: absolute; */
+    background-color: white;
+  
+    /* right: 100%;
+    left: 0;
+    width: 100%;
+    padding: 5px; */
+  }
+
+  .nav-elements.active ul {
+    display: block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    padding: 60px;
+    list-style: none;
+  }
+
+  .dropdown.open .dropdown-content {
+    display: block;
+  }
+
+
+  
+}
+
+/* Desktop Styles (above 768px) */
+@media (min-width: 769px) {
+  .nav-elements {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content li {
+    border-bottom: 0.5px solid  black;
+  }
+ 
+  
+}
+

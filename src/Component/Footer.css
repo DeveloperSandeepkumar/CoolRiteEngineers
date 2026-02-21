@@ -1,0 +1,43 @@
+.Footer{
+    position: absolute; 
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    background-color: skyblue;
+    padding: 50px;
+}
+.p-0,.h5{
+    font-weight: 600;
+    list-style: none; cursor: pointer
+}
+
+.main{
+    width: 80%;
+}
+.text_Style{
+
+    position: relative;
+    color: #9b9b9b;
+    font-size: 14px;
+    
+
+}
+.text_Style:hover{
+    color: #ff5e14; 
+}
+.textStyle{
+    color: #ff5e14;  
+    text-align: left;
+}
+.textclass{
+    position: relative;
+    font-size: 14px;
+    text-align: left;
+}
+.textdiv{
+    padding: 50px;
+}
+.textHeading{
+    text-align: left;
+}

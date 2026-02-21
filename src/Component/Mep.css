@@ -1,0 +1,17 @@
+.custom-read-more {
+    background-color: #ffffff;
+    color: #0d6efd; /* Bootstrap's primary blue */
+    border: 2px solid #0d6efd;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  
+  .custom-read-more:hover {
+    background-color: #0d6efd;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  

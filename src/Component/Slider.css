@@ -1,0 +1,75 @@
+.CardsDic{
+    background-color: white;
+    height: 200px;
+    width: 150px;
+    color:black;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.ImgDiv{
+  
+    justify-items: center;
+    display: flex;
+}
+.card-img-top{
+    background-color: indigo;
+    height: 200px;
+    width: 255px;
+}
+.CardFlDiv{
+    
+ width: 72%;
+}
+.MainDiv{
+    background-color:black;
+    height: 568px;
+    margin-top: 20px;
+
+}
+.CardReviw{
+font-size: 16px;
+}
+.card{
+   /* margin-top: 60px; */
+}
+/* .ReadButton{
+    margin-right: 52%;
+} */
+.card:hover {
+    color:black;
+    transform: scale(1.025);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px
+}
+
+.card:hover .backgroundEffect {
+    bottom: 0;
+    height: 320px;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    background: #1b9ce3;
+    animation: popBackground 0.3s ease-in
+}
+ @media screen and (max-width: 678px){
+   
+ 
+    
+  }
+
+  .ProductHeading{
+    color: white;
+    font-weight:600;
+  }
+
+
+
+
+
+
+
+
+
+
+
+/* CSS */

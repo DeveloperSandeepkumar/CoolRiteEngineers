@@ -1,0 +1,90 @@
+.logo_img{
+    width: 120px;
+}
+
+.navbar{
+  height: 100%;
+}
+
+.vl {
+    border-left: 2px solid green;
+    height: 50px;
+  
+  
+  }
+.callUs{
+  text-align: right;
+
+}
+@media screen and (max-width: 678px){
+  .mainNavbar{
+    display: none;
+    
+  }
+  
+}
+.mainpara{
+  margin-bottom: 0px;
+  color: #FFF;
+  font-size: 13px;
+  /* padding: 15px 0px; */
+}
+.schedule{
+  color: #FFF;
+  font-size: 13px;
+}
+.top-header-wrapper {
+  /* position: absolute; */
+  left: 0;
+  top: 0;
+  padding: 0;
+  width: 100%;
+  transition: 0.6s ease-in;
+  padding: 10px 0px; 
+  z-index: 2;
+  background-color:#2b2d42; ;
+  font-family: 'Roboto', sans-serif;
+}
+.social{
+  display: flex;
+  margin-bottom: 0px;
+  color: #FFF;
+}
+.btn{
+  background-color: #FFF;
+}
+.SocilIcon{
+  color: white;
+}
+
+
+.top-social {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.top-social li {
+  margin-right: 10px; /* Adjust this value for the amount of space you want */
+}
+
+.top-social li:last-child {
+  margin-right: 0; /* Remove margin for the last item */
+}
+
+.SocilIcon {
+  color: white; /* Optional: To set the color to white for icons */
+  text-decoration: none;
+}
+
+.SocilIcon:hover {
+  color: #007bff; /* Optional: To change the icon color on hover */
+}
+.requestProposal{
+  background-color: #f2ab26;
+
+}
+
+.requestProposal:hover {
+  background: white; /* On hover, the color will be white */
+}
