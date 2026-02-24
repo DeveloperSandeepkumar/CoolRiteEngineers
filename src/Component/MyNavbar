@@ -1,7 +1,5 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
-
-
 const MyNavbar = () => {
   return (
     <Navbar expand="lg" bg="dark" variant="dark">
@@ -26,7 +24,6 @@ const MyNavbar = () => {
           <Nav className="ms-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#about">About</Nav.Link>
-
             {/* Dropdown */}
             <NavDropdown title="Services" id="services-dropdown">
               <NavDropdown.Item href="#action/1">Design</NavDropdown.Item>
@@ -34,7 +31,6 @@ const MyNavbar = () => {
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3">Consulting</NavDropdown.Item>
             </NavDropdown>
-
             <Nav.Link href="#contact">Contact</Nav.Link>
           </Nav>
         </Navbar.Collapse>

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState } from "react";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import '../../node_modules/bootstrap-icons/bootstrap-icons.svg';
@@ -10,10 +10,10 @@ import director2 from '../Assets/sandeep (1).jpeg';
 import ClientImg from '../Assets/Client.jpg';
 import insulationwork from '../Assets/insulationwork.jpg';
 import Insulation5 from '../Assets/Insulation5.jpg';
-import CoolriteSlider from '../Assets/CoolriteSlider.jpeg'
-import CoolriteSlider1 from '../Assets/CoolRiteSlider1.jpg'
-import CoolriteSlider2 from '../Assets/CoolRiteSlider2.jpg'
-import CoolriteSlider3 from '../Assets/CoolRiteSlider3.jpg'
+import CoolriteSlider from '../Assets/CoolriteSlider.jpeg';
+import CoolriteSlider1 from '../Assets/CoolRiteSlider1.jpg';
+import CoolriteSlider2 from '../Assets/CoolRiteSlider2.jpg';
+import CoolriteSlider3 from '../Assets/CoolRiteSlider3.jpg';
 import CardList from '../Component/OurServiceDetails.js';
 import CallAdviserSection from '../Component/contactDetails.js'
 import GetToucgImg from '../Assets/Getintouch_Image.jpg';
@@ -21,8 +21,18 @@ import AboutUs from "./AboutUs.js";
 import '../Component/Home.css'
 import SimpleSlider from "./Slider.js";
 import CustomerSlider from "./Customers.js";
-import MepInfo from '../Component/Mep.js'
+import MepInfo from '../Component/Mep.js';
+import GetInTouch from '../Assets/GetInTouch.jpg';
+ import { useNavigate } from "react-router-dom";
+
+
 const Home = () => {
+  const [showAbout, setShowAbout] = useState(false);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    setShowAbout(true);
+     
+  };
     return (
         <>
 <div id="carouselExampleControls" className="carousel slide overlay" data-bs-ride="carousel">
@@ -34,10 +44,24 @@ const Home = () => {
             <div className="carousel-caption custom-caption">
                 <h1 className="carousel-heading">CoolRite Engineers</h1>
                 <h5 className="carousel-subheading">High Performance Service For Industries</h5>
-                <div className="button-group">
-                    <button className="button-modern" role="button">About Us</button>
-                    <button className="button-modern" role="button">Contact Us</button>
-                </div>
+             <div className="button-group">
+  <button
+    className="button-modern"
+    role="button"
+   onClick={() => navigate("/about")}
+  >
+    About Us
+  </button>
+
+  {showAbout && <AboutUs />}
+
+  <button
+    className="button-modern"
+    role="button"
+  >
+    Contact Us
+  </button>
+</div>
             </div>
         </div>
 
@@ -49,7 +73,7 @@ const Home = () => {
                 <h1 className="carousel-heading">CoolRite Engineers</h1>
                 <h5 className="carousel-subheading">High Performance Service For Industries</h5>
                 <div className="button-group">
-                    <button className="button-modern" role="button">About Us</button>
+                    <button className="button-modern" role="button"  onClick={handleClick}>About Us</button>
                     <button className="button-modern" role="button">Contact Us</button>
                 </div>
             </div>
@@ -88,10 +112,7 @@ const Home = () => {
           {<CardList></CardList>}
           </div>
          
-            <div>
-                 
-                
-              
+            <div>      
                 <div className="Get_touch">
                     <div className="container-fluid px-4 my-4">
                         <div className="row justify-content-center">
@@ -99,7 +120,9 @@ const Home = () => {
                                 <div className=" border-0 rounded-3 shadow-lg overflow-hidden">
                                     <div className="card-body p-0">
                                         <div className="row g-0">
-                                            <div className="col-sm-6 d-none d-sm-block bg-image"></div>
+                                            <div className="col-sm-6 d-none d-sm-block bg-image">
+                                            <img src={GetInTouch} style={{width:'630px',height:'500px', padding:'3%'}}/>
+                                            </div>
                                             <div className="col-sm-6 p-4">
                                                 <div className="text-center">
                                                     <div className="h3 fw-light"><h4>Get In Touch</h4></div>

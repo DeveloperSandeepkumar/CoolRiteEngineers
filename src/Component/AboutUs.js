@@ -12,10 +12,19 @@ const AboutUs = () => {
             <div class="dark-img">
                 <img src={AboutUsPic}  style={{height:'400px'}}/>
             </div>
-            <div class="carousel-caption d-none d-md-block">
+            {/* <div className="carousel-caption d-none d-md-block">
                 <b><h1>About Us</h1></b>
                 <b><h5 className="C-text color:green;">CoolRite Engineers</h5></b>
-            </div>
+            </div> */}
+          <div
+  className="carousel-caption d-flex flex-column justify-content-center align-items-center text-center"
+  style={{ top: 0, bottom: 0 }}
+>
+  <h1><b>About Us</b></h1>
+  <h5 className="C-text" style={{ color: "" }}>
+    <b>CoolRite Engineers</b>
+  </h5>
+</div>
              <MepInfo></MepInfo>
             {/* <div className="container text-center text-md-start mt-5 textdiv">
                 <div className="row mt-3">

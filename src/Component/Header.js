@@ -3,6 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom'
 import Hamburger from '../Assets/menu.png'
 
 import CoolRiteLogo from '../Assets/CoolRiteLogo.jpeg'
+import CoolRiteLogo1 from '../Assets/MainLogo.png'
 import { FaLongArrowAltRight, FaTimes } from "react-icons/fa"
 import './Header.css'
 
@@ -50,16 +51,62 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="container">
-        <div className="menu-icon" onClick={handleShowNavbar}>
+        {/* <div className="menu-icon" onClick={handleShowNavbar}>
           {showNavbar ? (
             <FaTimes className="close-icon" style={{ fontSize: '30px' }} />
           ) : (
             <img className='MenuBar' src={Hamburger} alt='Menu' />
-          )}
-        </div>
+          )
+          
+          
+          }
+          <img src={ CoolRiteLogo1} style={{width:'50px',height:'40px',borderRadius:'20px', justifyContent: 'right'}} />
+        </div> */}
+        <div
+  className="menu-icon"
+  onClick={handleShowNavbar}
+  style={{
+    display: window.innerWidth <= 768 ? 'flex' : 'none', // show only on mobile
+    justifyContent: 'space-between', // hamburger left, logo right
+    alignItems: 'center',
+    width: '100%',
+    padding: '10px 15px',
+  }}
+>
+  {/* Hamburger */}
+  {showNavbar ? (
+    <FaTimes style={{ fontSize: '30px', cursor: 'pointer' }} />
+  ) : (
+    <img
+      src={Hamburger}
+      alt="Menu"
+      style={{ width: '25px', height: '25px', cursor: 'pointer' }}
+    />
+  )}
+
+  {/* Logo on the right */}
+  <img
+    src={CoolRiteLogo1}
+    alt="CoolRite Logo"
+    style={{
+      width: '50px',
+      height: '40px',
+      borderRadius: '15px',
+      objectFit: 'cover',
+    }}
+  />
+</div>
 
         <div className={`nav-elements ${showNavbar ? 'active' : ''}`}>
-        <img src={ CoolRiteLogo} style={{width:'100px',height:'40px'}} />
+   <img
+  src={CoolRiteLogo}
+  alt="CoolRite Logo"
+  style={{
+    width: '100px',
+    height: '40px',
+    display: window.innerWidth > 768 ? 'block' : 'none', // only show on desktop
+  }}
+/>
           <ul>
          
             <li><NavLink to="/" onClick={closeNavbar}>HOME</NavLink></li>
@@ -67,10 +114,9 @@ const Navbar = () => {
             <li>
               <div style={{    width:'100%'}} className="dropdown">
                 <NavLink to="#" onClick={handleDropdownToggle}>MEP SERVICES</NavLink>
-                {dropdownOpen && (
-                  
-                  <ul className="dropdown-content ">
-                     <li style={{    width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}> Ac Installation</NavLink></li>
+                {dropdownOpen && (            
+                  <ul className="dropdown-content" style={{ width:'200px' }}>
+                    <li style={{   width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="/AcInstallation" onClick={closeNavbar}> Ac Installation</NavLink></li>
                     <li style={{    width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}> Ductable Ac</NavLink></li>
                     <li style={{    width:'100%' ,padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}> VRV / VRF</NavLink></li>
                     <li style={{    width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}> Cassette Ac</NavLink></li>
@@ -92,7 +138,7 @@ const Navbar = () => {
             <div className="dropdown">
                 <NavLink to="#" onClick={handleDropdownToggleOther}>OTHER</NavLink>
                 {dropdownOpenOther && (
-                  <ul className="dropdown-content Other">
+                  <ul className="dropdown-content Other"  style={{ width:'300px' }}>
                     <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}>Request Proposal For New Project</NavLink></li>
                     <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}>Vendor Registration from</NavLink></li>
                     <li style={{ width:'100%' ,padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}>Pay Now</NavLink></li>

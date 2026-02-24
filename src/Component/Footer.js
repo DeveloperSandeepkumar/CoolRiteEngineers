@@ -13,17 +13,20 @@ const Footer = () => {
             <section className="bg-dark text-white">
                 <div className="container text-center text-md-start mt-5 textdiv">
                     <div className="row mt-3">
+                   <p style={{fontSize:'20px;',fontWeight:'bold'}}>Most Innovative MEP Consultants.</p> 
+<p>MEP consultancy with no delays & errors</p>
+<hr></hr>
                         <div className="col-md-6 col-lg-6 col-xl-6 mx-auto mb-6">
                             <h6 className="text-uppercase fw-bold mb-4 textHeading">
                                 Quick Contact
                             </h6>
                             <p className="textclass"> If you have any questions or need help, feel free to contact with our team.</p>
                             <p className="textStyle"><FaPhoneAlt />+91-7009167480 +91-8194839585</p>
-                            <p className="textclass"><b>Email 1: </b> <span className="textStyle">info@mkinsulation.in</span></p>
-                            <p className="textclass"><b>Email 2: </b> <span className="textStyle">accounts@mkinsulation.in</span></p>
-                            <p className="textclass"><b>Email 3: </b> <span className="textStyle">mkinsulation.fabrication@gmail.com</span></p>
+                            {/* <p className="textclass"><b>Email 1: </b> <span className="textStyle">Sandeep</span></p> */}
+                            <p className="textclass"><b>Email 2: </b> <span className="textStyle">accounts@Coolriteengineers.in</span></p>
+                            <p className="textclass"><b>Email 3: </b> <span className="textStyle">Coolriteengineers@gmail.com</span></p>
                             <h4 className="textHeading"> Head Office</h4>
-                            <p className="textclass"> Gulabgarh road Gill Calony Sec -09 House No -361 Derabassi Distt SAS Nagar Mohali Pin Code 140507 Punjab</p><br />
+                            <p className="textclass"> Gulabgarh road Gill Calony Sec -09 Building No-361 Derabassi Distt SAS Nagar Mohali Pin Code 140507 Punjab</p><br />
                             <h4 className="textHeading"> Branch Office</h4>
                             <p className="textclass"> Village - Malpur teh Baddi Distt solan Himachal Pradesh</p><br />  
                         </div>
@@ -32,7 +35,7 @@ const Footer = () => {
                                 Company
                             </h6>
                             <p className="textStyle">
-                            <FaLongArrowAltRight />&nbsp;<NavLink to="/Home" className="text_Style">Home</NavLink>
+                            <FaLongArrowAltRight />&nbsp;<NavLink to="/app" className="text_Style">Home</NavLink>
                             </p>
                             <p className="textStyle">
                             <FaLongArrowAltRight />&nbsp;<NavLink to="/About" className="text_Style">About</NavLink>

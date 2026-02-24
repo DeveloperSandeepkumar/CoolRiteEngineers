@@ -7,12 +7,15 @@ import Home from './Component/Home';
 import MainHeader from './Component/MainHeader';
 import AboutUs from './Component/AboutUs';
 import MyNavbar from './Component/MyNavbar';
+import ScrollToTop from "./Component/ScrollToTop";
+import AcInstallation from "./Component/AcInstallation";
 
 const App = () => {
   const UserType = localStorage.getItem('User_Type');
   return (
     <div className="App">
       <BrowserRouter>
+         <ScrollToTop />
       <MainHeader></MainHeader>
        <Navbar></Navbar>
 
@@ -20,6 +23,7 @@ const App = () => {
         <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/About' element={<AboutUs />} />
+               <Route path="/AcInstallation" element={<AcInstallation />} />
         </Routes>
         <Footer></Footer>
       </BrowserRouter>
