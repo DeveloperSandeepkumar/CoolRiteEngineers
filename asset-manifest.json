@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CoolRiteEngineers/static/css/main.063f3033.css",
-    "main.js": "/CoolRiteEngineers/static/js/main.0b065584.js",
+    "main.js": "/CoolRiteEngineers/static/js/main.5ead8f6f.js",
     "static/media/GetInTouch.jpg": "/CoolRiteEngineers/static/media/GetInTouch.8974b6836ec60c4d0597.jpg",
     "static/media/bootstrap-icons.svg": "/CoolRiteEngineers/static/media/bootstrap-icons.b5555b25c8534bb3260a7becd10bf1ed.svg",
     "static/media/Reactor & Tank Insulation.png": "/CoolRiteEngineers/static/media/Reactor & Tank Insulation.2e7514fbcaedb931f3dd.png",
@@ -51,14 +51,13 @@
     "static/media/slick.svg": "/CoolRiteEngineers/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/CoolRiteEngineers/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/CoolRiteEngineers/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "static/media/MyNavbar": "/CoolRiteEngineers/static/media/MyNavbar.6a12aeac9e51ec60b3ed",
     "static/media/slick.woff": "/CoolRiteEngineers/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/CoolRiteEngineers/index.html",
     "main.063f3033.css.map": "/CoolRiteEngineers/static/css/main.063f3033.css.map",
-    "main.0b065584.js.map": "/CoolRiteEngineers/static/js/main.0b065584.js.map"
+    "main.5ead8f6f.js.map": "/CoolRiteEngineers/static/js/main.5ead8f6f.js.map"
   },
   "entrypoints": [
     "static/css/main.063f3033.css",
-    "static/js/main.0b065584.js"
+    "static/js/main.5ead8f6f.js"
   ]
 }
