@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/CoolRiteEngineers/static/css/main.8dda8e56.css",
+    "main.css": "/CoolRiteEngineers/static/css/main.cc1d2df2.css",
     "main.js": "/CoolRiteEngineers/static/js/main.70c981f7.js",
     "static/media/GetInTouch.jpg": "/CoolRiteEngineers/static/media/GetInTouch.8974b6836ec60c4d0597.jpg",
     "static/media/bootstrap-icons.svg": "/CoolRiteEngineers/static/media/bootstrap-icons.b5555b25c8534bb3260a7becd10bf1ed.svg",
@@ -57,11 +57,11 @@
     "static/media/MyNavbar": "/CoolRiteEngineers/static/media/MyNavbar.6a457057a769c3223078",
     "static/media/slick.woff": "/CoolRiteEngineers/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/CoolRiteEngineers/index.html",
-    "main.8dda8e56.css.map": "/CoolRiteEngineers/static/css/main.8dda8e56.css.map",
+    "main.cc1d2df2.css.map": "/CoolRiteEngineers/static/css/main.cc1d2df2.css.map",
     "main.70c981f7.js.map": "/CoolRiteEngineers/static/js/main.70c981f7.js.map"
   },
   "entrypoints": [
-    "static/css/main.8dda8e56.css",
+    "static/css/main.cc1d2df2.css",
     "static/js/main.70c981f7.js"
   ]
 }
