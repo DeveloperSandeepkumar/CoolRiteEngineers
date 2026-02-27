@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CoolRiteEngineers/static/css/main.517e7498.css",
-    "main.js": "/CoolRiteEngineers/static/js/main.45ffd8ae.js",
+    "main.css": "/CoolRiteEngineers/static/css/main.8dda8e56.css",
+    "main.js": "/CoolRiteEngineers/static/js/main.70c981f7.js",
     "static/media/GetInTouch.jpg": "/CoolRiteEngineers/static/media/GetInTouch.8974b6836ec60c4d0597.jpg",
     "static/media/bootstrap-icons.svg": "/CoolRiteEngineers/static/media/bootstrap-icons.b5555b25c8534bb3260a7becd10bf1ed.svg",
     "static/media/Reactor & Tank Insulation.png": "/CoolRiteEngineers/static/media/Reactor & Tank Insulation.2e7514fbcaedb931f3dd.png",
@@ -9,7 +9,6 @@
     "static/media/Cold Pipe Insulation.png": "/CoolRiteEngineers/static/media/Cold Pipe Insulation.a1d2f7c3b8605e5d523a.png",
     "static/media/Slider.jpg": "/CoolRiteEngineers/static/media/Slider.14567f9a789c67ee97c8.jpg",
     "static/media/Mep.jpg": "/CoolRiteEngineers/static/media/Mep.084fcc43969ac4047ced.jpg",
-    "static/media/1.jpg": "/CoolRiteEngineers/static/media/1.615809022c91c8997f98.jpg",
     "static/media/Client.jpg": "/CoolRiteEngineers/static/media/Client.5328cd42d9a928d3a9ec.jpg",
     "static/media/Rectangular G.I Duct.png": "/CoolRiteEngineers/static/media/Rectangular G.I Duct.2c58205e6adc2bd1b139.png",
     "static/media/Slider1.jpg": "/CoolRiteEngineers/static/media/Slider1.9f2a085eb4e9aeffc6b0.jpg",
@@ -32,17 +31,21 @@
     "static/media/5.jpg": "/CoolRiteEngineers/static/media/5.909f5e9c24a81e81e244.jpg",
     "static/media/Sound Proof Insulation.jpg": "/CoolRiteEngineers/static/media/Sound Proof Insulation.f830edf9fd5fdbff71fc.jpg",
     "static/media/6.jpg": "/CoolRiteEngineers/static/media/6.1c097287b04cee7c2394.jpg",
+    "static/media/13.jpg": "/CoolRiteEngineers/static/media/13.c44dd59a604f7c633cb8.jpg",
     "static/media/manager.jpeg": "/CoolRiteEngineers/static/media/manager.c7f5c5adb7cf44624e65.jpeg",
     "static/media/IndSwift.png": "/CoolRiteEngineers/static/media/IndSwift.cc5701b7dfe9a2b23cdc.png",
     "static/media/2.jpg": "/CoolRiteEngineers/static/media/2.253a3bafefb16e34b10a.jpg",
     "static/media/CoolRiteSlider3.jpg": "/CoolRiteEngineers/static/media/CoolRiteSlider3.7e45973809925f14b475.jpg",
     "static/media/sandeep (1).jpeg": "/CoolRiteEngineers/static/media/sandeep (1).2eab573945dcd7d024d0.jpeg",
+    "static/media/CD.jpg": "/CoolRiteEngineers/static/media/CD.7ae99692319024f6038f.jpg",
     "static/media/CoolRiteSlider1.jpg": "/CoolRiteEngineers/static/media/CoolRiteSlider1.7ae99692319024f6038f.jpg",
     "static/media/4.jpg": "/CoolRiteEngineers/static/media/4.635175d38167e2e35b2c.jpg",
+    "static/media/vndrg.jpg": "/CoolRiteEngineers/static/media/vndrg.764aa5c39833e6910545.jpg",
     "static/media/CoolRiteSlider2.jpg": "/CoolRiteEngineers/static/media/CoolRiteSlider2.fc2c820342febc6a927a.jpg",
     "static/media/CoolRiteLogo.jpeg": "/CoolRiteEngineers/static/media/CoolRiteLogo.f2f24d7726c9f14314a0.jpeg",
     "static/media/Armaflex Cold Insulation Work.jpg": "/CoolRiteEngineers/static/media/Armaflex Cold Insulation Work.d7f316643f19faaa9388.jpg",
     "static/media/director.jpeg": "/CoolRiteEngineers/static/media/director.dd3b44eba6a6325cd3d1.jpeg",
+    "static/media/1.jpg": "/CoolRiteEngineers/static/media/1.615809022c91c8997f98.jpg",
     "static/media/Panacea.jpg": "/CoolRiteEngineers/static/media/Panacea.e3d1ebd54f05a0140c56.jpg",
     "static/media/Hella.jpg": "/CoolRiteEngineers/static/media/Hella.0ef87b5a800e8abed8b4.jpg",
     "static/media/FPCL.png": "/CoolRiteEngineers/static/media/FPCL.93afb19df9d9a1968b03.png",
@@ -51,13 +54,14 @@
     "static/media/slick.svg": "/CoolRiteEngineers/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/CoolRiteEngineers/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/CoolRiteEngineers/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/MyNavbar": "/CoolRiteEngineers/static/media/MyNavbar.6a457057a769c3223078",
     "static/media/slick.woff": "/CoolRiteEngineers/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/CoolRiteEngineers/index.html",
-    "main.517e7498.css.map": "/CoolRiteEngineers/static/css/main.517e7498.css.map",
-    "main.45ffd8ae.js.map": "/CoolRiteEngineers/static/js/main.45ffd8ae.js.map"
+    "main.8dda8e56.css.map": "/CoolRiteEngineers/static/css/main.8dda8e56.css.map",
+    "main.70c981f7.js.map": "/CoolRiteEngineers/static/js/main.70c981f7.js.map"
   },
   "entrypoints": [
-    "static/css/main.517e7498.css",
-    "static/js/main.45ffd8ae.js"
+    "static/css/main.8dda8e56.css",
+    "static/js/main.70c981f7.js"
   ]
 }
