@@ -13,7 +13,7 @@ const Footer = () => {
             <section className="bg-dark text-white">
                 <div className="container text-center text-md-start mt-5 textdiv">
                     <div className="row mt-3">
-                   <p style={{fontSize:'20px;',fontWeight:'bold'}}>Most Innovative MEP Consultants.</p> 
+                   <p style={{fontSize:'24px',fontWeight:'bold'}}>Most Innovative MEP Consultants.</p> 
 <p>MEP consultancy with no delays & errors</p>
 <hr></hr>
                         <div className="col-md-6 col-lg-6 col-xl-6 mx-auto mb-6">

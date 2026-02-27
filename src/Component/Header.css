@@ -22,10 +22,12 @@ body {
   position: absolute;
   left: 0;
   top: 20px;
-  padding: 15px;
+  /* padding: 15px; */
   width: 100%;
   z-index: 2;
-  background-color: #FFF;
+  /* background-color: #FFF; */
+  background-color: cornsilk;
+  
 
 
   position: sticky;

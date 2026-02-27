@@ -4,7 +4,9 @@ import Hamburger from '../Assets/menu.png'
 
 import CoolRiteLogo from '../Assets/CoolRiteLogo.jpeg'
 import CoolRiteLogo1 from '../Assets/MainLogo.png'
-import { FaLongArrowAltRight, FaTimes } from "react-icons/fa"
+import { FaLongArrowAltRight, FaTimes } from "react-icons/fa";
+
+ import { services } from "../Component/servicesData";
 import './Header.css'
 
 const Navbar = () => {
@@ -110,15 +112,15 @@ const Navbar = () => {
           <ul>
          
             <li><NavLink to="/" onClick={closeNavbar}>HOME</NavLink></li>
-            <li><NavLink to="/About" onClick={closeNavbar}>ABOUT</NavLink></li>
+            <li><NavLink to="/About" onClick={closeNavbar}>ABOUT US</NavLink></li>
             <li>
               <div style={{    width:'100%'}} className="dropdown">
                 <NavLink to="#" onClick={handleDropdownToggle}>MEP SERVICES</NavLink>
-                {dropdownOpen && (            
+                {/* {dropdownOpen && (            
                   <ul className="dropdown-content" style={{ width:'200px' }}>
                     <li style={{   width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="/AcInstallation" onClick={closeNavbar}> Ac Installation</NavLink></li>
-                    <li style={{    width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}> Ductable Ac</NavLink></li>
-                    <li style={{    width:'100%' ,padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}> VRV / VRF</NavLink></li>
+                    <li style={{    width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="/DuctableAC" onClick={closeNavbar}> Ductable Ac</NavLink></li>
+                    <li style={{    width:'100%' ,padding: '1px', textAlign:'left'}}><NavLink to="/VRVServices" onClick={closeNavbar}> VRV / VRF</NavLink></li>
                     <li style={{    width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}> Cassette Ac</NavLink></li>
                     <li style={{    width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}> Chiller Ac</NavLink></li>
                     <li style={{    width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}> AHU</NavLink></li>
@@ -131,7 +133,21 @@ const Navbar = () => {
                     <li style={{    width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}> Welding</NavLink></li>
                     <li style={{    width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}> Bill of Quantities</NavLink></li>
                   </ul>
-                )}
+                )} */}
+{dropdownOpen && (
+  <ul className="dropdown-content" style={{ width: '250px' }}>
+    {services.map((service, index) => (
+      <li
+        key={index}
+        style={{ width: "100%", padding: "1px", textAlign: "left" }}
+      >
+        <NavLink to={service.path} onClick={closeNavbar}>
+          {service.title}
+        </NavLink>
+      </li>
+    ))}
+  </ul>
+)}
               </div>
             </li>
             <li>
@@ -139,8 +155,8 @@ const Navbar = () => {
                 <NavLink to="#" onClick={handleDropdownToggleOther}>OTHER</NavLink>
                 {dropdownOpenOther && (
                   <ul className="dropdown-content Other"  style={{ width:'300px' }}>
-                    <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}>Request Proposal For New Project</NavLink></li>
-                    <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}>Vendor Registration from</NavLink></li>
+                    <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="/ProposalFormWithMap" onClick={closeNavbar}>Request Proposal For New Project</NavLink></li>
+                    <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="/VendorRegistrationForm" onClick={closeNavbar}>Vendor Registration from</NavLink></li>
                     <li style={{ width:'100%' ,padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}>Pay Now</NavLink></li>
                     <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}>Our Clients</NavLink></li>
                     

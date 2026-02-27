@@ -1,19 +1,20 @@
 import React from "react";
-import cd from "../Assets/CD.jpg";
-import Image1 from "../../src/Assets/Colrite_files/1.jpg";
+import cd from "../Assets/CD.jpg"; // Banner image
+import Image3 from "../../src/Assets/Colrite_files/3.jpg"; // VRV/VRF related image
 
-const AcInstallation = () => {
+const VRVServices = () => {
   return (
     <>
+      {/* Banner Section */}
       <div className="dark-img">
-        <img src={cd} alt="AC Installation" style={{ height: "400px", width: "100%" }} />
+        <img src={cd} alt="VRV/VRF Services" style={{ height: "400px", width: "100%" }} />
       </div>
 
       <div
         className="carousel-caption d-flex flex-column justify-content-center align-items-center text-center"
         style={{ top: 0, bottom: 0 }}
       >
-        <h1><b>AC Installation</b></h1>
+        <h1><b>VRV / VRF Services</b></h1>
         <h5 className="C-text"><b>CoolRite Engineers</b></h5>
       </div>
 
@@ -26,27 +27,28 @@ const AcInstallation = () => {
                 <div className="card-body p-4">
 
                   <p style={{ textAlign:"left", fontSize: "25px" }}>
-                    AC Installation Services
+                    VRV / VRF Services
                   </p>
 
                   <p style={{ textAlign: "left"}}>
-                    AC Installation Services provide professional setup of air conditioning
-                    systems for homes and businesses. Experts assess your space,
-                    recommend the right unit, and ensure safe, efficient installation.
+                    VRV (Variable Refrigerant Volume) / VRF (Variable Refrigerant Flow) systems
+                    provide advanced climate control solutions for large commercial and residential
+                    projects. Our team designs, installs, and maintains VRV/VRF systems to ensure
+                    precise temperature management and energy efficiency.
                   </p>
 
-                  <p style={{ textAlign: "left"}}><b >What You Get:</b></p>
+                  <p style={{ textAlign: "left"}}><b>What You Get:</b></p>
 
                   <ul style={{ textAlign: "left"}}>
-                    <li>Proper system sizing and placement</li>
-                    <li>Secure electrical and refrigerant connections</li>
-                    <li>Performance testing after installation</li>
-                    <li>Guidance on usage and maintenance</li>
+                    <li>Customized system design for large spaces</li>
+                    <li>Efficient installation and system integration</li>
+                    <li>Performance testing and optimization</li>
+                    <li>Maintenance and long-term system support</li>
                   </ul>
 
                   <p style={{ textAlign: "left"}}>
-                    Professional installation improves cooling efficiency, lowers energy
-                    costs, and extends the lifespan of your AC unit.
+                    Professional VRV/VRF installation ensures energy savings, consistent comfort,
+                    and long-lasting performance for your building.
                   </p>
 
                 </div>
@@ -67,8 +69,8 @@ const AcInstallation = () => {
 
                     <div className="col-sm-6 d-none d-sm-block">
                       <img
-                        src={Image1}
-                        alt="AC Service"
+                        src={Image3}
+                        alt="VRV/VRF Service"
                         style={{ width: "100%", height: "100%", padding: "3%" }}
                       />
                     </div>
@@ -79,7 +81,7 @@ const AcInstallation = () => {
                         <hr />
                         <p style={{ fontSize: "14px" }}>
                           Complete control over products allows us to ensure our customers
-                          receive the best quality prices and service.
+                          receive the best quality, prices, and service.
                         </p>
                       </div>
 
@@ -123,4 +125,4 @@ const AcInstallation = () => {
   );
 };
 
-export default AcInstallation;
+export default VRVServices;

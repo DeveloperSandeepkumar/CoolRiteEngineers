@@ -17,12 +17,12 @@ const cardsData = [
   {
     image: Image1,
     title: 'AC Installation',
-    link: 'https://example.com/1',
+    link: '/AcInstallation',
   },
   {
     image: Image2,
     title: 'Ductable AC',
-    link: 'https://example.com/2',
+    link: '/ductable-ac',
   },
   {
     image: Image3,

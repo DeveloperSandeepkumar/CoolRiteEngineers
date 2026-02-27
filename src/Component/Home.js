@@ -121,12 +121,13 @@ const Home = () => {
                                     <div className="card-body p-0">
                                         <div className="row g-0">
                                             <div className="col-sm-6 d-none d-sm-block bg-image">
-                                            <img src={GetInTouch} style={{width:'630px',height:'500px', padding:'3%'}}/>
+                                            <img src={GetInTouch} style={{width:'600px',height:'500px', padding:'3%'}}/>
                                             </div>
                                             <div className="col-sm-6 p-4">
                                                 <div className="text-center">
-                                                    <div className="h3 fw-light"><h4>Get In Touch</h4></div>
-                                                    <p className="mb-4 text-muted">Complete control over products allows us to ensure our customers receive the best quality prices and service.</p>
+                                                    <div className="h3 fw-light"><h4 style={{color: 'brown'}}>Quick Enquiry</h4></div>
+                                                    <hr></hr>
+                                                    <p className="mb-4 " style={{fontSize:'14px'}}>Complete control over products allows us to ensure our customers receive the best quality prices and service.</p>
                                                 </div>
                                                 <form id="contactForm" data-sb-form-api-token="API_TOKEN">
                                                     <div className="form-floating mb-3">
