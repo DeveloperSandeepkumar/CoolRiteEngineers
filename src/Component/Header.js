@@ -168,6 +168,7 @@ const Navbar = () => {
             <li><NavLink to="/Project" onClick={closeNavbar}>PROJECT</NavLink></li>
             <li><NavLink to="/Career" onClick={closeNavbar}>CAREER</NavLink></li>
             <li><NavLink to="/Contact" onClick={closeNavbar}>CONTACT</NavLink></li>
+              <li><NavLink to="/CoolRiteEngineer_3D" onClick={closeNavbar}>Calculate you Mep</NavLink></li>
           </ul>
         </div>
       </div>
