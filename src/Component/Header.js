@@ -159,6 +159,9 @@ const Navbar = () => {
                     <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="/VendorRegistrationForm" onClick={closeNavbar}>Vendor Registration from</NavLink></li>
                     <li style={{ width:'100%' ,padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}>Pay Now</NavLink></li>
                     <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="" onClick={closeNavbar}>Our Clients</NavLink></li>
+
+                    <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="/CoolRiteEngineer_3D" onClick={closeNavbar}>Design V1</NavLink></li>
+                    <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="/CoolRiteEngineer_v5" onClick={closeNavbar}>Design V2</NavLink></li>
                     
                   </ul>
                 )}
@@ -168,7 +171,9 @@ const Navbar = () => {
             <li><NavLink to="/Project" onClick={closeNavbar}>PROJECT</NavLink></li>
             <li><NavLink to="/Career" onClick={closeNavbar}>CAREER</NavLink></li>
             <li><NavLink to="/Contact" onClick={closeNavbar}>CONTACT</NavLink></li>
-              <li><NavLink to="/CoolRiteEngineer_3D" onClick={closeNavbar}>Calculate you Mep</NavLink></li>
+          
+          
+          
           </ul>
         </div>
       </div>

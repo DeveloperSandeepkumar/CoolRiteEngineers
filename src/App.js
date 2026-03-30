@@ -18,6 +18,9 @@ import { services } from "./Component/servicesData";
 import ProposalFormWithMap from "./Component/ProposalFormWithMap";
 import VendorRegistrationForm from "./Component/VendorRegistrationForm";
 import CoolRiteEngineer_3D from "./Component/CoolRiteEngineer_3D";
+import CoolRiteEngineer_v5 from "./Component/CoolRiteEngineer_v5";
+
+
 const App = () => {
   const UserType = localStorage.getItem('User_Type');
   return (
@@ -40,6 +43,7 @@ const App = () => {
   <Route path="/" element={<Home />} />
   <Route path="/About" element={<AboutUs />} />
 <Route path="/CoolRiteEngineer_3D" element={<CoolRiteEngineer_3D />} />
+<Route path="/CoolRiteEngineer_v5" element={<CoolRiteEngineer_v5 />} />
   {services.map((service, index) => (
     <Route
       key={index}

@@ -11,11 +11,22 @@ const CSS = `
 body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;}
 .app{display:flex;height:100vh;}
 
+.navbar{ display: none;}
+
+    .top-header-wrapper {
+    display: none !important;}
+
 /* SIDEBAR */
 .sidebar{
   width:300px;flex-shrink:0;background:var(--panel);
   border-right:1px solid var(--border);display:flex;flex-direction:column;
   overflow-y:auto;
+}
+  .navbar {
+    display: none;
+}
+    .top-header-wrapper {
+    display: none;
 }
 .sidebar-top{
   padding:16px 18px;border-bottom:1px solid var(--border);
