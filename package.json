@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.3",
+    "colord": "^2.9.3",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "emailjs-com": "^3.2.0",
