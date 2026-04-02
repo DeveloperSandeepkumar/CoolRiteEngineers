@@ -2,7 +2,7 @@
   "name": "coolriteengineer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://DeveloperSandeepkumar.github.io/CoolRiteEngineers",
+  "homepage": ".",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@testing-library/jest-dom": "^5.17.0",
@@ -30,9 +30,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -52,10 +50,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
-  },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "CoolRite Engineers Website",
   "main": "index.js",
   "keywords": [],
   "author": "",
