@@ -17,7 +17,7 @@ const cardsData = [
   {
     image: Image1,
     title: 'AC Installation',
-    link: '/AcInstallation',
+    link: '/ac-installation',
   },
   {
     image: Image2,
