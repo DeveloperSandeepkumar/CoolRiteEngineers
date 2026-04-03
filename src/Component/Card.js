@@ -18,22 +18,20 @@ const Card = ({ image, title, link }) => {
     >
       <img src={image} alt={title} style={styles.image} />
       <h3 style={styles.title}>{title}</h3>
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={styles.button}
-        onMouseEnter={(e) => {
-          e.target.style.backgroundColor = '#000';
-          e.target.style.color = '#fff';
-        }}
-        onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#fff';
-          e.target.style.color = '#000';
-        }}
-      >
-        Learn More
-      </a>
+<a
+  href={link}
+  style={styles.button}
+  onMouseEnter={(e) => {
+    e.target.style.backgroundColor = '#000';
+    e.target.style.color = '#fff';
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.backgroundColor = '#fff';
+    e.target.style.color = '#000';
+  }}
+>
+  Learn More
+</a>
     </div>
   );
 };
