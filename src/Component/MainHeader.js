@@ -1,10 +1,9 @@
 import React from 'react';
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../../node_modules/bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import { FaMapMarkerAlt, FaRegClock, FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom'; // For internal navigation
-import Logo from '../Assets/logo.png';
+import { NavLink } from 'react-router-dom';
 import '../Component/MainHeader.css';
 
 const MainHeader = () => {
@@ -14,33 +13,42 @@ const MainHeader = () => {
                 <div className="container-fluid">
                     <div className="row d-flex align-items-center">
 
-                        {/* LEFT SIDE: Address */}
+                        {/* LEFT SIDE */}
                         <div className="col-md-6 d-flex justify-content-center">
-                            <div className='top-header-left d-flex align-items-center'>
-                                <p className='mainpara mb-0'>
-                                    <FaMapMarkerAlt /> Work : Baddi, Mallpur Road, Solan, Industrial Area, Punjab - 140507
-                                </p>
-                            </div>
+                            <p className='mainpara mb-0'>
+                                <FaMapMarkerAlt /> Work : Baddi, Mallpur Road, Solan, Industrial Area, Punjab - 140507
+                            </p>
                         </div>
 
-                        {/* RIGHT SIDE: Office Hours, Social Icons, Request Proposal Button */}
+                        {/* RIGHT SIDE */}
                         <div className="col-md-6 d-flex justify-content-center">
-                            <div className='top-header-right d-flex align-items-center'>
+                            <div className='d-flex align-items-center'>
 
-                                {/* Office Hours */}
                                 <p className='schedule mb-0 me-3'>
                                     <FaRegClock /> Office Hours: 9:00 AM to 6:00 PM
                                 </p>
 
-                                {/* Social Icons */}
+                                {/* ✅ FIXED LINKS */}
                                 <ul className='top-social d-flex mb-0'>
-                                    <li><a href="#" className='SocilIcon'><FaFacebook /></a></li>
-                                    <li><a href="#" className='SocilIcon'><FaTwitter /></a></li>
-                                    <li><a href="#" className='SocilIcon'><FaInstagram /></a></li>
+                                    <li>
+                                        <a href="https://facebook.com" className='SocilIcon' target="_blank" rel="noreferrer">
+                                            <FaFacebook />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com" className='SocilIcon' target="_blank" rel="noreferrer">
+                                            <FaTwitter />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://instagram.com" className='SocilIcon' target="_blank" rel="noreferrer">
+                                            <FaInstagram />
+                                        </a>
+                                    </li>
                                 </ul>
 
-                                {/* Request Proposal Button – React Router NavLink */}
-                                <NavLink style={{background:'#f2ab26'}}
+                                <NavLink
+                                    style={{ background: '#f2ab26' }}
                                     to="/ProposalFormWithMap"
                                     className="btn btn-default ms-3 requestProposal"
                                 >
