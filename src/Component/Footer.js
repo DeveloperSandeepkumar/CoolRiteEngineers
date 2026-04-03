@@ -68,31 +68,7 @@ const Footer = () => {
                             </p>
                         </div>
 
-                        <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mb-3">
-                            <h6 className="text-uppercase fw-bold mb-4 textHeading">
-                                Our Products
-                            </h6>
-
-                            <p className="textStyle">
-                                <FaLongArrowAltRight /> <NavLink to="/Rectangular" className="text_Style">Rectangular G.I Duct</NavLink>
-                            </p>
-
-                            <p className="textStyle">
-                                <FaLongArrowAltRight /> <NavLink to="/Circular" className="text_Style">Circular G.I Duct</NavLink>
-                            </p>
-
-                            <p className="textStyle">
-                                <FaLongArrowAltRight /> <NavLink to="/Steam" className="text_Style">Steam Pipe Insulation</NavLink>
-                            </p>
-
-                            <p className="textStyle">
-                                <FaLongArrowAltRight /> <NavLink to="/Cold" className="text_Style">Cold Pipe Insulation</NavLink>
-                            </p>
-
-                            <p className="textStyle">
-                                <FaLongArrowAltRight /> <NavLink to="/Reactor" className="text_Style">Reactor & Tank Insulation</NavLink>
-                            </p>
-                        </div>
+               
 
                     </div>
                 </div>
