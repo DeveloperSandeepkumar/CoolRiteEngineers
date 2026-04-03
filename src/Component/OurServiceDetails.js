@@ -27,52 +27,52 @@ const cardsData = [
   {
     image: Image3,
     title: 'VRV/VRF',
-    link: 'https://example.com/3',
+    link: './vrv-vrf',
   },
   {
     image: Image4,
     title: 'Cassete AC',
-    link: 'https://example.com/4',
+    link: './cassette-ac',
   },
   {
     image: Image5,
     title: 'Chiller AC',
-    link: 'https://example.com/5',
+    link: './chiller-ac',
   },
   {
     image: Image6,
     title: 'AHU (Air Handling Unit)',
-    link: 'https://example.com/6',
+    link: './ahu-services',
   },
   {
     image: Image7,
         title: 'FCU (Fall COil Unit)',
-    link: 'https://example.com/7',
+    link: './fcu-services',
   },
   {
     image: Image8,
     title: 'Package AC',
-    link: 'https://example.com/8',
+    link: './package-ac',
   },
   {
     image: Image9,
     title: 'Plumbing',
-    link: 'https://example.com/9',
+    link: './plumbing',
   },
   {
     image: Image10,
     title: 'Drainage System',
-    link: 'https://example.com/10',
+    link: './drainage-system',
   },
   {
     image: Image11,
     title: 'Fire Fighting',
-    link: 'https://example.com/11',
+    link: './fire-fighting',
   },
   {
     image: Image12,
     title: 'Electricals',
-    link: 'https://example.com/12',
+    link: './electrical-services',
   },
 ];
 
