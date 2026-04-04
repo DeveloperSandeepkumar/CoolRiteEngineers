@@ -1,8 +1,39 @@
-.rd-img-top{
+.rd-img-top {
     width: 100px;
+    height: 80px;              /* keep consistent height */
+    object-fit: contain;       /* prevent stretching */
+    margin: auto;              /* center image */
+    display: block;
 }
-.Headings{
-    padding: 20px;
-    font-weight:600;
 
+.Headings {
+    padding: 20px;
+    font-weight: 600;
+    text-align: center;        /* center heading */
+}
+
+/* 🔥 IMPORTANT FIXES */
+
+.slider-container {
+    width: 100%;
+    margin: auto;
+}
+
+.slick-slide {
+    padding: 10px;             /* control gap between items */
+}
+
+.slick-list {
+    margin: 0 -10px;           /* remove extra outer gap */
+}
+
+/* Center card content */
+.card {
+    border: none;
+    text-align: center;
+}
+
+/* Optional: reduce extra spacing */
+.card-wrapper {
+    padding: 0;
 }
