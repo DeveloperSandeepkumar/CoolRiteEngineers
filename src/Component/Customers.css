@@ -28,12 +28,12 @@
 
 /* Control spacing */
 .slick-slide {
-    padding: 5px;
+    padding: 2px;
 }
 
 /* Remove outer gap */
 .slick-list {
-    margin: 0 -5px;
+    margin: 0;
 }
 
 /* Card styling */
