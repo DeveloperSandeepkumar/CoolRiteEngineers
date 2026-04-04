@@ -101,7 +101,7 @@ const Navbar = () => {
 
         <div className={`nav-elements ${showNavbar ? 'active' : ''}`}>
    <img
-  src={CoolRiteLogo}
+  src={CoolRiteLogo1}
   alt="CoolRite Logo"
   style={{
     width: '100px',
