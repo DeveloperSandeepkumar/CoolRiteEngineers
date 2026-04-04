@@ -45,7 +45,6 @@ const ContactUs = () => {
       .catch(() => setStatus("error"));
   };
 
-  // Custom styles
   const styles = {
     hero: {
       background: "#222",
@@ -55,9 +54,10 @@ const ContactUs = () => {
     },
     card: {
       borderRadius: "12px",
-      boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+      boxShadow: "0 8px 25px rgba(0,0,0,0.15)",
       padding: "30px",
       backgroundColor: "#fff",
+      minHeight: "550px", // same height for both cards
     },
     input: {
       height: "50px",
@@ -88,20 +88,18 @@ const ContactUs = () => {
       width: "100%",
       cursor: "pointer",
     },
-    mapHeader: {
+    sectionHeader: {
       fontWeight: '700',
       fontSize: '2rem',
       color: '#222',
-      letterSpacing: '1px',
-      marginBottom: '0.5rem',
-    },
-    mapSub: {
-      color: '#555',
-      fontSize: '1rem',
-      marginBottom: '20px',
-    },
-    mapContainer: {
+      textAlign: 'center',
       marginTop: '60px',
+      marginBottom: '15px',
+    },
+    sectionSub: {
+      color: '#555',
+      textAlign: 'center',
+      marginBottom: '30px',
     },
   };
 
@@ -113,12 +111,12 @@ const ContactUs = () => {
         <p>If you have any questions, feel free to contact our team.</p>
       </div>
 
-      {/* Main Contact Section */}
+      {/* Contact Cards Section */}
       <div className="container my-5">
-        <div className="row g-4 justify-content-center">
+        <div className="row g-4 justify-content-center align-items-start">
           {/* Get In Touch Card */}
           <div className="col-12 col-md-5">
-            <div className="card shadow-lg rounded-4 p-4 h-100">
+            <div className="card shadow-lg rounded-4 p-4" style={styles.card}>
               <h4 className="mb-4 text-center" style={{ fontWeight: '700', fontSize: '1.6rem' }}>
                 Get In Touch
               </h4>
@@ -165,7 +163,7 @@ const ContactUs = () => {
 
           {/* Contact Form Card */}
           <div className="col-12 col-md-7">
-            <div style={styles.card}>
+            <div className="card shadow-lg rounded-4 p-4" style={styles.card}>
               <h4 className="text-center mb-4">Send Us a Message</h4>
 
               {status === "success" && <div className="alert alert-success">Message sent successfully!</div>}
@@ -181,7 +179,6 @@ const ContactUs = () => {
                   required
                   style={styles.input}
                 />
-
                 <input
                   type="email"
                   name="email"
@@ -191,7 +188,6 @@ const ContactUs = () => {
                   required
                   style={styles.input}
                 />
-
                 <input
                   type="text"
                   name="phone"
@@ -201,7 +197,6 @@ const ContactUs = () => {
                   required
                   style={styles.input}
                 />
-
                 <input
                   type="text"
                   name="subject"
@@ -210,7 +205,6 @@ const ContactUs = () => {
                   onChange={handleChange}
                   style={styles.input}
                 />
-
                 <textarea
                   name="message"
                   placeholder="Your Message"
@@ -228,12 +222,10 @@ const ContactUs = () => {
       </div>
 
       {/* Our Location Section */}
-      <div className="container" style={styles.mapContainer}>
-        <h2 className="text-center" style={styles.mapHeader}>Our Location</h2>
-        <p className="text-center" style={styles.mapSub}>
-          Find our head office and branch office locations on the map below.
-        </p>
-        <div className="ratio ratio-16x9 shadow rounded">
+      <div className="container">
+        <h2 style={styles.sectionHeader}>Our Location</h2>
+        <p style={styles.sectionSub}>Find our head office and branch office locations on the map below.</p>
+        <div className="ratio ratio-16x9 shadow rounded mb-5">
           <iframe
             title="map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3421.813817872341!2d76.7758831!3d30.9455745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ff57de71ccde7%3A0xb513973c84f8c7e0!2sGoogle+Maps+Location!5e0!3m2!1sen!2sin!4v1700000000000"
