@@ -51,7 +51,7 @@ const ContactUs = () => {
       background: "#222",
       color: "#fff",
       textAlign: "center",
-      padding: "60px 20px",
+      padding: "20px 20px",
     },
     card: {
       borderRadius: "12px",
