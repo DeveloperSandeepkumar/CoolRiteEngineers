@@ -56,10 +56,8 @@ const ContactUs = () => {
     card: {
       borderRadius: "12px",
       boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
-      padding: "40px",
+      padding: "30px",
       backgroundColor: "#fff",
-      maxWidth: "700px",
-      margin: "0 auto",
     },
     input: {
       height: "50px",
@@ -90,8 +88,20 @@ const ContactUs = () => {
       width: "100%",
       cursor: "pointer",
     },
+    mapHeader: {
+      fontWeight: '700',
+      fontSize: '2rem',
+      color: '#222',
+      letterSpacing: '1px',
+      marginBottom: '0.5rem',
+    },
+    mapSub: {
+      color: '#555',
+      fontSize: '1rem',
+      marginBottom: '20px',
+    },
     mapContainer: {
-      marginTop: "60px",
+      marginTop: '60px',
     },
   };
 
@@ -103,49 +113,57 @@ const ContactUs = () => {
         <p>If you have any questions, feel free to contact our team.</p>
       </div>
 
+      {/* Main Contact Section */}
       <div className="container my-5">
-        <div className="row justify-content-center g-4">
-          {/* Contact Info */}
+        <div className="row g-4 justify-content-center">
+          {/* Get In Touch Card */}
           <div className="col-12 col-md-5">
-            <h4 className="mb-3">Get In Touch</h4>
-            <p>We provide reliable high-performance solutions for industries.</p>
+            <div className="card shadow-lg rounded-4 p-4 h-100">
+              <h4 className="mb-4 text-center" style={{ fontWeight: '700', fontSize: '1.6rem' }}>
+                Get In Touch
+              </h4>
 
-            <div className="mb-3">
-              <strong>📞 Phone:</strong>
-              <p><a href="tel:+917009167480">+91-7009167480</a></p>
-              <p><a href="tel:+918194839585">+91-8194839585</a></p>
-            </div>
-
-            <div className="mb-3">
-              <strong>📧 Email:</strong>
-              <p><a href="mailto:accounts@coolriteengineers.in">accounts@coolriteengineers.in</a></p>
-            </div>
-
-            <div className="mb-3">
-              <strong>🏢 Head Office:</strong>
-              <p>
-                Gulabgarh Road, Gill Colony Sec-09,<br/>
-                Building No-361, Derabassi,<br/>
-                Mohali, Punjab - 140507
+              <p style={{ color: '#555', fontSize: '1rem', marginBottom: '1.5rem' }}>
+                We provide reliable high-performance solutions for industries. Feel free to reach out to us anytime.
               </p>
-            </div>
 
-            <div className="mb-3">
-              <strong>🏭 Branch Office:</strong>
-              <p>
-                Village Malpur,<br/>
-                Teh Baddi,<br/>
-                Distt Solan, Himachal Pradesh
-              </p>
-            </div>
+              <div className="mb-3">
+                <strong>📞 Phone:</strong>
+                <p className="mb-1"><a href="tel:+917009167480" style={{ textDecoration: 'none' }}>+91-7009167480</a></p>
+                <p><a href="tel:+918194839585" style={{ textDecoration: 'none' }}>+91-8194839585</a></p>
+              </div>
 
-            <div>
-              <strong>⏰ Working Hours:</strong>
-              <p>Monday - Saturday: 9:00 AM - 6:00 PM</p>
+              <div className="mb-3">
+                <strong>📧 Email:</strong>
+                <p><a href="mailto:accounts@coolriteengineers.in" style={{ textDecoration: 'none' }}>accounts@coolriteengineers.in</a></p>
+              </div>
+
+              <div className="mb-3">
+                <strong>🏢 Head Office:</strong>
+                <p>
+                  Gulabgarh Road, Gill Colony Sec-09,<br/>
+                  Building No-361, Derabassi,<br/>
+                  Mohali, Punjab - 140507
+                </p>
+              </div>
+
+              <div className="mb-3">
+                <strong>🏭 Branch Office:</strong>
+                <p>
+                  Village Malpur,<br/>
+                  Teh Baddi,<br/>
+                  Distt Solan, Himachal Pradesh
+                </p>
+              </div>
+
+              <div>
+                <strong>⏰ Working Hours:</strong>
+                <p>Monday - Saturday: 9:00 AM - 6:00 PM</p>
+              </div>
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact Form Card */}
           <div className="col-12 col-md-7">
             <div style={styles.card}>
               <h4 className="text-center mb-4">Send Us a Message</h4>
@@ -209,10 +227,13 @@ const ContactUs = () => {
         </div>
       </div>
 
-      {/* Google Map */}
+      {/* Our Location Section */}
       <div className="container" style={styles.mapContainer}>
-        <h4 className="text-center mb-3">Our Location</h4>
-        <div className="ratio ratio-16x9">
+        <h2 className="text-center" style={styles.mapHeader}>Our Location</h2>
+        <p className="text-center" style={styles.mapSub}>
+          Find our head office and branch office locations on the map below.
+        </p>
+        <div className="ratio ratio-16x9 shadow rounded">
           <iframe
             title="map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3421.813817872341!2d76.7758831!3d30.9455745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ff57de71ccde7%3A0xb513973c84f8c7e0!2sGoogle+Maps+Location!5e0!3m2!1sen!2sin!4v1700000000000"
