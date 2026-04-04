@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import emailjs from "emailjs-com";
@@ -20,7 +19,6 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
@@ -46,9 +44,7 @@ const ContactUs = () => {
           message: "",
         });
       })
-      .catch(() => {
-        setStatus("error");
-      });
+      .catch(() => setStatus("error"));
   };
 
   return (
@@ -60,18 +56,13 @@ const ContactUs = () => {
         <p>If you have any questions, feel free to contact our team.</p>
       </div>
 
-      {/* Main Section */}
       <div className="container my-5">
         <div className="row g-4">
 
           {/* Contact Info */}
           <div className="col-12 col-md-5">
             <h4 className="mb-3">Get In Touch</h4>
-
-            <p>
-              We are here to provide reliable and high-performance solutions
-              for your industrial and commercial requirements.
-            </p>
+            <p>We provide reliable high-performance solutions for industries.</p>
 
             <div className="mb-3">
               <strong>📞 Phone:</strong>
@@ -87,8 +78,8 @@ const ContactUs = () => {
             <div className="mb-3">
               <strong>🏢 Head Office:</strong>
               <p>
-                Gulabgarh Road, Gill Colony Sec-09,<br />
-                Building No-361, Derabassi,<br />
+                Gulabgarh Road, Gill Colony Sec-09,<br/>
+                Building No-361, Derabassi,<br/>
                 Mohali, Punjab - 140507
               </p>
             </div>
@@ -96,8 +87,8 @@ const ContactUs = () => {
             <div className="mb-3">
               <strong>🏭 Branch Office:</strong>
               <p>
-                Village Malpur,<br />
-                Teh Baddi,<br />
+                Village Malpur,<br/>
+                Teh Baddi,<br/>
                 Distt Solan, Himachal Pradesh
               </p>
             </div>
@@ -108,85 +99,94 @@ const ContactUs = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Professional Contact Form */}
           <div className="col-12 col-md-7">
-            <div className="card shadow p-4">
-              <h4 className="text-center mb-3">Send Us a Message</h4>
+            <div className="card shadow-lg rounded-4 p-4">
+              <h4 className="text-center mb-4">Send Us a Message</h4>
 
               {status === "success" && (
-                <div className="alert alert-success">
-                  Your message has been sent successfully!
-                </div>
+                <div className="alert alert-success">Message sent successfully!</div>
               )}
-
               {status === "error" && (
-                <div className="alert alert-danger">
-                  Failed to send message. Please try again.
-                </div>
+                <div className="alert alert-danger">Failed to send message. Try again.</div>
               )}
 
               <form onSubmit={handleSubmit}>
 
-                <div className="mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="text"
-                    name="name"
                     className="form-control"
+                    id="name"
+                    name="name"
                     placeholder="Full Name"
                     value={formData.name}
                     onChange={handleChange}
                     required
                   />
+                  <label htmlFor="name">Full Name</label>
                 </div>
 
-                <div className="mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="email"
-                    name="email"
                     className="form-control"
+                    id="email"
+                    name="email"
                     placeholder="Email Address"
                     value={formData.email}
                     onChange={handleChange}
                     required
                   />
+                  <label htmlFor="email">Email Address</label>
                 </div>
 
-                <div className="mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="text"
-                    name="phone"
                     className="form-control"
+                    id="phone"
+                    name="phone"
                     placeholder="Phone Number"
                     value={formData.phone}
                     onChange={handleChange}
                     required
                   />
+                  <label htmlFor="phone">Phone Number</label>
                 </div>
 
-                <div className="mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="text"
-                    name="subject"
                     className="form-control"
+                    id="subject"
+                    name="subject"
                     placeholder="Subject"
                     value={formData.subject}
                     onChange={handleChange}
                   />
+                  <label htmlFor="subject">Subject</label>
                 </div>
 
-                <div className="mb-3">
+                <div className="form-floating mb-3">
                   <textarea
-                    name="message"
                     className="form-control"
-                    rows="4"
+                    id="message"
+                    name="message"
                     placeholder="Your Message"
+                    style={{ height: "120px" }}
                     value={formData.message}
                     onChange={handleChange}
                     required
-                  ></textarea>
+                  />
+                  <label htmlFor="message">Message</label>
                 </div>
 
-                <button className="btn btn-success w-100">
+                <button
+                  type="submit"
+                  className="btn btn-success btn-lg w-100"
+                  style={{ borderRadius: "50px" }}
+                >
                   Send Message
                 </button>
 
@@ -200,7 +200,6 @@ const ContactUs = () => {
       {/* Google Map */}
       <div className="container mb-5">
         <h4 className="text-center mb-3">Our Location</h4>
-
         <div className="ratio ratio-16x9">
           <iframe
             title="map"
