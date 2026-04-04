@@ -10,7 +10,6 @@ const ContactUs = () => {
     subject: "",
     message: "",
   });
-
   const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
@@ -26,7 +25,6 @@ const ContactUs = () => {
       subject: formData.subject,
       message: formData.message,
     };
-
     emailjs
       .send(
         "service_g31h8cy",
@@ -47,18 +45,66 @@ const ContactUs = () => {
       .catch(() => setStatus("error"));
   };
 
-  return (
-    <div className="container-fluid p-0">
+  // Custom styles
+  const styles = {
+    hero: {
+      background: "#222",
+      color: "#fff",
+      textAlign: "center",
+      padding: "60px 20px",
+    },
+    card: {
+      borderRadius: "12px",
+      boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+      padding: "40px",
+      backgroundColor: "#fff",
+      maxWidth: "700px",
+      margin: "0 auto",
+    },
+    input: {
+      height: "50px",
+      fontSize: "16px",
+      borderRadius: "8px",
+      border: "1px solid #ccc",
+      padding: "0 15px",
+      marginBottom: "20px",
+      width: "100%",
+    },
+    textarea: {
+      fontSize: "16px",
+      borderRadius: "8px",
+      border: "1px solid #ccc",
+      padding: "15px",
+      marginBottom: "20px",
+      width: "100%",
+      resize: "none",
+    },
+    button: {
+      backgroundColor: "#28a745",
+      color: "#fff",
+      fontSize: "18px",
+      fontWeight: "bold",
+      padding: "12px",
+      borderRadius: "50px",
+      border: "none",
+      width: "100%",
+      cursor: "pointer",
+    },
+    mapContainer: {
+      marginTop: "60px",
+    },
+  };
 
+  return (
+    <div>
       {/* Hero Section */}
-      <div className="bg-dark text-white text-center py-5">
+      <div style={styles.hero}>
         <h1>Contact Us</h1>
         <p>If you have any questions, feel free to contact our team.</p>
       </div>
 
       <div className="container my-5">
-        <div className="row g-4">
-
+        <div className="row justify-content-center g-4">
           {/* Contact Info */}
           <div className="col-12 col-md-5">
             <h4 className="mb-3">Get In Touch</h4>
@@ -66,7 +112,7 @@ const ContactUs = () => {
 
             <div className="mb-3">
               <strong>📞 Phone:</strong>
-              <p className="mb-1"><a href="tel:+917009167480">+91-7009167480</a></p>
+              <p><a href="tel:+917009167480">+91-7009167480</a></p>
               <p><a href="tel:+918194839585">+91-8194839585</a></p>
             </div>
 
@@ -99,106 +145,72 @@ const ContactUs = () => {
             </div>
           </div>
 
-          {/* Professional Contact Form */}
+          {/* Contact Form */}
           <div className="col-12 col-md-7">
-            <div className="card shadow-lg rounded-4 p-4">
+            <div style={styles.card}>
               <h4 className="text-center mb-4">Send Us a Message</h4>
 
-              {status === "success" && (
-                <div className="alert alert-success">Message sent successfully!</div>
-              )}
-              {status === "error" && (
-                <div className="alert alert-danger">Failed to send message. Try again.</div>
-              )}
+              {status === "success" && <div className="alert alert-success">Message sent successfully!</div>}
+              {status === "error" && <div className="alert alert-danger">Failed to send message. Try again.</div>}
 
               <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  style={styles.input}
+                />
 
-                <div className="form-floating mb-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="name"
-                    name="name"
-                    placeholder="Full Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                  />
-                  <label htmlFor="name">Full Name</label>
-                </div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  style={styles.input}
+                />
 
-                <div className="form-floating mb-3">
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="Email Address"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                  <label htmlFor="email">Email Address</label>
-                </div>
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  style={styles.input}
+                />
 
-                <div className="form-floating mb-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="phone"
-                    name="phone"
-                    placeholder="Phone Number"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                  />
-                  <label htmlFor="phone">Phone Number</label>
-                </div>
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  style={styles.input}
+                />
 
-                <div className="form-floating mb-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="subject"
-                    name="subject"
-                    placeholder="Subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="subject">Subject</label>
-                </div>
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  style={styles.textarea}
+                />
 
-                <div className="form-floating mb-3">
-                  <textarea
-                    className="form-control"
-                    id="message"
-                    name="message"
-                    placeholder="Your Message"
-                    style={{ height: "120px" }}
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                  />
-                  <label htmlFor="message">Message</label>
-                </div>
-
-                <button
-                  type="submit"
-                  className="btn btn-success btn-lg w-100"
-                  style={{ borderRadius: "50px" }}
-                >
-                  Send Message
-                </button>
-
+                <button type="submit" style={styles.button}>Send Message</button>
               </form>
             </div>
           </div>
-
         </div>
       </div>
 
       {/* Google Map */}
-      <div className="container mb-5">
+      <div className="container" style={styles.mapContainer}>
         <h4 className="text-center mb-3">Our Location</h4>
         <div className="ratio ratio-16x9">
           <iframe
@@ -211,7 +223,6 @@ const ContactUs = () => {
           ></iframe>
         </div>
       </div>
-
     </div>
   );
 };
