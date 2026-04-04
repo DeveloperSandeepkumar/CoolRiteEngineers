@@ -28,26 +28,20 @@ const Footer = () => {
                             </p>
 
                             <p className="textStyle">
-                                <FaPhoneAlt /> +91-7009167480 / +91-8194839585
+                                <FaPhoneAlt /> +91-7009167480 / +91-7973418255
                             </p>
 
                             <p className="textclass">
                                 <b>Email:</b>{" "}
                                 <span className="textStyle">
-                                    accounts@coolriteengineers.in
+                                   Coolriteengineers@gmail.com
                                 </span>
                             </p>
 
                             <h4 className="textHeading">Head Office</h4>
                             <p className="textclass">
-                                Gulabgarh Road, Gill Colony Sec-09, Building No-361,
-                                Derabassi, Mohali, Punjab - 140507
-                            </p>
-
-                            <h4 className="textHeading">Branch Office</h4>
-                            <p className="textclass">
-                                Village Malpur, Teh Baddi, Distt Solan, Himachal Pradesh
-                            </p>
+                               Address:- SCO NO - 03 Village Malpur Upperla near Cipla Ltd. P.O Bhud , Teh Baddi Distt Solan (Himachal Pradesh -173205)
+                            </p>         
                         </div>
 
                         <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mb-3">
