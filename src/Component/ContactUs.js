@@ -210,8 +210,9 @@ const ContactUs = () => {
       </div>
 
       {/* Google Map */}
+   <h4 className="text-center mb-3">Our Location</h4>
       <div className="container" style={styles.mapContainer}>
-        <h4 className="text-center mb-3">Our Location</h4>
+     
         <div className="ratio ratio-16x9">
           <iframe
             title="map"
