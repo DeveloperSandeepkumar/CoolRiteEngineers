@@ -104,8 +104,9 @@ const Navbar = () => {
   src={CoolRiteLogo1}
   alt="CoolRite Logo"
   style={{
-    width: '100px',
+    width: '40px',
     height: '40px',
+   border-radius: '9px',
     display: window.innerWidth > 768 ? 'block' : 'none', // only show on desktop
   }}
 />
