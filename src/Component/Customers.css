@@ -1,39 +1,45 @@
+/* Image */
 .rd-img-top {
     width: 100px;
-    height: 80px;              /* keep consistent height */
-    object-fit: contain;       /* prevent stretching */
-    margin: auto;              /* center image */
+    height: 80px;
+    object-fit: contain;
+    margin: auto;
     display: block;
 }
 
+/* Heading */
 .Headings {
     padding: 20px;
     font-weight: 600;
-    text-align: center;        /* center heading */
+    text-align: center;
 }
 
-/* 🔥 IMPORTANT FIXES */
-
+/* Container */
 .slider-container {
     width: 100%;
     margin: auto;
 }
 
+/* 🔥 MAIN ALIGNMENT FIX */
+.slick-slide > div {
+    display: flex;
+    justify-content: center;
+}
+
+/* Control spacing */
 .slick-slide {
-    padding: 10px;             /* control gap between items */
+    padding: 5px;
 }
 
+/* Remove outer gap */
 .slick-list {
-    margin: 0 -10px;           /* remove extra outer gap */
+    margin: 0 -5px;
 }
 
-/* Center card content */
-.card {
+/* Card styling */
+.card.Customers {
     border: none;
+    width: 120px;     /* 🔥 prevents extra gap */
+    margin: auto;
     text-align: center;
-}
-
-/* Optional: reduce extra spacing */
-.card-wrapper {
-    padding: 0;
 }
