@@ -118,26 +118,17 @@ const ContactUs = () => {
 
             <div className="mb-3">
               <strong>📧 Email:</strong>
-              <p><a href="mailto:accounts@coolriteengineers.in">accounts@coolriteengineers.in</a></p>
+              <p><a href="mailto:coolriteengineers@gmail.com">coolriteengineers@gmail.com</a></p>
             </div>
 
             <div className="mb-3">
               <strong>🏢 Head Office:</strong>
               <p>
-                Gulabgarh Road, Gill Colony Sec-09,<br/>
-                Building No-361, Derabassi,<br/>
-                Mohali, Punjab - 140507
+                Address:- SCO NO - 03 Village Malpur Upperla near Cipla Ltd. P.O Bhud , Teh Baddi Distt Solan (Himachal Pradesh -173205)
               </p>
             </div>
 
-            <div className="mb-3">
-              <strong>🏭 Branch Office:</strong>
-              <p>
-                Village Malpur,<br/>
-                Teh Baddi,<br/>
-                Distt Solan, Himachal Pradesh
-              </p>
-            </div>
+            
 
             <div>
               <strong>⏰ Working Hours:</strong>
@@ -227,7 +218,7 @@ const ContactUs = () => {
       fontSize: '1rem',
       marginBottom: '30px',
     }}>
-      Find our head office and branch office locations on the map below.
+      Find our head office locations on the map below.
     </p>
   </div>
 
