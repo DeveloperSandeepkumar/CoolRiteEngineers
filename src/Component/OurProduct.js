@@ -34,7 +34,7 @@ const products = [
   },
 ];
 
-export default function HVACCards() {
+export default function OurProduct() {
   const [hovered, setHovered] = useState(null);
 
   return (
