@@ -168,7 +168,7 @@ const Navbar = () => {
                 )}
               </div>
             </li>
-            <li><NavLink to="/Product" onClick={closeNavbar}>PRODUCT</NavLink></li>
+            <li><NavLink to="/OurProduct" onClick={closeNavbar}>PRODUCT</NavLink></li>
             <li><NavLink to="/Project" onClick={closeNavbar}>PROJECT</NavLink></li>
             <li><NavLink to="/Career" onClick={closeNavbar}>CAREER</NavLink></li>
             <li><NavLink to="/ContactUs" onClick={closeNavbar}>CONTACT US</NavLink></li>
