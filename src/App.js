@@ -14,7 +14,7 @@ import { services } from "./Component/servicesData";
 import ProposalFormWithMap from "./Component/ProposalFormWithMap";
 import VendorRegistrationForm from "./Component/VendorRegistrationForm";
 import ContactUs from "./Component/ContactUs";
-
+import OurProduct from "./Component/OurProduct";
 // ✅ PascalCase fix
 import CoolRiteEngineer3D from "./Component/CoolRiteEngineer_3D";
 import CoolRiteEngineerV5 from "./Component/CoolRiteEngineer_v5";
@@ -32,7 +32,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<AboutUs />} />
          <Route path="/contactUs" element={<ContactUs />} />
-
+   <Route path="/OurProduct" element={<OurProduct />} />
           {/* ✅ Fixed component names */}
           <Route path="/CoolRiteEngineer_3D" element={<CoolRiteEngineer3D />} />
           <Route path="/CoolRiteEngineer_v5" element={<CoolRiteEngineerV5 />} />
