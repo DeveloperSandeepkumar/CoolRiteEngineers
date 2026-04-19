@@ -19,6 +19,7 @@ import OurProduct from "./Component/OurProduct";
 import CoolRiteEngineer3D from "./Component/CoolRiteEngineer_3D";
 import CoolRiteEngineerV5 from "./Component/CoolRiteEngineer_v5";
 
+import CoolriteMeasurement from "./Component/CoolriteMeasurement";
 const App = () => {
   return (
     <div className="App">
@@ -36,6 +37,8 @@ const App = () => {
           {/* ✅ Fixed component names */}
           <Route path="/CoolRiteEngineer_3D" element={<CoolRiteEngineer3D />} />
           <Route path="/CoolRiteEngineer_v5" element={<CoolRiteEngineerV5 />} />
+   <Route path="/CoolriteMeasurement" element={<CoolriteMeasurement />} />
+
 
           {/* Dynamic services routes */}
           {services.map((service, index) => (
