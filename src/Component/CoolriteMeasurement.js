@@ -1,4 +1,20 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
+
+// ─── Storage (localStorage) ────────────────────────────────────────────────────
+const STORAGE_KEY = "coolrite_mep_sheets";
+
+function getAllSheets() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
+  catch { return []; }
+}
+function saveAllSheets(sheets) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(sheets));
+}
+function getNextSerial() {
+  const sheets = getAllSheets();
+  if (!sheets.length) return 1;
+  return Math.max(...sheets.map(s => s.serial || 0)) + 1;
+}
 
 // ─── SheetJS via CDN (loaded once) ────────────────────────────────────────────
 const loadXLSX = () =>
@@ -572,6 +588,273 @@ function CategoryBlock({ cat, rows, open, onToggle, onField, onDel, onAdd }) {
   );
 }
 
+// ─── Save Drawer Component ─────────────────────────────────────────────────────
+function SaveDrawer({ open, onClose, currentProj, currentRows, onLoad }) {
+  const [sheets, setSheets]   = useState([]);
+  const [toast, setToast]     = useState(null);
+  const [confirm, setConfirm] = useState(null); // serial to delete
+
+  useEffect(() => {
+    if (open) setSheets(getAllSheets());
+  }, [open]);
+
+  const showToast = (msg, type = "success") => {
+    setToast({ msg, type });
+    setTimeout(() => setToast(null), 2800);
+  };
+
+  const handleSave = () => {
+    const serial = getNextSerial();
+    const sheet = {
+      serial,
+      savedAt: new Date().toISOString(),
+      proj: currentProj,
+      rows: currentRows,
+    };
+    const updated = [...getAllSheets(), sheet];
+    saveAllSheets(updated);
+    setSheets(updated);
+    showToast(`Sheet #${serial} saved — "${currentProj.name || "Untitled"}"`);
+  };
+
+  const handleOverwrite = (serial) => {
+    const updated = getAllSheets().map(s =>
+      s.serial === serial
+        ? { ...s, savedAt: new Date().toISOString(), proj: currentProj, rows: currentRows }
+        : s
+    );
+    saveAllSheets(updated);
+    setSheets(updated);
+    showToast(`Sheet #${serial} updated`);
+  };
+
+  const handleLoad = (sheet) => {
+    onLoad(sheet);
+    onClose();
+    showToast(`Sheet #${sheet.serial} loaded`);
+  };
+
+  const handleDelete = (serial) => {
+    const updated = getAllSheets().filter(s => s.serial !== serial);
+    saveAllSheets(updated);
+    setSheets(updated);
+    setConfirm(null);
+    showToast(`Sheet #${serial} deleted`, "warn");
+  };
+
+  const handleExportJson = (sheet) => {
+    const blob = new Blob([JSON.stringify(sheet, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `Coolrite_Sheet_${sheet.serial}_${sheet.proj.name || "Project"}.json`;
+    a.click();
+  };
+
+  const handleImportJson = (e) => {
+    const file = e.target.files[0]; if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        const data = JSON.parse(ev.target.result);
+        if (!data.proj || !data.rows) throw new Error("Invalid");
+        const serial = getNextSerial();
+        const sheet = { ...data, serial, savedAt: new Date().toISOString() };
+        const updated = [...getAllSheets(), sheet];
+        saveAllSheets(updated);
+        setSheets(updated);
+        showToast(`Imported as Sheet #${serial}`);
+      } catch { showToast("Invalid file", "error"); }
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  };
+
+  if (!open) return null;
+
+  const DW = { // drawer styles
+    overlay: {
+      position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)",
+      zIndex: 200, display: "flex", justifyContent: "flex-end",
+    },
+    drawer: {
+      width: 420, background: "#0d1117", height: "100%",
+      borderLeft: "1px solid #30363d", display: "flex", flexDirection: "column",
+      fontFamily: "'DM Sans','Segoe UI',sans-serif",
+      animation: "slideIn .2s ease",
+    },
+    head: {
+      padding: "16px 20px", borderBottom: "1px solid #21262d",
+      display: "flex", alignItems: "center", justifyContent: "space-between",
+    },
+    headTitle: { fontSize: 14, fontWeight: 700, color: "#e6edf3" },
+    headSub: { fontSize: 10, color: "#7d8590", marginTop: 2 },
+    closeBtn: {
+      background: "none", border: "none", color: "#7d8590",
+      fontSize: 18, cursor: "pointer", padding: "4px 8px", borderRadius: 6,
+    },
+    body: { flex: 1, overflowY: "auto", padding: "16px 20px" },
+    saveRow: {
+      display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap",
+    },
+    btnSave: {
+      flex: 1, padding: "9px 14px", borderRadius: 8,
+      background: "linear-gradient(135deg,#1d4ed8,#2563eb)",
+      border: "none", color: "#fff", fontSize: 12, fontWeight: 700,
+      cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
+    },
+    btnImport: {
+      padding: "9px 12px", borderRadius: 8,
+      background: "#1c2333", border: "1px solid #30363d",
+      color: "#7d8590", fontSize: 11, fontWeight: 600, cursor: "pointer",
+      display: "flex", alignItems: "center", gap: 5,
+    },
+    divider: {
+      fontSize: 10, color: "#484f58", textTransform: "uppercase",
+      letterSpacing: 1.5, fontWeight: 700,
+      marginBottom: 10, display: "flex", alignItems: "center", gap: 8,
+    },
+    divLine: { flex: 1, height: 1, background: "#21262d" },
+    emptyState: {
+      textAlign: "center", padding: "40px 20px",
+      color: "#484f58", fontSize: 12,
+    },
+    sheetCard: {
+      background: "#161b22", border: "1px solid #21262d",
+      borderRadius: 8, padding: "12px 14px", marginBottom: 8,
+    },
+    sheetTop: { display: "flex", alignItems: "center", gap: 8, marginBottom: 6 },
+    serialBadge: {
+      background: "#1d4ed820", border: "1px solid #2f81f730",
+      color: "#2f81f7", borderRadius: 5, padding: "2px 8px",
+      fontSize: 10, fontWeight: 700, fontFamily: "monospace",
+    },
+    sheetName: { fontSize: 12, fontWeight: 700, color: "#e6edf3", flex: 1 },
+    sheetMeta: { fontSize: 10, color: "#7d8590", marginBottom: 8, lineHeight: 1.6 },
+    sheetActions: { display: "flex", gap: 6, flexWrap: "wrap" },
+    actBtn: (col) => ({
+      padding: "4px 10px", borderRadius: 5, border: `1px solid ${col}40`,
+      background: `${col}12`, color: col, fontSize: 10, fontWeight: 600,
+      cursor: "pointer", fontFamily: "inherit",
+    }),
+    toast: (type) => ({
+      position: "fixed", bottom: 24, right: 24, zIndex: 999,
+      background: type === "success" ? "#166534" : type === "warn" ? "#92400e" : "#7f1d1d",
+      border: `1px solid ${type === "success" ? "#16a34a" : type === "warn" ? "#d97706" : "#dc2626"}`,
+      color: "#fff", borderRadius: 8, padding: "10px 16px",
+      fontSize: 12, fontWeight: 600, boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
+    }),
+    confirmBox: {
+      background: "#1c2333", border: "1px solid #f85149",
+      borderRadius: 8, padding: "12px 14px", marginBottom: 8,
+    },
+    confirmText: { fontSize: 11, color: "#e6edf3", marginBottom: 10 },
+    confirmBtns: { display: "flex", gap: 8 },
+    confirmDel: {
+      flex: 1, padding: "6px", borderRadius: 6, border: "none",
+      background: "#7f1d1d", color: "#fca5a5", fontSize: 11, fontWeight: 700, cursor: "pointer",
+    },
+    confirmCancel: {
+      flex: 1, padding: "6px", borderRadius: 6,
+      border: "1px solid #30363d", background: "none",
+      color: "#7d8590", fontSize: 11, cursor: "pointer",
+    },
+  };
+
+  return (
+    <>
+      <style>{`
+        @keyframes slideIn { from { transform: translateX(100%) } to { transform: translateX(0) } }
+        .sheet-card:hover { border-color: #30363d !important; background: #1c2333 !important; }
+      `}</style>
+      <div style={DW.overlay} onClick={(e) => e.target === e.currentTarget && onClose()}>
+        <div style={DW.drawer}>
+          {/* Header */}
+          <div style={DW.head}>
+            <div>
+              <div style={DW.headTitle}>📁 Saved Sheets</div>
+              <div style={DW.headSub}>Coolrite Engineers · {sheets.length} sheet{sheets.length !== 1 ? "s" : ""} saved</div>
+            </div>
+            <button style={DW.closeBtn} onClick={onClose}>✕</button>
+          </div>
+
+          {/* Body */}
+          <div style={DW.body}>
+            {/* Save current */}
+            <div style={DW.saveRow}>
+              <button style={DW.btnSave} onClick={handleSave}>
+                💾 Save Current Sheet
+              </button>
+              <label style={DW.btnImport}>
+                📥 Import
+                <input type="file" accept=".json" style={{ display: "none" }} onChange={handleImportJson} />
+              </label>
+            </div>
+
+            <div style={DW.divider}>
+              <div style={DW.divLine} />
+              Saved Sheets
+              <div style={DW.divLine} />
+            </div>
+
+            {sheets.length === 0 ? (
+              <div style={DW.emptyState}>
+                <div style={{ fontSize: 28, marginBottom: 8 }}>📂</div>
+                <div>No sheets saved yet.</div>
+                <div style={{ marginTop: 4, fontSize: 11 }}>Click "Save Current Sheet" to save your work.</div>
+              </div>
+            ) : (
+              [...sheets].reverse().map((sheet) => (
+                <div key={sheet.serial}>
+                  {confirm === sheet.serial ? (
+                    <div style={DW.confirmBox}>
+                      <div style={DW.confirmText}>
+                        Delete Sheet #{sheet.serial} — "{sheet.proj?.name || "Untitled"}"? This cannot be undone.
+                      </div>
+                      <div style={DW.confirmBtns}>
+                        <button style={DW.confirmDel} onClick={() => handleDelete(sheet.serial)}>🗑 Yes, Delete</button>
+                        <button style={DW.confirmCancel} onClick={() => setConfirm(null)}>Cancel</button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="sheet-card" style={DW.sheetCard}>
+                      <div style={DW.sheetTop}>
+                        <span style={DW.serialBadge}>#{String(sheet.serial).padStart(3, "0")}</span>
+                        <span style={DW.sheetName}>{sheet.proj?.name || "Untitled"}</span>
+                      </div>
+                      <div style={DW.sheetMeta}>
+                        <span>👤 {sheet.proj?.client || "—"}</span>
+                        {"  ·  "}
+                        <span>📍 {sheet.proj?.site || "—"}</span>
+                        {"  ·  "}
+                        <span>Rev {sheet.proj?.rev || "R0"}</span>
+                        <br />
+                        <span>🗓 {new Date(sheet.savedAt).toLocaleString("en-IN", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}</span>
+                        {"  ·  "}
+                        <span>{sheet.rows?.length || 0} rows</span>
+                        {"  ·  "}
+                        <span>{sheet.rows?.filter(r => compute(r) != null).length || 0} filled</span>
+                      </div>
+                      <div style={DW.sheetActions}>
+                        <button style={DW.actBtn("#3fb950")} onClick={() => handleLoad(sheet)}>▶ Load</button>
+                        <button style={DW.actBtn("#2f81f7")} onClick={() => handleOverwrite(sheet.serial)}>🔄 Update</button>
+                        <button style={DW.actBtn("#d29922")} onClick={() => handleExportJson(sheet)}>📤 Export</button>
+                        <button style={DW.actBtn("#f85149")} onClick={() => setConfirm(sheet.serial)}>🗑 Delete</button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Toast */}
+      {toast && <div style={DW.toast(toast.type)}>{toast.msg}</div>}
+    </>
+  );
+}
+
 // ─── Main App ──────────────────────────────────────────────────────────────────
 export default function App() {
   const [rows, setRows] = useState(() =>
@@ -586,6 +869,21 @@ export default function App() {
     name: "", client: "", site: "", consult: "",
     by: "", date: new Date().toISOString().slice(0, 10), rev: "R0", contract: "",
   });
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [toast, setToast] = useState(null);
+
+  const showToast = (msg, type = "success") => {
+    setToast({ msg, type });
+    setTimeout(() => setToast(null), 2800);
+  };
+
+  const handleLoadSheet = (sheet) => {
+    setProj(sheet.proj);
+    // restore rows, but re-generate IDs to avoid conflicts
+    setRows(sheet.rows.map(r => ({ ...r, id: _id++ })));
+    setOpenCats(Object.fromEntries(CATEGORIES.map((c) => [c.id, true])));
+    showToast(`Sheet #${sheet.serial} loaded — "${sheet.proj?.name || "Untitled"}"`);
+  };
 
   const setField = useCallback((id, field, val) =>
     setRows((prev) => prev.map((r) => r.id === id ? { ...r, [field]: val } : r)), []);
@@ -606,7 +904,7 @@ export default function App() {
 
     // Sheet 1 – Project Info
     const infoData = [
-      ["MEP MEASUREMENT SHEET — Professional Edition"],
+      ["COOLRITE ENGINEERS — MEP MEASUREMENT SHEET"],
       ["All dimensional inputs (L, W/D, H) are in MILLIMETRES (mm)"],
       [],
       ["Field", "Value"],
@@ -680,72 +978,229 @@ export default function App() {
   const handlePDF = () => {
     const p = proj;
     const css = `
-      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+      /* ── Reset & Base ── */
       *{box-sizing:border-box;margin:0;padding:0}
-      body{font-family:'DM Sans',Arial,sans-serif;font-size:9px;color:#1a1a2e;background:#fff;padding:16px 20px}
-      .doc-header{display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid #1e3a8a;padding-bottom:11px;margin-bottom:12px}
-      .doc-logo{width:42px;height:42px;border-radius:9px;background:linear-gradient(135deg,#1d4ed8,#0ea5e9);display:flex;align-items:center;justify-content:center;font-size:22px;margin-right:12px}
-      .doc-company{font-size:17px;font-weight:800;color:#1e3a8a;letter-spacing:-0.4px}
-      .doc-sub{font-size:8.5px;color:#64748b;margin-top:2px}
-      .doc-badge{background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;border-radius:4px;padding:1px 6px;font-size:7.5px;font-weight:700;margin-top:3px;display:inline-block}
-      .doc-right{text-align:right;font-size:8px;color:#64748b;line-height:1.6}
-      .doc-right strong{color:#1e3a8a;font-size:9.5px;display:block}
-      .proj-block{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:7px;padding:9px 12px;margin-bottom:12px}
-      .pf{border-right:1px solid #e2e8f0;padding-right:8px}.pf:last-child{border:none}
-      .pf-l{font-size:7px;text-transform:uppercase;letter-spacing:.7px;color:#94a3b8;margin-bottom:2px;font-weight:600}
-      .pf-v{font-size:9px;font-weight:600;color:#1e293b}
-      .note{background:#fffbeb;border-left:3px solid #d97706;padding:5px 9px;margin-bottom:11px;font-size:8px;color:#92400e;border-radius:0 4px 4px 0}
-      .sec{margin-bottom:12px;break-inside:avoid}
-      .sec-hdr{display:flex;align-items:center;gap:7px;padding:5px 9px;border-radius:5px 5px 0 0}
-      .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-      .sec-name{font-weight:700;font-size:9.5px}
-      .sec-sub{font-size:8px;color:#64748b;margin-left:3px}
-      table{width:100%;border-collapse:collapse;font-size:8px}
-      thead th{padding:4px 6px;text-align:left;font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;border-bottom:1px solid}
-      tbody td{padding:3.5px 5px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
+      body{
+        font-family:'Barlow',Arial,sans-serif;
+        font-size:9pt;
+        line-height:1.45;
+        color:#1a202c;
+        background:#fff;
+        padding:14mm 14mm 12mm 14mm;
+      }
+
+      /* ── Document Header ── */
+      .doc-header{
+        display:flex;align-items:stretch;justify-content:space-between;
+        border-bottom:3px solid #1e3a8a;
+        padding-bottom:10pt;margin-bottom:10pt;
+      }
+      .doc-header-left{display:flex;align-items:center;gap:12pt}
+      .doc-logo{
+        width:48pt;height:48pt;border-radius:10pt;flex-shrink:0;
+        background:linear-gradient(135deg,#1d4ed8,#0ea5e9);
+        display:flex;align-items:center;justify-content:center;font-size:26pt;
+      }
+      .doc-brand{}
+      .doc-company{
+        font-family:'Barlow Condensed',sans-serif;
+        font-size:18pt;font-weight:800;
+        color:#1e3a8a;letter-spacing:0.5pt;
+        line-height:1.1;
+      }
+      .doc-tagline{
+        font-size:8pt;color:#475569;font-weight:500;
+        margin-top:2pt;letter-spacing:0.3pt;
+      }
+      .doc-discipline{
+        font-size:7.5pt;color:#64748b;margin-top:3pt;
+      }
+      .doc-badges{display:flex;gap:5pt;margin-top:4pt;flex-wrap:wrap}
+      .badge{
+        border-radius:3pt;padding:1.5pt 6pt;font-size:7pt;
+        font-weight:700;letter-spacing:0.3pt;
+      }
+      .badge-blue{background:#dbeafe;color:#1e40af;border:1pt solid #93c5fd}
+      .badge-ice{background:#e0f2fe;color:#0369a1;border:1pt solid #7dd3fc}
+
+      .doc-header-right{
+        text-align:right;display:flex;flex-direction:column;justify-content:space-between;
+      }
+      .doc-ref-top{font-size:8pt;color:#64748b;line-height:1.7}
+      .doc-ref-top strong{font-size:10pt;font-weight:700;color:#1e3a8a;display:block;margin-bottom:1pt}
+      .doc-doc-no{
+        background:#f1f5f9;border:1pt solid #cbd5e1;border-radius:4pt;
+        padding:4pt 8pt;font-size:7.5pt;color:#334155;text-align:right;
+        margin-top:auto;
+      }
+      .doc-doc-no span{font-weight:700;color:#1e3a8a;display:block;font-size:8pt}
+
+      /* ── Project Info Block ── */
+      .proj-block{
+        display:grid;grid-template-columns:repeat(4,1fr);
+        border:1pt solid #cbd5e1;border-radius:5pt;
+        margin-bottom:8pt;overflow:hidden;
+      }
+      .pf{
+        padding:5pt 8pt;border-right:1pt solid #e2e8f0;
+        background:#f8fafc;
+      }
+      .pf:nth-child(4n){border-right:none}
+      .pf:nth-child(n+5){background:#fff;border-top:1pt solid #e2e8f0}
+      .pf-l{
+        font-size:6.5pt;text-transform:uppercase;letter-spacing:.8pt;
+        color:#94a3b8;margin-bottom:2pt;font-weight:700;
+      }
+      .pf-v{font-size:8.5pt;font-weight:600;color:#1e293b;line-height:1.3}
+
+      /* ── Note Banner ── */
+      .note{
+        background:#fffbeb;border-left:3pt solid #d97706;
+        border:1pt solid #fde68a;border-left-width:3pt;
+        padding:5pt 9pt;margin-bottom:9pt;
+        font-size:7.5pt;color:#92400e;border-radius:0 4pt 4pt 0;
+        line-height:1.5;
+      }
+
+      /* ── Section (Category) ── */
+      .sec{margin-bottom:10pt;break-inside:avoid}
+      .sec-hdr{
+        display:flex;align-items:center;gap:7pt;
+        padding:5pt 9pt 4pt;
+        border-radius:4pt 4pt 0 0;
+      }
+      .dot{width:7pt;height:7pt;border-radius:50%;flex-shrink:0}
+      .sec-name{font-weight:700;font-size:9pt;line-height:1}
+      .sec-sub{font-size:7.5pt;color:#64748b;margin-left:2pt}
+
+      /* ── Table ── */
+      table{width:100%;border-collapse:collapse;font-size:8pt}
+      thead th{
+        padding:4.5pt 6pt;
+        text-align:left;
+        font-size:7pt;font-weight:700;
+        text-transform:uppercase;letter-spacing:.4pt;
+        border-bottom:1.5pt solid;
+        white-space:nowrap;
+      }
+      tbody td{
+        padding:4pt 6pt;
+        border-bottom:0.5pt solid #e2e8f0;
+        vertical-align:middle;
+        font-size:8pt;
+        line-height:1.35;
+      }
       tbody tr:nth-child(even) td{background:#f8fafc}
-      .rc{color:#94a3b8;text-align:center;width:22px}
-      .nr{text-align:right;font-family:'JetBrains Mono',monospace}
-      .vc{text-align:right;font-family:'JetBrains Mono',monospace;font-weight:700}
-      .utag{background:#dbeafe;color:#1d4ed8;border-radius:3px;padding:1px 3px;font-size:7px;font-weight:600}
-      .strow td{font-weight:700;background:#f0fdf4!important;border-top:1px solid #86efac;font-size:7.5px}
-      .summ-hdr{background:#f0f9ff;padding:5px 9px;border-radius:5px 5px 0 0;margin-top:8px}
-      .sign{display:flex;justify-content:space-between;margin-top:20px;border-top:1px solid #e2e8f0;padding-top:10px}
-      .sbox{width:28%;text-align:center}
-      .sline{border-top:1px solid #64748b;margin-top:20px;padding-top:4px;font-size:7.5px;color:#64748b}
-      .stitle{font-size:8px;font-weight:600;color:#1e3a8a;margin-bottom:1px}
-      .doc-footer{margin-top:12px;border-top:1px solid #e2e8f0;padding-top:5px;display:flex;justify-content:space-between;font-size:7px;color:#94a3b8}
-      @media print{body{padding:8px 12px}@page{margin:10mm;size:A4 landscape}}
+      tbody tr:hover td{} /* print safe */
+
+      /* col helpers */
+      .rc{color:#94a3b8;text-align:center;width:18pt;font-size:7.5pt}
+      .nr{text-align:right;font-family:'JetBrains Mono',monospace;font-size:7.5pt}
+      .vc{text-align:right;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:8.5pt}
+
+      .utag{
+        background:#dbeafe;color:#1e40af;
+        border:0.5pt solid #93c5fd;border-radius:3pt;
+        padding:1pt 4pt;font-size:6.5pt;font-weight:700;
+        white-space:nowrap;
+      }
+      .strow td{
+        font-weight:700;background:#f0fdf4!important;
+        border-top:1pt solid #86efac;border-bottom:1pt solid #86efac;
+        font-size:7.5pt;padding:3.5pt 6pt;
+      }
+
+      /* ── Summary ── */
+      .summ-wrap{margin-top:10pt}
+      .summ-hdr{
+        background:linear-gradient(90deg,#1e3a8a,#1e40af);
+        color:#fff;padding:5pt 9pt;
+        border-radius:4pt 4pt 0 0;
+        font-size:9pt;font-weight:700;letter-spacing:.3pt;
+      }
+      .summ-table thead th{
+        background:#f0f9ff;color:#1e40af;
+        border-bottom:1.5pt solid #93c5fd;font-size:7pt;
+      }
+
+      /* ── Sign Block ── */
+      .sign{
+        display:flex;justify-content:space-between;
+        margin-top:18pt;border-top:1pt solid #cbd5e1;padding-top:10pt;
+      }
+      .sbox{width:30%;text-align:center}
+      .stitle{font-size:8pt;font-weight:700;color:#1e3a8a;margin-bottom:2pt}
+      .sname{font-size:8pt;color:#334155;margin-bottom:14pt}
+      .sline{border-top:1pt solid #64748b;padding-top:4pt;font-size:7.5pt;color:#64748b}
+
+      /* ── Footer ── */
+      .doc-footer{
+        margin-top:10pt;border-top:1pt solid #e2e8f0;padding-top:5pt;
+        display:flex;justify-content:space-between;align-items:center;
+        font-size:7pt;color:#94a3b8;
+      }
+      .footer-logo{
+        font-family:'Barlow Condensed',sans-serif;
+        font-size:8pt;font-weight:700;color:#1e3a8a;letter-spacing:.5pt;
+      }
+
+      /* ── Print Rules ── */
+      @media print{
+        body{padding:10mm 10mm 8mm 10mm}
+        @page{margin:0;size:A4 landscape}
+        .sec{break-inside:avoid}
+      }
     `;
 
     let body = `
+    <!-- DOCUMENT HEADER -->
     <div class="doc-header">
-      <div style="display:flex;align-items:center">
-        <div class="doc-logo">🔧</div>
-        <div>
-          <div class="doc-company">MEP Measurement Sheet</div>
-          <div class="doc-sub">Multi-Discipline · HVAC · Plumbing · Electrical · Fire · Cleanroom</div>
-          <div class="doc-badge">ALL DIMS IN MILLIMETRES (mm)</div>
+      <div class="doc-header-left">
+        <div class="doc-logo">❄️</div>
+        <div class="doc-brand">
+          <div class="doc-company">Coolrite Engineers</div>
+          <div class="doc-tagline">HVAC · Cleanroom · Pharma · MEP Solutions</div>
+          <div class="doc-discipline">Multi-Discipline MEP Measurement Sheet</div>
+          <div class="doc-badges">
+            <span class="badge badge-blue">ALL DIMS IN mm</span>
+            <span class="badge badge-ice">AUTO-CONVERTED OUTPUT</span>
+          </div>
         </div>
       </div>
-      <div class="doc-right">
-        <strong>${p.name || "—"}</strong>
-        ${p.client || "—"} · ${p.site || "—"}<br>
-        Rev: ${p.rev || "R0"} · ${p.date}<br>
-        Contract: ${p.contract || "—"}
+      <div class="doc-header-right">
+        <div class="doc-ref-top">
+          <strong>${p.name || "—"}</strong>
+          ${p.client || "—"} &nbsp;·&nbsp; ${p.site || "—"}<br>
+          Consultant: ${p.consult || "—"}<br>
+          Prepared by: ${p.by || "—"}
+        </div>
+        <div class="doc-doc-no">
+          <span>REV ${p.rev || "R0"} &nbsp;|&nbsp; ${p.date}</span>
+          Contract: ${p.contract || "—"}
+        </div>
       </div>
     </div>
+
+    <!-- PROJECT INFO GRID -->
     <div class="proj-block">
-      <div class="pf"><div class="pf-l">Project</div><div class="pf-v">${p.name||"—"}</div></div>
-      <div class="pf"><div class="pf-l">Client</div><div class="pf-v">${p.client||"—"}</div></div>
+      <div class="pf"><div class="pf-l">Project Name</div><div class="pf-v">${p.name||"—"}</div></div>
+      <div class="pf"><div class="pf-l">Client / Owner</div><div class="pf-v">${p.client||"—"}</div></div>
       <div class="pf"><div class="pf-l">Site / Location</div><div class="pf-v">${p.site||"—"}</div></div>
-      <div class="pf"><div class="pf-l">Consultant</div><div class="pf-v">${p.consult||"—"}</div></div>
+      <div class="pf"><div class="pf-l">MEP Consultant</div><div class="pf-v">${p.consult||"—"}</div></div>
       <div class="pf"><div class="pf-l">Prepared By</div><div class="pf-v">${p.by||"—"}</div></div>
       <div class="pf"><div class="pf-l">Date</div><div class="pf-v">${p.date}</div></div>
       <div class="pf"><div class="pf-l">Revision</div><div class="pf-v">${p.rev||"R0"}</div></div>
-      <div class="pf" style="border:none"><div class="pf-l">Contract No.</div><div class="pf-v">${p.contract||"—"}</div></div>
+      <div class="pf"><div class="pf-l">Contract No.</div><div class="pf-v">${p.contract||"—"}</div></div>
     </div>
-    <div class="note">⚠️ All dimensional inputs (L, W/D, H) are entered in <strong>MILLIMETRES (mm)</strong>. Results auto-converted to the selected output unit (m², ft², m, ft, etc.).</div>
+
+    <!-- UNIT NOTE -->
+    <div class="note">
+      ⚠️&nbsp; <strong>Input Convention:</strong> All dimensional fields (L, W/D, H) are entered in
+      <strong>MILLIMETRES (mm)</strong>. Calculated results are automatically converted to the selected
+      output unit per row (m², ft², m, ft, Nos, etc.).
+    </div>
     `;
 
     let sr = 1;
@@ -754,24 +1209,24 @@ export default function App() {
       if (!cr.length) return;
       body += `
       <div class="sec">
-        <div class="sec-hdr" style="background:${cat.color}18">
+        <div class="sec-hdr" style="background:${cat.color}18;border:0.5pt solid ${cat.color}30;">
           <div class="dot" style="background:${cat.color}"></div>
-          <span class="sec-name" style="color:${cat.color}">${cat.icon} ${cat.label}</span>
-          <span class="sec-sub">— ${cat.sub}</span>
+          <span class="sec-name" style="color:${cat.color}">${cat.icon}&nbsp;${cat.label}</span>
+          <span class="sec-sub">&mdash; ${cat.sub}</span>
         </div>
-        <table>
-          <thead style="background:${cat.color}20;color:${cat.color};border-bottom-color:${cat.color}40">
+        <table style="border:0.5pt solid ${cat.color}25;border-top:none">
+          <thead style="background:${cat.color}15;color:${cat.color};border-bottom-color:${cat.color}50">
             <tr>
-              <th class="rc">#</th>
-              <th style="min-width:140px">Item Name</th>
-              <th style="min-width:100px">Location / Zone</th>
-              <th class="nr" style="width:58px">L (mm)</th>
-              <th class="nr" style="width:58px">W/D (mm)</th>
-              <th class="nr" style="width:58px">H (mm)</th>
-              <th class="nr" style="width:40px">Qty</th>
-              <th style="width:38px">Unit</th>
-              <th class="vc" style="width:75px">Calculated</th>
-              <th style="min-width:90px">Remarks</th>
+              <th class="rc" style="width:18pt">#</th>
+              <th style="min-width:120pt">Item Name</th>
+              <th style="min-width:90pt">Location / Zone</th>
+              <th class="nr" style="width:48pt">L&nbsp;(mm)</th>
+              <th class="nr" style="width:48pt">W/D&nbsp;(mm)</th>
+              <th class="nr" style="width:44pt">H&nbsp;(mm)</th>
+              <th class="nr" style="width:30pt">Qty</th>
+              <th style="width:30pt">Unit</th>
+              <th class="vc" style="width:65pt">Calculated</th>
+              <th style="min-width:80pt">Remarks</th>
             </tr>
           </thead>
           <tbody>`;
@@ -780,16 +1235,16 @@ export default function App() {
         body += `<tr>
           <td class="rc">${sr++}</td>
           <td>${r.name || "—"}</td>
-          <td>${r.location || "—"}</td>
-          <td class="nr">${r.L || "—"}</td>
-          <td class="nr">${r.W || "—"}</td>
-          <td class="nr">${r.H || "—"}</td>
+          <td style="color:#475569">${r.location || "—"}</td>
+          <td class="nr">${r.L !== "" ? r.L : "—"}</td>
+          <td class="nr">${r.W !== "" ? r.W : "—"}</td>
+          <td class="nr">${r.H !== "" ? r.H : "—"}</td>
           <td class="nr">${parseFloat(r.qty) || 1}</td>
-          <td><span class="utag">${r.unit}</span></td>
-          <td class="vc" style="color:${val != null ? "#16a34a" : "#94a3b8"}">
+          <td style="text-align:center"><span class="utag">${r.unit}</span></td>
+          <td class="vc" style="color:${val != null ? "#15803d" : "#94a3b8"}">
             ${val != null ? val.toLocaleString(undefined, { maximumFractionDigits: 4 }) : "—"}
           </td>
-          <td>${r.remarks || ""}</td>
+          <td style="color:#64748b;font-size:7.5pt">${r.remarks || ""}</td>
         </tr>`;
       });
       const units = [...new Set(cr.map((r) => r.unit))];
@@ -797,8 +1252,12 @@ export default function App() {
         const sum = cr.filter((r) => r.unit === u).reduce((s, r) => s + (compute(r) || 0), 0);
         if (sum > 0) {
           body += `<tr class="strow">
-            <td colspan="8" style="text-align:right;padding-right:9px;color:#065f46">Sub-Total (${u}) →</td>
-            <td class="vc" style="color:#16a34a">${sum.toLocaleString(undefined, { maximumFractionDigits: 4 })} ${u}</td>
+            <td colspan="8" style="text-align:right;padding-right:8pt;color:#166534;font-size:7pt;letter-spacing:.3pt">
+              SUB-TOTAL (${u}) &rarr;
+            </td>
+            <td class="vc" style="color:#15803d;font-size:9pt">
+              ${sum.toLocaleString(undefined, { maximumFractionDigits: 4 })}&nbsp;${u}
+            </td>
             <td></td>
           </tr>`;
         }
@@ -806,39 +1265,63 @@ export default function App() {
       body += `</tbody></table></div>`;
     });
 
-    // Grand summary table
+    // ── Grand Summary Table ──
     body += `
-    <div class="summ-hdr"><span style="font-weight:700;color:#1e3a8a;font-size:9px">📊 Grand Summary</span></div>
-    <table>
-      <thead style="background:#dbeafe;color:#1e40af;border-bottom-color:#93c5fd">
-        <tr><th>Category</th><th>Discipline</th><th>Rows</th><th>Filled</th><th>Totals by Unit</th></tr>
-      </thead>
-      <tbody>`;
+    <div class="summ-wrap">
+      <div class="summ-hdr">📊&nbsp;&nbsp;Grand Summary — Coolrite Engineers</div>
+      <table class="summ-table" style="border:0.5pt solid #bfdbfe;border-top:none">
+        <thead>
+          <tr>
+            <th style="min-width:100pt">Category</th>
+            <th style="min-width:120pt">Discipline</th>
+            <th class="nr" style="width:40pt">Rows</th>
+            <th class="nr" style="width:40pt">Filled</th>
+            <th>Totals by Unit</th>
+          </tr>
+        </thead>
+        <tbody>`;
     CATEGORIES.forEach((cat) => {
       const cr = rows.filter((r) => r.catId === cat.id);
       if (!cr.length) return;
       const filled = cr.filter((r) => compute(r) != null).length;
       const totals = [...new Set(cr.map((r) => r.unit))].map((u) => {
         const s = cr.filter((r) => r.unit === u).reduce((sum, r) => sum + (compute(r) || 0), 0);
-        return s > 0 ? `${s.toLocaleString(undefined, { maximumFractionDigits: 3 })} ${u}` : null;
-      }).filter(Boolean).join(" | ");
+        return s > 0 ? `${s.toLocaleString(undefined, { maximumFractionDigits: 3 })}&nbsp;${u}` : null;
+      }).filter(Boolean).join("&emsp;|&emsp;");
       body += `<tr>
-        <td style="font-weight:600;color:${cat.color}">${cat.icon} ${cat.label}</td>
-        <td>${cat.sub}</td>
+        <td style="font-weight:700;color:${cat.color}">${cat.icon}&nbsp;${cat.label}</td>
+        <td style="color:#475569;font-size:7.5pt">${cat.sub}</td>
         <td class="nr">${cr.length}</td>
-        <td class="nr">${filled}</td>
-        <td style="font-family:'JetBrains Mono',monospace;font-size:7.5px">${totals || "—"}</td>
+        <td class="nr" style="color:${filled>0?"#15803d":"#94a3b8"}">${filled}</td>
+        <td style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#1e3a8a">${totals || "—"}</td>
       </tr>`;
     });
-    body += `</tbody></table>
+    body += `</tbody></table></div>
+
+    <!-- SIGN-OFF BLOCK -->
     <div class="sign">
-      <div class="sbox"><div class="stitle">Prepared By</div><div class="sline">${p.by || "_______________"}</div></div>
-      <div class="sbox"><div class="stitle">Checked By</div><div class="sline">_______________</div></div>
-      <div class="sbox"><div class="stitle">Approved By</div><div class="sline">_______________</div></div>
+      <div class="sbox">
+        <div class="stitle">Prepared By</div>
+        <div class="sname">${p.by || "&nbsp;"}</div>
+        <div class="sline">Signature &amp; Date</div>
+      </div>
+      <div class="sbox">
+        <div class="stitle">Checked By</div>
+        <div class="sname">&nbsp;</div>
+        <div class="sline">Signature &amp; Date</div>
+      </div>
+      <div class="sbox">
+        <div class="stitle">Approved By</div>
+        <div class="sname">&nbsp;</div>
+        <div class="sline">Signature &amp; Date</div>
+      </div>
     </div>
+
+    <!-- FOOTER -->
     <div class="doc-footer">
-      <span>MEP Measurement Sheet · Professional Edition · All dims in mm · Auto-converted to output unit</span>
-      <span>${p.rev || "R0"} · ${p.date} · ${p.contract || "—"}</span>
+      <span class="footer-logo">❄️ COOLRITE ENGINEERS</span>
+      <span>HVAC · Cleanroom · Pharma · MEP Solutions &nbsp;|&nbsp; MEP Measurement Sheet · Professional Edition</span>
+      <span>Rev ${p.rev || "R0"} &nbsp;·&nbsp; ${p.date} &nbsp;·&nbsp; ${p.contract || "—"}</span>
     </div>`;
 
     const w = window.open("", "_blank", "width=1100,height=800");
@@ -858,10 +1341,10 @@ export default function App() {
       {/* Topbar */}
       <div style={S.topbar}>
         <div style={S.brand}>
-          <div style={S.brandIcon}>🔧</div>
+          <div style={S.brandIcon}>❄️</div>
           <div>
-            <div style={S.brandName}>MEP Measurement Sheet</div>
-            <div style={S.brandSub}>Multi-discipline · All inputs in mm</div>
+            <div style={S.brandName}>Coolrite Engineers</div>
+            <div style={S.brandSub}>MEP Measurement Sheet · All inputs in mm</div>
           </div>
         </div>
         <div style={S.topActions}>
@@ -869,6 +1352,15 @@ export default function App() {
             <span style={{ color: T.green, fontWeight: 700 }}>{filledRows}</span>
             /{totalRows} rows filled
           </div>
+          <button style={{
+            display: "flex", alignItems: "center", gap: 6,
+            padding: "7px 14px", borderRadius: 7,
+            border: "1px solid #2f81f740",
+            background: "#1c2333", color: "#2f81f7",
+            fontFamily: "inherit", fontSize: 12, fontWeight: 700, cursor: "pointer",
+          }} onClick={() => setDrawerOpen(true)}>
+            📁 My Sheets
+          </button>
           <button style={S.btnCsv} onClick={handleExcel}>📊 Excel</button>
           <button style={S.btnPdf} onClick={handlePDF}>📄 PDF</button>
         </div>
@@ -956,9 +1448,32 @@ export default function App() {
         </div>
 
         <div style={S.footer}>
-          MEP Measurement Sheet · Professional Edition · All dims in mm
+          ❄️ Coolrite Engineers · HVAC | Cleanroom | Pharma | MEP Solutions · All dims in mm
         </div>
       </div>
+
+      {/* Save Drawer */}
+      <SaveDrawer
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        currentProj={proj}
+        currentRows={rows}
+        onLoad={handleLoadSheet}
+      />
+
+      {/* Toast */}
+      {toast && (
+        <div style={{
+          position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)",
+          zIndex: 300, background: toast.type === "success" ? "#166534" : "#92400e",
+          border: `1px solid ${toast.type === "success" ? "#16a34a" : "#d97706"}`,
+          color: "#fff", borderRadius: 8, padding: "10px 20px",
+          fontSize: 12, fontWeight: 600, boxShadow: "0 4px 24px rgba(0,0,0,0.5)",
+          whiteSpace: "nowrap",
+        }}>
+          {toast.msg}
+        </div>
+      )}
     </div>
   );
 }
