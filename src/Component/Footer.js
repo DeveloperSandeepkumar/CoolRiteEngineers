@@ -1,99 +1,94 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import {
-  FaPhoneAlt,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaLongArrowAltRight,
-  FaFacebookF,
-  FaLinkedinIn,
-  FaInstagram,
-  FaWhatsapp,
-} from "react-icons/fa";
+import { NavLink } from 'react-router-dom'
+import './Footer.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import CoolRiteLogo1 from "../Assets/MainLogo.png";
+import { FaPhoneAlt, FaLongArrowAltRight, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { services } from "../Component/servicesData";
-import "./Footer.css";
 
 const Footer = () => {
-  return (
-    <footer className="footer-pro">
+    return (
+        <footer className="text-center text-lg-start bg-body-tertiary text-muted footer">
+            <section className="bg-dark text-white">
+                <div className="container text-center text-md-start mt-4 textdiv">
+                    <div className="row mt-3">
 
-      {/* ===== CTA Section ===== */}
-      <div className="footer-cta">
-        <h3>Need MEP / HVAC Solution for your project?</h3>
-        <NavLink to="/ProposalFormWithMap" className="cta-btn">
-          Get Free Consultation
-        </NavLink>
-      </div>
+                        {/* Top Heading */}
+                        <div className="col-12 mb-3">
+                            <p style={{ fontSize: '20px', fontWeight: 'bold' }}>
+                                Most Innovative MEP Consultants
+                            </p>
+                            <p style={{ fontSize: '13px' }}>
+                                MEP consultancy with no delays & errors
+                            </p>
+                            <hr />
+                        </div>
 
-      <div className="footer-container">
+                        {/* Contact */}
+                        <div className="col-md-4 col-lg-4 mb-3">
+                            <h6 className="text-uppercase fw-bold mb-3 textHeading">
+                                Quick Contact
+                            </h6>
 
-        {/* ===== Brand ===== */}
-        <div className="footer-col">
-          <div className="footer-logo">
-            <img src={CoolRiteLogo1} alt="CoolRite" />
-            <h4>Coolrite Engineers</h4>
-          </div>
+                            <p className="textclass">
+                                <FaPhoneAlt /> +91-7009167480 <br />
+                                <FaPhoneAlt /> +91-7973418255
+                            </p>
 
-          <p>
-            Leading MEP & HVAC consultants delivering high-quality,
-            error-free and on-time project execution across pharma,
-            commercial & industrial sectors.
-          </p>
+                            <p className="textclass">
+                                <FaEnvelope /> Coolriteengineers@gmail.com
+                            </p>
 
-          <div className="footer-social">
-            <a href="https://wa.me/917009167480"><FaWhatsapp /></a>
-            <a href="#"><FaFacebookF /></a>
-            <a href="#"><FaLinkedinIn /></a>
-            <a href="#"><FaInstagram /></a>
-          </div>
-        </div>
+                            <p className="textclass" style={{ fontSize: '13px' }}>
+                                <FaMapMarkerAlt /> SCO NO - 03 Village Malpur Upperla <br />
+                                Near Cipla Ltd., P.O Bhud, Baddi <br />
+                                Distt Solan (HP - 173205)
+                            </p>
+                        </div>
 
-        {/* ===== Services ===== */}
-        <div className="footer-col">
-          <h5>MEP Services</h5>
-          {services.slice(0, 6).map((s, i) => (
-            <NavLink key={i} to={s.path}>
-              <FaLongArrowAltRight /> {s.title}
-            </NavLink>
-          ))}
-        </div>
+                        {/* Company Links */}
+                        <div className="col-md-4 col-lg-4 mb-3">
+                            <h6 className="text-uppercase fw-bold mb-3 textHeading">
+                                Company
+                            </h6>
 
-        {/* ===== Links ===== */}
-        <div className="footer-col">
-          <h5>Quick Links</h5>
-          <NavLink to="/"><FaLongArrowAltRight /> Home</NavLink>
-          <NavLink to="/About"><FaLongArrowAltRight /> About</NavLink>
-          <NavLink to="/Project"><FaLongArrowAltRight /> Projects</NavLink>
-          <NavLink to="/Career"><FaLongArrowAltRight /> Career</NavLink>
-          <NavLink to="/ContactUs"><FaLongArrowAltRight /> Contact</NavLink>
-        </div>
+                            <p><FaLongArrowAltRight /> <NavLink to="/" className="text_Style">Home</NavLink></p>
+                            <p><FaLongArrowAltRight /> <NavLink to="/About" className="text_Style">About</NavLink></p>
+                            <p><FaLongArrowAltRight /> <NavLink to="/Project" className="text_Style">Projects</NavLink></p>
+                            <p><FaLongArrowAltRight /> <NavLink to="/Career" className="text_Style">Career</NavLink></p>
+                            <p><FaLongArrowAltRight /> <NavLink to="/ContactUs" className="text_Style">Contact Us</NavLink></p>
+                        </div>
 
-        {/* ===== Contact ===== */}
-        <div className="footer-col">
-          <h5>Contact</h5>
+                        {/* Services (NEW) */}
+                        <div className="col-md-4 col-lg-4 mb-3">
+                            <h6 className="text-uppercase fw-bold mb-3 textHeading">
+                                MEP Services
+                            </h6>
 
-          <p><FaPhoneAlt /> +91-7009167480</p>
-          <p><FaPhoneAlt /> +91-7973418255</p>
+                            {services.slice(0, 6).map((service, index) => (
+                                <p key={index}>
+                                    <FaLongArrowAltRight />{" "}
+                                    <NavLink to={service.path} className="text_Style">
+                                        {service.title}
+                                    </NavLink>
+                                </p>
+                            ))}
 
-          <p><FaEnvelope /> Coolriteengineers@gmail.com</p>
+                        </div>
 
-          <p className="address">
-            <FaMapMarkerAlt />
-            SCO No. 03, Village Malpur Upperla, Near Cipla Ltd,
-            P.O. Bhud, Baddi, Distt. Solan (HP - 173205)
-          </p>
-        </div>
+                    </div>
+                </div>
+            </section>
 
-      </div>
-
-      {/* ===== Bottom ===== */}
-      <div className="footer-bottom">
-        © {new Date().getFullYear()} CoolRite Engineers | All Rights Reserved
-      </div>
-    </footer>
-  );
-};
+            {/* Bottom */}
+            <div className="text-center p-3" style={{ fontSize: '13px' }}>
+                © {new Date().getFullYear()} Copyright:
+                <a className="text-reset fw-bold ms-1" href="https://CoolRiteEngineers.com/">
+                    CoolRiteEngineers.com
+                </a>
+            </div>
+        </footer>
+    );
+}
 
 export default Footer;
