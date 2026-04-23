@@ -1,81 +1,82 @@
 import React from "react";
-import { NavLink } from 'react-router-dom'
-import './Footer.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { NavLink } from "react-router-dom";
+import "./Footer.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import { FaPhoneAlt, FaLongArrowAltRight } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaLongArrowAltRight } from "react-icons/fa";
+import CoolRiteLogo1 from '../Assets/MainLogo.png';
+import { services } from "../Component/servicesData";
 
 const Footer = () => {
-    return (
-        <footer className="text-center text-lg-start bg-body-tertiary text-muted footer">
-            <section className="bg-dark text-white">
-                <div className="container text-center text-md-start mt-5 textdiv">
-                    <div className="row mt-3">
+  return (
+    <footer className="footer bg-dark text-white">
+      <div className="container py-5">
+        <div className="row">
 
-                        <p style={{ fontSize: '24px', fontWeight: 'bold' }}>
-                            Most Innovative MEP Consultants.
-                        </p>
-                        <p>MEP consultancy with no delays & errors</p>
-                        <hr />
+          {/* Company Info */}
+          <div className="col-md-4 mb-4">
+            <img 
+              src={CoolRiteLogo1} 
+              alt="CoolRite Logo" 
+              style={{ width: "60px", borderRadius: "10px" }} 
+            />
+            <h5 className="mt-3 fw-bold">CoolRite Engineers</h5>
+            <p>
+              Most Innovative MEP Consultants delivering HVAC, Electrical, 
+              Plumbing & Fire Fighting solutions with precision and quality.
+            </p>
+          </div>
 
-                        <div className="col-md-6 col-lg-6 col-xl-6 mx-auto mb-6">
-                            <h6 className="text-uppercase fw-bold mb-4 textHeading">
-                                Quick Contact
-                            </h6>
+          {/* Services */}
+          <div className="col-md-4 mb-4">
+            <h6 className="fw-bold mb-3">Our Services</h6>
+            {services.slice(0, 6).map((service, index) => (
+              <p key={index}>
+                <FaLongArrowAltRight />{" "}
+                <NavLink to={service.path} className="footer-link">
+                  {service.title}
+                </NavLink>
+              </p>
+            ))}
+          </div>
 
-                            <p className="textclass">
-                                If you have any questions, feel free to contact our team.
-                            </p>
+          {/* Quick Links */}
+          <div className="col-md-2 mb-4">
+            <h6 className="fw-bold mb-3">Quick Links</h6>
 
-                            <p className="textStyle">
-                                <FaPhoneAlt /> +91-7009167480 / +91-7973418255
-                            </p>
+            <p><FaLongArrowAltRight /> <NavLink to="/" className="footer-link">Home</NavLink></p>
+            <p><FaLongArrowAltRight /> <NavLink to="/About" className="footer-link">About Us</NavLink></p>
+            <p><FaLongArrowAltRight /> <NavLink to="/Project" className="footer-link">Projects</NavLink></p>
+            <p><FaLongArrowAltRight /> <NavLink to="/Career" className="footer-link">Career</NavLink></p>
+            <p><FaLongArrowAltRight /> <NavLink to="/ContactUs" className="footer-link">Contact</NavLink></p>
+          </div>
 
-                            <p className="textclass">
-                                <b>Email:</b>{" "}
-                                <span className="textStyle">
-                                   Coolriteengineers@gmail.com
-                                </span>
-                            </p>
+          {/* Contact Info */}
+          <div className="col-md-2 mb-4">
+            <h6 className="fw-bold mb-3">Contact</h6>
 
-                            <h4 className="textHeading">Head Office</h4>
-                            <p className="textclass">
-                               Address:- SCO NO - 03 Village Malpur Upperla near Cipla Ltd. P.O Bhud , Teh Baddi Distt Solan (Himachal Pradesh -173205)
-                            </p>         
-                        </div>
+            <p><FaPhoneAlt /> +91-7009167480</p>
+            <p><FaPhoneAlt /> +91-7973418255</p>
 
-                        <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mb-3">
-                            <h6 className="text-uppercase fw-bold mb-4 textHeading">
-                                Company
-                            </h6>
+            <p>
+              <FaEnvelope /> Coolriteengineers@gmail.com
+            </p>
 
-                            <p className="textStyle">
-                                <FaLongArrowAltRight /> <NavLink to="/" className="text_Style">Home</NavLink>
-                            </p>
+            <p style={{ fontSize: "13px" }}>
+              <FaMapMarkerAlt /> SCO NO - 03 Village Malpur Upperla near Cipla Ltd.  
+              P.O Bhud, Teh Baddi, Distt Solan (HP - 173205)
+            </p>
+          </div>
 
-                            <p className="textStyle">
-                                <FaLongArrowAltRight /> <NavLink to="/About" className="text_Style">About</NavLink>
-                            </p>
+        </div>
+      </div>
 
-                            <p className="textStyle">
-                                <FaLongArrowAltRight /> <NavLink to="/Contact" className="text_Style">Contact Us</NavLink>
-                            </p>
-                        </div>
-
-               
-
-                    </div>
-                </div>
-            </section>
-
-            <div className="text-center p-4">
-                © 2025 Copyright:
-                <a className="text-reset fw-bold" href="https://CoolRiteEngineers.com/">
-                    CoolRiteEngineers.com
-                </a>
-            </div>
-        </footer>
-    );
-}
+      {/* Bottom Bar */}
+      <div className="text-center py-3 border-top border-secondary">
+        © {new Date().getFullYear()} CoolRite Engineers | All Rights Reserved
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;
