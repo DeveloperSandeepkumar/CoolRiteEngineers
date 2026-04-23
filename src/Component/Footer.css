@@ -4,95 +4,100 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* ===== CTA ===== */
+/* CTA */
 .footer-cta {
   text-align: center;
-  padding: 25px 15px;   /* ↓ reduced */
+  padding: 40px 20px;
   background: linear-gradient(90deg, #0ea5e9, #2563eb);
   color: #fff;
 }
 
-.footer-cta h3 {
-  font-size: 18px;   /* ↓ smaller */
-  margin-bottom: 10px;
-}
-
 .cta-btn {
-  padding: 8px 16px;   /* ↓ compact */
-  font-size: 14px;
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #fff;
+  color: #2563eb;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
 }
 
-/* ===== Layout ===== */
+.cta-btn:hover {
+  background: #e5e5e5;
+}
+
+/* Layout */
 .footer-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 25px;          /* ↓ reduced */
-  padding: 30px 20px; /* ↓ reduced */
+  gap: 40px;
+  padding: 50px 30px;
 }
 
-/* ===== Columns ===== */
 .footer-col h5 {
-  font-size: 15px;
-  margin-bottom: 10px;
-}
-
-.footer-col p {
-  font-size: 13px;
-  line-height: 1.5;
-  margin-bottom: 6px;
+  color: #fff;
+  margin-bottom: 15px;
 }
 
 .footer-col a {
-  font-size: 13px;
-  margin: 4px 0;
-}
-
-/* ===== Logo ===== */
-.footer-logo img {
-  width: 40px;
-}
-
-/* ===== Social ===== */
-.footer-social {
-  margin-top: 10px;
-}
-
-.footer-social a {
+  display: block;
+  color: #aaa;
+  text-decoration: none;
+  margin: 6px 0;
   font-size: 14px;
-  margin-right: 8px;
 }
 
-/* ===== Bottom ===== */
+.footer-col a:hover {
+  color: #0ea5e9;
+}
+
+/* Logo */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo img {
+  width: 45px;
+  border-radius: 8px;
+}
+
+/* Social */
+.footer-social a {
+  margin-right: 10px;
+  color: #aaa;
+  font-size: 16px;
+}
+
+.footer-social a:hover {
+  color: #0ea5e9;
+}
+
+/* Address */
+.address {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Bottom */
 .footer-bottom {
-  padding: 10px;
-  font-size: 12px;
+  text-align: center;
+  padding: 15px;
+  border-top: 1px solid #222;
+  font-size: 13px;
 }
 
-/* ===== Tablet ===== */
+/* Responsive */
 @media(max-width: 900px) {
   .footer-container {
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
   }
 }
 
-/* ===== Mobile ===== */
 @media(max-width: 500px) {
   .footer-container {
     grid-template-columns: 1fr;
-    padding: 20px 15px;   /* tighter */
-    gap: 18px;
-  }
-
-  .footer-cta {
-    padding: 20px 10px;
-  }
-
-  .footer-cta h3 {
-    font-size: 16px;
-  }
-
-  .footer-col {
-    text-align: left;
   }
 }
