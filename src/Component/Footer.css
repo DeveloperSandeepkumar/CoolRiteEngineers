@@ -1,43 +1,29 @@
-.Footer{
-    position: absolute; 
-    left: 0;
-    right: 0;
-    text-align: center;
-    width: 100%;
-    background-color: skyblue;
-    padding: 50px;
-}
-.p-0,.h5{
-    font-weight: 600;
-    list-style: none; cursor: pointer
+.footer {
+  background-color: #111;
 }
 
-.main{
-    width: 80%;
+.footer h6 {
+  color: #fff;
 }
-.text_Style{
 
-    position: relative;
-    color: #9b9b9b;
-    font-size: 14px;
-    
+.footer p {
+  margin: 6px 0;
+  font-size: 14px;
+}
 
+.footer-link {
+  color: #ccc;
+  text-decoration: none;
 }
-.text_Style:hover{
-    color: #ff5e14; 
+
+.footer-link:hover {
+  color: #00bcd4;
 }
-.textStyle{
-    color: #ff5e14;  
-    text-align: left;
+
+.footer img {
+  object-fit: cover;
 }
-.textclass{
-    position: relative;
-    font-size: 14px;
-    text-align: left;
-}
-.textdiv{
-    padding: 50px;
-}
-.textHeading{
-    text-align: left;
+
+.border-top {
+  border-color: rgba(255,255,255,0.1) !important;
 }
