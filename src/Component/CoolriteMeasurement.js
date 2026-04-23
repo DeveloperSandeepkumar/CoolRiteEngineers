@@ -297,7 +297,6 @@ function newRow(name, unit, calc, catId) {
 
 // ─── Styles (CSS-in-JS object) ─────────────────────────────────────────────────
 const T = {
-  // colours
   bg:       "#0d1117",
   surface:  "#161b22",
   surface2: "#1c2333",
@@ -592,7 +591,7 @@ function CategoryBlock({ cat, rows, open, onToggle, onField, onDel, onAdd }) {
 function SaveDrawer({ open, onClose, currentProj, currentRows, onLoad }) {
   const [sheets, setSheets]   = useState([]);
   const [toast, setToast]     = useState(null);
-  const [confirm, setConfirm] = useState(null); // serial to delete
+  const [confirm, setConfirm] = useState(null);
 
   useEffect(() => {
     if (open) setSheets(getAllSheets());
@@ -671,7 +670,7 @@ function SaveDrawer({ open, onClose, currentProj, currentRows, onLoad }) {
 
   if (!open) return null;
 
-  const DW = { // drawer styles
+  const DW = {
     overlay: {
       position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)",
       zIndex: 200, display: "flex", justifyContent: "flex-end",
@@ -768,7 +767,6 @@ function SaveDrawer({ open, onClose, currentProj, currentRows, onLoad }) {
       `}</style>
       <div style={DW.overlay} onClick={(e) => e.target === e.currentTarget && onClose()}>
         <div style={DW.drawer}>
-          {/* Header */}
           <div style={DW.head}>
             <div>
               <div style={DW.headTitle}>📁 Saved Sheets</div>
@@ -777,9 +775,7 @@ function SaveDrawer({ open, onClose, currentProj, currentRows, onLoad }) {
             <button style={DW.closeBtn} onClick={onClose}>✕</button>
           </div>
 
-          {/* Body */}
           <div style={DW.body}>
-            {/* Save current */}
             <div style={DW.saveRow}>
               <button style={DW.btnSave} onClick={handleSave}>
                 💾 Save Current Sheet
@@ -849,7 +845,6 @@ function SaveDrawer({ open, onClose, currentProj, currentRows, onLoad }) {
         </div>
       </div>
 
-      {/* Toast */}
       {toast && <div style={DW.toast(toast.type)}>{toast.msg}</div>}
     </>
   );
@@ -862,9 +857,12 @@ export default function App() {
       cat.items.slice(0, 1).map((i) => newRow(i.name, i.unit, i.calc, cat.id))
     )
   );
+
+  // ── FIX: false → sab categories by default collapse rahenge ──
   const [openCats, setOpenCats] = useState(() =>
-    Object.fromEntries(CATEGORIES.map((c) => [c.id, true]))
+    Object.fromEntries(CATEGORIES.map((c) => [c.id, false]))
   );
+
   const [proj, setProj] = useState({
     name: "", client: "", site: "", consult: "",
     by: "", date: new Date().toISOString().slice(0, 10), rev: "R0", contract: "",
@@ -879,9 +877,8 @@ export default function App() {
 
   const handleLoadSheet = (sheet) => {
     setProj(sheet.proj);
-    // restore rows, but re-generate IDs to avoid conflicts
     setRows(sheet.rows.map(r => ({ ...r, id: _id++ })));
-    setOpenCats(Object.fromEntries(CATEGORIES.map((c) => [c.id, true])));
+    setOpenCats(Object.fromEntries(CATEGORIES.map((c) => [c.id, false])));
     showToast(`Sheet #${sheet.serial} loaded — "${sheet.proj?.name || "Untitled"}"`);
   };
 
@@ -899,10 +896,8 @@ export default function App() {
   // ── Excel Export ─────────────────────────────────────────────────────────────
   const handleExcel = async () => {
     const XLSX = await loadXLSX();
-
     const wb = XLSX.utils.book_new();
 
-    // Sheet 1 – Project Info
     const infoData = [
       ["COOLRITE ENGINEERS — MEP MEASUREMENT SHEET"],
       ["All dimensional inputs (L, W/D, H) are in MILLIMETRES (mm)"],
@@ -921,7 +916,6 @@ export default function App() {
     wsInfo["!cols"] = [{ wch: 20 }, { wch: 40 }];
     XLSX.utils.book_append_sheet(wb, wsInfo, "Project Info");
 
-    // Sheet 2 – Measurement Data
     const header = ["Sr.No","Category","Discipline","Item Name","Location / Zone",
       "L (mm)","W / D (mm)","H (mm)","Qty","Unit","Calculated Result","Remarks"];
     const data = [header];
@@ -955,7 +949,6 @@ export default function App() {
     ];
     XLSX.utils.book_append_sheet(wb, wsData, "Measurement Data");
 
-    // Sheet 3 – Summary
     const summData = [["Category","Discipline","Total Rows","Filled","Totals by Unit"]];
     CATEGORIES.forEach((cat) => {
       const cr = rows.filter((r) => r.catId === cat.id);
@@ -979,183 +972,58 @@ export default function App() {
     const p = proj;
     const css = `
       @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap');
-
-      /* ── Reset & Base ── */
       *{box-sizing:border-box;margin:0;padding:0}
-      body{
-        font-family:'Barlow',Arial,sans-serif;
-        font-size:9pt;
-        line-height:1.45;
-        color:#1a202c;
-        background:#fff;
-        padding:14mm 14mm 12mm 14mm;
-      }
-
-      /* ── Document Header ── */
-      .doc-header{
-        display:flex;align-items:stretch;justify-content:space-between;
-        border-bottom:3px solid #1e3a8a;
-        padding-bottom:10pt;margin-bottom:10pt;
-      }
+      body{font-family:'Barlow',Arial,sans-serif;font-size:9pt;line-height:1.45;color:#1a202c;background:#fff;padding:14mm 14mm 12mm 14mm;}
+      .doc-header{display:flex;align-items:stretch;justify-content:space-between;border-bottom:3px solid #1e3a8a;padding-bottom:10pt;margin-bottom:10pt;}
       .doc-header-left{display:flex;align-items:center;gap:12pt}
-      .doc-logo{
-        width:48pt;height:48pt;border-radius:10pt;flex-shrink:0;
-        background:linear-gradient(135deg,#1d4ed8,#0ea5e9);
-        display:flex;align-items:center;justify-content:center;font-size:26pt;
-      }
-      .doc-brand{}
-      .doc-company{
-        font-family:'Barlow Condensed',sans-serif;
-        font-size:18pt;font-weight:800;
-        color:#1e3a8a;letter-spacing:0.5pt;
-        line-height:1.1;
-      }
-      .doc-tagline{
-        font-size:8pt;color:#475569;font-weight:500;
-        margin-top:2pt;letter-spacing:0.3pt;
-      }
-      .doc-discipline{
-        font-size:7.5pt;color:#64748b;margin-top:3pt;
-      }
+      .doc-logo{width:48pt;height:48pt;border-radius:10pt;flex-shrink:0;background:linear-gradient(135deg,#1d4ed8,#0ea5e9);display:flex;align-items:center;justify-content:center;font-size:26pt;}
+      .doc-company{font-family:'Barlow Condensed',sans-serif;font-size:18pt;font-weight:800;color:#1e3a8a;letter-spacing:0.5pt;line-height:1.1;}
+      .doc-tagline{font-size:8pt;color:#475569;font-weight:500;margin-top:2pt;letter-spacing:0.3pt;}
+      .doc-discipline{font-size:7.5pt;color:#64748b;margin-top:3pt;}
       .doc-badges{display:flex;gap:5pt;margin-top:4pt;flex-wrap:wrap}
-      .badge{
-        border-radius:3pt;padding:1.5pt 6pt;font-size:7pt;
-        font-weight:700;letter-spacing:0.3pt;
-      }
+      .badge{border-radius:3pt;padding:1.5pt 6pt;font-size:7pt;font-weight:700;letter-spacing:0.3pt;}
       .badge-blue{background:#dbeafe;color:#1e40af;border:1pt solid #93c5fd}
       .badge-ice{background:#e0f2fe;color:#0369a1;border:1pt solid #7dd3fc}
-
-      .doc-header-right{
-        text-align:right;display:flex;flex-direction:column;justify-content:space-between;
-      }
+      .doc-header-right{text-align:right;display:flex;flex-direction:column;justify-content:space-between;}
       .doc-ref-top{font-size:8pt;color:#64748b;line-height:1.7}
       .doc-ref-top strong{font-size:10pt;font-weight:700;color:#1e3a8a;display:block;margin-bottom:1pt}
-      .doc-doc-no{
-        background:#f1f5f9;border:1pt solid #cbd5e1;border-radius:4pt;
-        padding:4pt 8pt;font-size:7.5pt;color:#334155;text-align:right;
-        margin-top:auto;
-      }
+      .doc-doc-no{background:#f1f5f9;border:1pt solid #cbd5e1;border-radius:4pt;padding:4pt 8pt;font-size:7.5pt;color:#334155;text-align:right;margin-top:auto;}
       .doc-doc-no span{font-weight:700;color:#1e3a8a;display:block;font-size:8pt}
-
-      /* ── Project Info Block ── */
-      .proj-block{
-        display:grid;grid-template-columns:repeat(4,1fr);
-        border:1pt solid #cbd5e1;border-radius:5pt;
-        margin-bottom:8pt;overflow:hidden;
-      }
-      .pf{
-        padding:5pt 8pt;border-right:1pt solid #e2e8f0;
-        background:#f8fafc;
-      }
+      .proj-block{display:grid;grid-template-columns:repeat(4,1fr);border:1pt solid #cbd5e1;border-radius:5pt;margin-bottom:8pt;overflow:hidden;}
+      .pf{padding:5pt 8pt;border-right:1pt solid #e2e8f0;background:#f8fafc;}
       .pf:nth-child(4n){border-right:none}
       .pf:nth-child(n+5){background:#fff;border-top:1pt solid #e2e8f0}
-      .pf-l{
-        font-size:6.5pt;text-transform:uppercase;letter-spacing:.8pt;
-        color:#94a3b8;margin-bottom:2pt;font-weight:700;
-      }
+      .pf-l{font-size:6.5pt;text-transform:uppercase;letter-spacing:.8pt;color:#94a3b8;margin-bottom:2pt;font-weight:700;}
       .pf-v{font-size:8.5pt;font-weight:600;color:#1e293b;line-height:1.3}
-
-      /* ── Note Banner ── */
-      .note{
-        background:#fffbeb;border-left:3pt solid #d97706;
-        border:1pt solid #fde68a;border-left-width:3pt;
-        padding:5pt 9pt;margin-bottom:9pt;
-        font-size:7.5pt;color:#92400e;border-radius:0 4pt 4pt 0;
-        line-height:1.5;
-      }
-
-      /* ── Section (Category) ── */
+      .note{background:#fffbeb;border-left:3pt solid #d97706;border:1pt solid #fde68a;border-left-width:3pt;padding:5pt 9pt;margin-bottom:9pt;font-size:7.5pt;color:#92400e;border-radius:0 4pt 4pt 0;line-height:1.5;}
       .sec{margin-bottom:10pt;break-inside:avoid}
-      .sec-hdr{
-        display:flex;align-items:center;gap:7pt;
-        padding:5pt 9pt 4pt;
-        border-radius:4pt 4pt 0 0;
-      }
+      .sec-hdr{display:flex;align-items:center;gap:7pt;padding:5pt 9pt 4pt;border-radius:4pt 4pt 0 0;}
       .dot{width:7pt;height:7pt;border-radius:50%;flex-shrink:0}
       .sec-name{font-weight:700;font-size:9pt;line-height:1}
       .sec-sub{font-size:7.5pt;color:#64748b;margin-left:2pt}
-
-      /* ── Table ── */
       table{width:100%;border-collapse:collapse;font-size:8pt}
-      thead th{
-        padding:4.5pt 6pt;
-        text-align:left;
-        font-size:7pt;font-weight:700;
-        text-transform:uppercase;letter-spacing:.4pt;
-        border-bottom:1.5pt solid;
-        white-space:nowrap;
-      }
-      tbody td{
-        padding:4pt 6pt;
-        border-bottom:0.5pt solid #e2e8f0;
-        vertical-align:middle;
-        font-size:8pt;
-        line-height:1.35;
-      }
+      thead th{padding:4.5pt 6pt;text-align:left;font-size:7pt;font-weight:700;text-transform:uppercase;letter-spacing:.4pt;border-bottom:1.5pt solid;white-space:nowrap;}
+      tbody td{padding:4pt 6pt;border-bottom:0.5pt solid #e2e8f0;vertical-align:middle;font-size:8pt;line-height:1.35;}
       tbody tr:nth-child(even) td{background:#f8fafc}
-      tbody tr:hover td{} /* print safe */
-
-      /* col helpers */
       .rc{color:#94a3b8;text-align:center;width:18pt;font-size:7.5pt}
       .nr{text-align:right;font-family:'JetBrains Mono',monospace;font-size:7.5pt}
       .vc{text-align:right;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:8.5pt}
-
-      .utag{
-        background:#dbeafe;color:#1e40af;
-        border:0.5pt solid #93c5fd;border-radius:3pt;
-        padding:1pt 4pt;font-size:6.5pt;font-weight:700;
-        white-space:nowrap;
-      }
-      .strow td{
-        font-weight:700;background:#f0fdf4!important;
-        border-top:1pt solid #86efac;border-bottom:1pt solid #86efac;
-        font-size:7.5pt;padding:3.5pt 6pt;
-      }
-
-      /* ── Summary ── */
+      .utag{background:#dbeafe;color:#1e40af;border:0.5pt solid #93c5fd;border-radius:3pt;padding:1pt 4pt;font-size:6.5pt;font-weight:700;white-space:nowrap;}
+      .strow td{font-weight:700;background:#f0fdf4!important;border-top:1pt solid #86efac;border-bottom:1pt solid #86efac;font-size:7.5pt;padding:3.5pt 6pt;}
       .summ-wrap{margin-top:10pt}
-      .summ-hdr{
-        background:linear-gradient(90deg,#1e3a8a,#1e40af);
-        color:#fff;padding:5pt 9pt;
-        border-radius:4pt 4pt 0 0;
-        font-size:9pt;font-weight:700;letter-spacing:.3pt;
-      }
-      .summ-table thead th{
-        background:#f0f9ff;color:#1e40af;
-        border-bottom:1.5pt solid #93c5fd;font-size:7pt;
-      }
-
-      /* ── Sign Block ── */
-      .sign{
-        display:flex;justify-content:space-between;
-        margin-top:18pt;border-top:1pt solid #cbd5e1;padding-top:10pt;
-      }
+      .summ-hdr{background:linear-gradient(90deg,#1e3a8a,#1e40af);color:#fff;padding:5pt 9pt;border-radius:4pt 4pt 0 0;font-size:9pt;font-weight:700;letter-spacing:.3pt;}
+      .summ-table thead th{background:#f0f9ff;color:#1e40af;border-bottom:1.5pt solid #93c5fd;font-size:7pt;}
+      .sign{display:flex;justify-content:space-between;margin-top:18pt;border-top:1pt solid #cbd5e1;padding-top:10pt;}
       .sbox{width:30%;text-align:center}
       .stitle{font-size:8pt;font-weight:700;color:#1e3a8a;margin-bottom:2pt}
       .sname{font-size:8pt;color:#334155;margin-bottom:14pt}
       .sline{border-top:1pt solid #64748b;padding-top:4pt;font-size:7.5pt;color:#64748b}
-
-      /* ── Footer ── */
-      .doc-footer{
-        margin-top:10pt;border-top:1pt solid #e2e8f0;padding-top:5pt;
-        display:flex;justify-content:space-between;align-items:center;
-        font-size:7pt;color:#94a3b8;
-      }
-      .footer-logo{
-        font-family:'Barlow Condensed',sans-serif;
-        font-size:8pt;font-weight:700;color:#1e3a8a;letter-spacing:.5pt;
-      }
-
-      /* ── Print Rules ── */
-      @media print{
-        body{padding:10mm 10mm 8mm 10mm}
-        @page{margin:0;size:A4 landscape}
-        .sec{break-inside:avoid}
-      }
+      .doc-footer{margin-top:10pt;border-top:1pt solid #e2e8f0;padding-top:5pt;display:flex;justify-content:space-between;align-items:center;font-size:7pt;color:#94a3b8;}
+      .footer-logo{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:700;color:#1e3a8a;letter-spacing:.5pt;}
+      @media print{body{padding:10mm 10mm 8mm 10mm}@page{margin:0;size:A4 landscape}.sec{break-inside:avoid}}
     `;
 
     let body = `
-    <!-- DOCUMENT HEADER -->
     <div class="doc-header">
       <div class="doc-header-left">
         <div class="doc-logo">❄️</div>
@@ -1182,8 +1050,6 @@ export default function App() {
         </div>
       </div>
     </div>
-
-    <!-- PROJECT INFO GRID -->
     <div class="proj-block">
       <div class="pf"><div class="pf-l">Project Name</div><div class="pf-v">${p.name||"—"}</div></div>
       <div class="pf"><div class="pf-l">Client / Owner</div><div class="pf-v">${p.client||"—"}</div></div>
@@ -1194,14 +1060,11 @@ export default function App() {
       <div class="pf"><div class="pf-l">Revision</div><div class="pf-v">${p.rev||"R0"}</div></div>
       <div class="pf"><div class="pf-l">Contract No.</div><div class="pf-v">${p.contract||"—"}</div></div>
     </div>
-
-    <!-- UNIT NOTE -->
     <div class="note">
       ⚠️&nbsp; <strong>Input Convention:</strong> All dimensional fields (L, W/D, H) are entered in
       <strong>MILLIMETRES (mm)</strong>. Calculated results are automatically converted to the selected
       output unit per row (m², ft², m, ft, Nos, etc.).
-    </div>
-    `;
+    </div>`;
 
     let sr = 1;
     CATEGORIES.forEach((cat) => {
@@ -1217,7 +1080,7 @@ export default function App() {
         <table style="border:0.5pt solid ${cat.color}25;border-top:none">
           <thead style="background:${cat.color}15;color:${cat.color};border-bottom-color:${cat.color}50">
             <tr>
-              <th class="rc" style="width:18pt">#</th>
+              <th class="rc">#</th>
               <th style="min-width:120pt">Item Name</th>
               <th style="min-width:90pt">Location / Zone</th>
               <th class="nr" style="width:48pt">L&nbsp;(mm)</th>
@@ -1252,12 +1115,8 @@ export default function App() {
         const sum = cr.filter((r) => r.unit === u).reduce((s, r) => s + (compute(r) || 0), 0);
         if (sum > 0) {
           body += `<tr class="strow">
-            <td colspan="8" style="text-align:right;padding-right:8pt;color:#166534;font-size:7pt;letter-spacing:.3pt">
-              SUB-TOTAL (${u}) &rarr;
-            </td>
-            <td class="vc" style="color:#15803d;font-size:9pt">
-              ${sum.toLocaleString(undefined, { maximumFractionDigits: 4 })}&nbsp;${u}
-            </td>
+            <td colspan="8" style="text-align:right;padding-right:8pt;color:#166534;font-size:7pt;letter-spacing:.3pt">SUB-TOTAL (${u}) &rarr;</td>
+            <td class="vc" style="color:#15803d;font-size:9pt">${sum.toLocaleString(undefined, { maximumFractionDigits: 4 })}&nbsp;${u}</td>
             <td></td>
           </tr>`;
         }
@@ -1265,7 +1124,6 @@ export default function App() {
       body += `</tbody></table></div>`;
     });
 
-    // ── Grand Summary Table ──
     body += `
     <div class="summ-wrap">
       <div class="summ-hdr">📊&nbsp;&nbsp;Grand Summary — Coolrite Engineers</div>
@@ -1297,8 +1155,6 @@ export default function App() {
       </tr>`;
     });
     body += `</tbody></table></div>
-
-    <!-- SIGN-OFF BLOCK -->
     <div class="sign">
       <div class="sbox">
         <div class="stitle">Prepared By</div>
@@ -1316,8 +1172,6 @@ export default function App() {
         <div class="sline">Signature &amp; Date</div>
       </div>
     </div>
-
-    <!-- FOOTER -->
     <div class="doc-footer">
       <span class="footer-logo">❄️ COOLRITE ENGINEERS</span>
       <span>HVAC · Cleanroom · Pharma · MEP Solutions &nbsp;|&nbsp; MEP Measurement Sheet · Professional Edition</span>
@@ -1338,7 +1192,6 @@ export default function App() {
   // ─── Render ──────────────────────────────────────────────────────────────────
   return (
     <div style={S.app}>
-      {/* Topbar */}
       <div style={S.topbar}>
         <div style={S.brand}>
           <div style={S.brandIcon}>❄️</div>
@@ -1367,13 +1220,11 @@ export default function App() {
       </div>
 
       <div style={S.body}>
-        {/* Unit note */}
         <div style={S.unitNote}>
           ⚠️ All dimensional inputs (L, W/D, H) are in{" "}
           <strong>millimetres (mm)</strong>. Results auto-converted to your chosen output unit.
         </div>
 
-        {/* Project Info */}
         <div style={S.card}>
           <div style={S.cardTitle}>
             <span style={{ width: 3, height: 12, background: T.accent, borderRadius: 2, display: "block" }} />
@@ -1402,7 +1253,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* Categories */}
         {CATEGORIES.map((cat) => (
           <CategoryBlock
             key={cat.id} cat={cat} rows={rows}
@@ -1412,7 +1262,6 @@ export default function App() {
           />
         ))}
 
-        {/* Summary */}
         <div style={S.card}>
           <div style={S.cardTitle}>
             <span style={{ width: 3, height: 12, background: T.green, borderRadius: 2, display: "block" }} />
@@ -1452,7 +1301,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* Save Drawer */}
       <SaveDrawer
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
@@ -1461,7 +1309,6 @@ export default function App() {
         onLoad={handleLoadSheet}
       />
 
-      {/* Toast */}
       {toast && (
         <div style={{
           position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)",
