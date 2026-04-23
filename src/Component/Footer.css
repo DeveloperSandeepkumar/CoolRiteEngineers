@@ -1,81 +1,43 @@
-/* Footer main */
-.footer {
+.Footer{
+    position: absolute; 
+    left: 0;
+    right: 0;
+    text-align: center;
     width: 100%;
-    background-color: #0b0f14;
-    padding: 30px 0;   /* ↓ reduced from 50px */
+    background-color: skyblue;
+    padding: 50px;
 }
-
-/* container spacing fix */
-.textdiv {
-    padding: 0 15px;   /* remove extra 50px padding */
-}
-
-/* headings */
-.textHeading {
-    text-align: left;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-/* paragraph text */
-.textclass {
-    font-size: 13px;
-    text-align: left;
-    margin-bottom: 6px;
-    color: #ccc;
-}
-
-/* highlight text */
-.textStyle {
-    color: #ff5e14;
-    text-align: left;
-    font-size: 13px;
-}
-
-/* links */
-.text_Style {
-    color: #aaa;
-    font-size: 13px;
-    text-decoration: none;
-}
-
-.text_Style:hover {
-    color: #0ea5e9;
-}
-
-/* remove unnecessary rules */
-.p-0, .h5 {
+.p-0,.h5{
     font-weight: 600;
+    list-style: none; cursor: pointer
 }
 
-/* row spacing fix */
-.footer .row {
-    margin-top: 10px !important;
+.main{
+    width: 80%;
 }
+.text_Style{
 
-/* bottom copyright */
-.footer .p-3,
-.footer .p-4 {
-    padding: 10px !important;
-    font-size: 12px;
+    position: relative;
+    color: #9b9b9b;
+    font-size: 14px;
+    
+
 }
-
-/* ===== Mobile Fix ===== */
-@media (max-width: 768px) {
-    .footer {
-        padding: 20px 0;
-    }
-
-    .textdiv {
-        padding: 0 10px;
-    }
-
-    .textHeading {
-        font-size: 13px;
-    }
-
-    .textclass,
-    .text_Style {
-        font-size: 12px;
-    }
+.text_Style:hover{
+    color: #ff5e14; 
+}
+.textStyle{
+    color: #ff5e14;  
+    text-align: left;
+}
+.textclass{
+    position: relative;
+    font-size: 14px;
+    text-align: left;
+}
+.textdiv{
+    padding: 50px;
+}
+.textHeading{
+    text-align: left;
 }
