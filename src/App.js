@@ -20,7 +20,7 @@ import CoolRiteEngineer3D from "./Component/CoolRiteEngineer_3D";
 import CoolRiteEngineerV5 from "./Component/CoolRiteEngineer_v5";
 
 import CoolriteMeasurement from "./Component/CoolriteMeasurement";
-import CoolriteMeasurement from "./Component/DataVoult";
+import DataVoult from "./Component/DataVoult";
 const App = () => {
   return (
     <div className="App">
