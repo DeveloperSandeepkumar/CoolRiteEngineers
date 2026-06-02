@@ -164,6 +164,7 @@ const Navbar = () => {
                     <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="/CoolRiteEngineer_3D" onClick={closeNavbar}>Design V1</NavLink></li>
                     <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="/CoolRiteEngineer_v5" onClick={closeNavbar}>Design V2</NavLink></li>
                     <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="/CoolriteMeasurement" onClick={closeNavbar}>Design V3</NavLink></li>
+                     <li style={{ width:'100%',padding: '1px', textAlign:'left'}}><NavLink to="/DataVoult" onClick={closeNavbar}>Save your Data</NavLink></li>
                     
                   </ul>
                 )}
