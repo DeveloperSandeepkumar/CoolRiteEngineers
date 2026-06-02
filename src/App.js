@@ -39,7 +39,7 @@ const App = () => {
           <Route path="/CoolRiteEngineer_3D" element={<CoolRiteEngineer3D />} />
           <Route path="/CoolRiteEngineer_v5" element={<CoolRiteEngineerV5 />} />
    <Route path="/CoolriteMeasurement" element={<CoolriteMeasurement />} />
-   <Route path="/CoolriteMeasurement" element={<DataVoult />} />
+   <Route path="/DataVoult" element={<DataVoult />} />
 
           {/* Dynamic services routes */}
           {services.map((service, index) => (
