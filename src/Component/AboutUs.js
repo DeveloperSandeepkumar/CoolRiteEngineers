@@ -3,32 +3,30 @@ import AboutUsPic from '../Assets/AboutUs.jpg';
 import MepInfo from '../Component/Mep';
 
 const AboutUs = () => {
-    return (
-        <>
-            {/* Banner Image */}
-            <div className="dark-img">
-                <img 
-                    src={AboutUsPic} 
-                    style={{ height: '400px', width: '100%' }} 
-                    alt="About CoolRite Engineers"
-                />
-            </div>
+  return (
+    <main style={{ background: "var(--bg-slate)", fontFamily: "'Outfit', sans-serif" }}>
+      {/* Banner Section */}
+      <div className="position-relative">
+        <img
+          src={AboutUsPic}
+          alt="About CoolRite Engineers industrial MEP consultancy and HVAC installations"
+          style={{ height: "320px", width: "100%", objectFit: "cover" }}
+        />
+        <div 
+          className="position-absolute top-50 start-50 translate-middle text-center text-white p-3 rounded"
+          style={{ background: "rgba(11, 25, 44, 0.6)", backdropFilter: "blur(4px)" }}
+        >
+          <h1 className="fw-bold mb-1" style={{ fontSize: "2.5rem" }}>About Us</h1>
+          <p className="mb-0 text-uppercase letter-spacing-1">CoolRite Engineers</p>
+        </div>
+      </div>
 
-            {/* Overlay Text */}
-            <div
-                className="carousel-caption d-flex flex-column justify-content-center align-items-center text-center"
-                style={{ top: 0, bottom: 0 }}
-            >
-                <h1><b>About Us</b></h1>
-                <h5 className="C-text">
-                    <b>CoolRite Engineers</b>
-                </h5>
-            </div>
-
-            {/* Info Section */}
-            <MepInfo />
-        </>
-    );
+      {/* Info Section */}
+      <section aria-label="Company Overview">
+        <MepInfo />
+      </section>
+    </main>
+  );
 };
 
 export default AboutUs;
