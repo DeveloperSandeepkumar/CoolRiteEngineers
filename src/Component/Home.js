@@ -71,16 +71,16 @@ const Home = () => {
             <div className="dark-img">
               <img 
                 src={CoolriteSlider} 
-                className="d-block w-100" 
-                alt="CoolRite Engineers industrial HVAC services and central air conditioning installations" 
+                className="d-block w-100 zoom-anim" 
+                alt="CoolRite Engineers industrial HVAC services and central air conditioning installations by Colrite" 
               />
             </div>
 
             <div className="carousel-caption custom-caption">
-              <h1 className="carousel-heading">CoolRite Engineers</h1>
-              <h5 className="carousel-subheading">High Performance MEP & HVAC Solutions For Industries</h5>
+              <h1 className="carousel-heading fade-up">CoolRite Engineers</h1>
+              <h2 className="carousel-subheading fade-up delay-1">High Performance MEP & HVAC Solutions For Industries</h2>
 
-              <div className="button-group">
+              <div className="button-group fade-up delay-2">
                 <button className="button-modern" onClick={() => navigate("/about")}>
                   About Us
                 </button>
@@ -97,16 +97,16 @@ const Home = () => {
             <div className="dark-img">
               <img 
                 src={CoolriteSlider2} 
-                className="d-block w-100" 
-                alt="Professional AC ducting, air handling units, and chiller system installations" 
+                className="d-block w-100 zoom-anim" 
+                alt="Professional AC ducting, air handling units, and chiller system installations by Cool Rite" 
               />
             </div>
 
             <div className="carousel-caption custom-caption">
-              <h1 className="carousel-heading">Premium HVAC Design</h1>
-              <h5 className="carousel-subheading">Accurate Air Balancing & Customized Duct Layouts</h5>
+              <h2 className="carousel-heading fade-up">Premium HVAC Design</h2>
+              <h3 className="carousel-subheading fade-up delay-1">Accurate Air Balancing & Customized Duct Layouts</h3>
 
-              <div className="button-group">
+              <div className="button-group fade-up delay-2">
                 <button className="button-modern" onClick={() => navigate("/about")}>
                   About Us
                 </button>
@@ -123,16 +123,16 @@ const Home = () => {
             <div className="dark-img">
               <img 
                 src={CoolriteSlider3} 
-                className="d-block w-100" 
-                alt="Commercial ventilation, firefighting setups, and pipe insulation contracting work" 
+                className="d-block w-100 zoom-anim" 
+                alt="Commercial ventilation, firefighting setups, and pipe insulation contracting work by Coolriteengineers" 
               />
             </div>
 
             <div className="carousel-caption custom-caption">
-              <h1 className="carousel-heading font-weight-bold">Complete MEP Contracting</h1>
-              <h5 className="carousel-subheading">Consultancy With Zero Delays & High Efficiency BOQs</h5>
+              <h2 className="carousel-heading font-weight-bold fade-up">Complete MEP Contracting</h2>
+              <h3 className="carousel-subheading fade-up delay-1">Consultancy With Zero Delays & High Efficiency BOQs</h3>
 
-              <div className="button-group">
+              <div className="button-group fade-up delay-2">
                 <button className="button-modern" onClick={() => navigate("/about")}>
                   About Us
                 </button>
