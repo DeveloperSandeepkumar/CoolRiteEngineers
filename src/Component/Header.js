@@ -80,6 +80,21 @@ const Navbar = () => {
           </div>
 
           <div className={`nav-elements ${showNavbar ? 'active' : ''}`}>
+            {/* Desktop Logo */}
+            <img
+              src={CoolRiteLogo1}
+              alt="CoolRite Engineers Logo"
+              className="desktop-logo"
+              style={{
+                width: '48px',
+                height: '42px',
+                borderRadius: '10px',
+                objectFit: 'cover',
+                marginRight: '16px',
+                flexShrink: 0,
+              }}
+            />
+
             {/* Drawer Header (Mobile Only) */}
             <div className="drawer-header">
               <FaTimes 

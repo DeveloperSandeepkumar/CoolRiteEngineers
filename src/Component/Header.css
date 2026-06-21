@@ -237,6 +237,11 @@
     background-color: var(--bg-slate);
   }
 
+  /* Hide desktop logo inside the mobile drawer */
+  .nav-elements .desktop-logo {
+    display: none !important;
+  }
+
   .nav-elements.active {
     left: 0;
   }

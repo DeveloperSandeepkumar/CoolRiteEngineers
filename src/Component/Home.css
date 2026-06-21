@@ -43,19 +43,24 @@
     bottom: 0;
     right: 0;
     z-index: 1;
-    background: linear-gradient(to right, rgba(10, 37, 64, 0.9) 0%, rgba(10, 37, 64, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
+    background: rgba(0, 0, 0, 0.55);
 }
 
 .carousel-caption.custom-caption {
     z-index: 2;
-    text-align: left;
-    left: 10%;
-    right: 10%;
-    bottom: 25%;
+    text-align: center !important;
+    left: 10% !important;
+    right: 10% !important;
+    bottom: 20% !important;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .carousel-heading {
-    font-size: 4.5rem;
+    font-size: 3rem;
     font-weight: 800;
     color: #ffffff;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
@@ -63,7 +68,7 @@
 }
 
 .carousel-subheading {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 400;
     color: #e0e0e0;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
@@ -105,18 +110,21 @@
 
 @media screen and (max-width: 768px){
     .carousel-heading {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     .carousel-subheading {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         margin-bottom: 20px;
     }
     .carousel-caption.custom-caption {
-        bottom: 15%;
-        text-align: center;
+        bottom: 10% !important;
+        left: 5% !important;
+        right: 5% !important;
+        width: 90%;
+        text-align: center !important;
     }
     .dark-img::before {
-        background: linear-gradient(to top, rgba(10, 37, 64, 0.95) 0%, rgba(10, 37, 64, 0.5) 60%, transparent 100%);
+        background: rgba(0, 0, 0, 0.6);
     }
     .card1{
         margin:0 auto;
@@ -254,8 +262,7 @@
 
   .carousel .dark-img img {
     width: 100%;
-    height: 80vh;
-    min-height: 500px;
+    height: 500px; /* restored original height */
     object-fit: cover;
   }
   .custom-btn {
@@ -312,66 +319,37 @@
   margin-top: 20px;
   flex-wrap: wrap;
 }
-/* Center content vertically & horizontally */
-.custom-caption {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  padding: 0 20px;
-}
-
-/* Headings */
-.carousel-heading {
-  font-size: 48px;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-.carousel-subheading {
-  font-size: 20px;
-  color: #ddd;
-  margin-bottom: 30px;
-}
-
-/* Button styling */
-.button-group {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
 
 .button-modern {
-  padding: 12px 30px;
+  padding: 12px 32px;
   font-size: 16px;
   font-weight: 500;
   color: #fff;
   background-color: transparent;
-  border: 2px solid #fff;
+  border: 2px solid rgba(255,255,255,0.8);
   border-radius: 30px;
   transition: all 0.3s ease;
   text-transform: uppercase;
   cursor: pointer;
+  letter-spacing: 1px;
 }
 
 .button-modern:hover {
   background-color: #fff;
-  color: #000;
+  color: #0a2540;
   border-color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
 /* Responsive tweaks */
 @media (max-width: 767px) {
   .carousel-heading {
-      font-size: 28px;
+      font-size: 28px !important;
   }
 
   .carousel-subheading {
-      font-size: 16px;
+      font-size: 16px !important;
   }
 
   .button-modern {
@@ -380,13 +358,6 @@
   }
 
   .button-group {
-      flex-direction: column;
       gap: 10px;
   }
 }
-.custom-caption {
-  background: rgba(0, 0, 0, 0.1); /* Optional dark overlay */
-  border-radius: 10px;
-  padding: 30px 20px;
-}
-

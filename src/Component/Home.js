@@ -78,7 +78,7 @@ const Home = () => {
 
             <div className="carousel-caption custom-caption">
               <h1 className="carousel-heading fade-up">CoolRite Engineers</h1>
-              <h2 className="carousel-subheading fade-up delay-1">High Performance MEP & HVAC Solutions For Industries</h2>
+              <h5 className="carousel-subheading fade-up delay-1">High Performance MEP & HVAC Solutions For Industries</h5>
 
               <div className="button-group fade-up delay-2">
                 <button className="button-modern" onClick={() => navigate("/about")}>
@@ -103,8 +103,8 @@ const Home = () => {
             </div>
 
             <div className="carousel-caption custom-caption">
-              <h2 className="carousel-heading fade-up">Premium HVAC Design</h2>
-              <h3 className="carousel-subheading fade-up delay-1">Accurate Air Balancing & Customized Duct Layouts</h3>
+              <h1 className="carousel-heading fade-up">Premium HVAC Design</h1>
+              <h5 className="carousel-subheading fade-up delay-1">Accurate Air Balancing & Customized Duct Layouts</h5>
 
               <div className="button-group fade-up delay-2">
                 <button className="button-modern" onClick={() => navigate("/about")}>
@@ -129,8 +129,8 @@ const Home = () => {
             </div>
 
             <div className="carousel-caption custom-caption">
-              <h2 className="carousel-heading font-weight-bold fade-up">Complete MEP Contracting</h2>
-              <h3 className="carousel-subheading fade-up delay-1">Consultancy With Zero Delays & High Efficiency BOQs</h3>
+              <h1 className="carousel-heading font-weight-bold fade-up">Complete MEP Contracting</h1>
+              <h5 className="carousel-subheading fade-up delay-1">Consultancy With Zero Delays & High Efficiency BOQs</h5>
 
               <div className="button-group fade-up delay-2">
                 <button className="button-modern" onClick={() => navigate("/about")}>
