@@ -75,6 +75,10 @@
   display: block;
 }
 
+.drawer-header {
+  display: none;
+}
+
 /* Dropdown Container */
 .dropdown {
   position: relative;
@@ -122,6 +126,12 @@
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
+}
+
+.dropdown.force-close .dropdown-content {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
 .dropdown-content li {
@@ -182,18 +192,49 @@
     display: none !important;
   }
 
-  .nav-elements {
+  .mobile-menu-backdrop {
+    display: block;
     position: fixed;
-    top: 60px;
-    left: -100%;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: calc(100vh - 60px);
+    height: 100vh;
+    background: rgba(11, 25, 44, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-elements {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 85%;
+    max-width: 340px;
+    height: 100vh;
     background-color: var(--card-bg);
-    border-top: 1px solid var(--border-color);
-    box-shadow: var(--shadow-lg);
-    transition: left var(--transition-normal);
-    z-index: 999;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1005;
     overflow-y: auto;
+    padding-top: 0;
+  }
+
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-slate);
   }
 
   .nav-elements.active {
@@ -217,14 +258,17 @@
 
   .nav-elements > ul > li > a,
   .dropdown > a {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 16px;
     font-weight: 600;
-    padding: 12px 16px;
+    padding: 14px 24px;
     width: 100%;
     text-align: left !important;
     border-bottom: 1px solid var(--border-color);
     box-sizing: border-box;
+    color: var(--primary-navy);
   }
 
   .nav-elements > ul > li > a.active::after {
@@ -233,60 +277,70 @@
 
   /* Mobile Dropdowns */
   .dropdown > a::after {
-    position: absolute;
-    right: 24px;
-    top: 18px;
+    position: relative;
+    right: auto;
+    top: auto;
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown.open > a {
+    color: var(--hvac-blue);
+  }
+  
+  .dropdown.open > a::after {
+    transform: rotate(180deg);
   }
 
   .dropdown-content {
     position: static;
     transform: none !important;
-    display: none;
+    display: block; /* Always block for height animation */
     box-shadow: none;
     border: none;
     padding: 0;
-    margin: 8px 0 0 0;
-    background-color: transparent;
+    margin: 0;
+    background-color: var(--bg-slate);
     border-radius: 0;
     opacity: 1;
     visibility: visible;
     min-width: unset;
     width: 100%;
     list-style: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* Toggle show classes for mobile click interaction */
   .dropdown-content.show-mobile {
-    display: block !important;
+    max-height: 600px;
   }
 
   .dropdown:hover .dropdown-content {
-    display: none; /* Disable hover triggers on mobile layout */
-  }
-
-  .dropdown:hover .dropdown-content.show-mobile {
-    display: block !important;
+    /* Disable hover triggers on mobile layout */
   }
 
   .dropdown-content li {
     width: 100%;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
   .dropdown-content li:last-child {
     border-bottom: none;
   }
 
   .dropdown-content li a {
-    padding: 10px 24px;
+    padding: 12px 24px 12px 32px;
     font-size: 14px;
+    font-weight: 500;
     color: var(--text-muted);
     display: block;
     text-align: left;
+    transition: all 0.2s;
   }
 
   .dropdown-content li a:hover {
-    background-color: var(--bg-slate);
+    background-color: rgba(0, 210, 196, 0.08);
     color: var(--hvac-blue) !important;
-    padding-left: 28px;
+    padding-left: 36px;
   }
 }
