@@ -10,11 +10,36 @@ import CoolriteSlider3 from '../Assets/CoolRiteSlider3.jpg';
 
 import CardList from '../Component/OurServiceDetails.js';
 import '../Component/Home.css';
+import './AboutUs.css';
 import CustomerSlider from "./Customers.js";
 import MepInfo from '../Component/Mep.js';
 import GetInTouch from '../Assets/GetInTouch.jpg';
+import HemantPic from '../Assets/hemant_gupta.png';
+import BasantPic from '../Assets/basant_gupta.png';
+import { FaPhoneAlt, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 
 import { useNavigate } from "react-router-dom";
+
+const teamMembers = [
+  {
+    name: "Hemant Kumar Gupta",
+    role: "Managing Director & MD",
+    initials: "HKG",
+    photo: HemantPic,
+    phone: "+917009167480",
+    email: "coolriteengineers@gmail.com",
+    bio: "Over 15+ years of pioneering experience in HVAC design, ventilation projects, and industrial MEP engineering. Guiding CoolRite Engineers with strategic vision and excellence."
+  },
+  {
+    name: "Basant Kumar Gupta",
+    role: "Director",
+    initials: "BKG",
+    photo: BasantPic,
+    phone: "+918194839585",
+    email: "coolriteengineers@gmail.com",
+    bio: "Expert in project coordination, site execution management, and quality control. Committed to delivering seamless, energy-efficient, and timely HVAC installations."
+  }
+];
 
 const Home = () => {
   const navigate = useNavigate();
@@ -160,6 +185,63 @@ const Home = () => {
       {/* Info Section */}
       <section aria-label="About MEP Consultancy">
         <MepInfo />
+      </section>
+
+      {/* Leadership Team Section */}
+      <section className="team-section" aria-label="Our Leadership Team" style={{ background: '#ffffff', borderBottom: '1px solid var(--border-color)' }}>
+        <div className="container">
+          <h2 className="team-section-title">Our Leadership</h2>
+          <p className="team-section-subtitle">
+            Leading technological innovation and engineering success with commitment and expertise.
+          </p>
+
+          <div className="team-grid">
+            {teamMembers.map((member, index) => (
+              <div className="team-card" key={index} style={{ boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)' }}>
+                <div className="profile-container">
+                  <div className="profile-image-wrapper">
+                    {member.photo ? (
+                      <img src={member.photo} alt={member.name} className="profile-img" />
+                    ) : (
+                      <div className="profile-avatar-placeholder">
+                        <span>{member.initials}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <h3 className="team-member-name">{member.name}</h3>
+                <p className="team-member-role">{member.role}</p>
+                <p className="team-member-bio">{member.bio}</p>
+
+                <div className="team-social-links">
+                  <a 
+                    href={`tel:${member.phone}`} 
+                    className="social-icon-btn phone" 
+                    title={`Call ${member.name}`}
+                  >
+                    <FaPhoneAlt />
+                  </a>
+                  <a 
+                    href={`https://wa.me/${member.phone.replace('+', '')}`} 
+                    className="social-icon-btn whatsapp" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    title={`WhatsApp ${member.name}`}
+                  >
+                    <FaWhatsapp />
+                  </a>
+                  <a 
+                    href={`mailto:${member.email}`} 
+                    className="social-icon-btn" 
+                    title={`Email ${member.name}`}
+                  >
+                    <FaEnvelope />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Services Section */}
