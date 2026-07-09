@@ -16,7 +16,9 @@ const MainHeader = () => {
                         {/* LEFT SIDE */}
                         <div className="col-md-6 d-flex justify-content-center">
                             <p className='mainpara mb-0'>
-                                <FaMapMarkerAlt /> Work : Baddi, Mallpur Road, Solan, Industrial Area, Punjab - 140507
+                                <FaMapMarkerAlt /> Work :  SCO NO - 03 Village Malpur Upperla
+Near Cipla Ltd. P.O Bhud, Baddi
+Distt Solan (HP -173205)
                             </p>
                         </div>
 
