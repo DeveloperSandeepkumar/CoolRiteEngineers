@@ -361,3 +361,108 @@
       gap: 10px;
   }
 }
+
+/* Premium Service Cards */
+.service-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 16px;
+  width: 360px;
+  padding: 20px;
+  margin: 15px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--hvac-blue) 0%, var(--hvac-orange) 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(11, 25, 44, 0.08);
+  border-color: rgba(0, 210, 196, 0.3);
+}
+
+.service-card:hover::after {
+  transform: scaleX(1);
+}
+
+.service-card-image-wrapper {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.service-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card:hover .service-card-image {
+  transform: scale(1.08);
+}
+
+.service-card-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--primary-navy);
+  margin: 0 0 20px 0;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease;
+}
+
+.service-card:hover .service-card-title {
+  color: var(--hvac-blue);
+}
+
+.service-card-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  border: 2px solid var(--border-color);
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--primary-navy);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  width: 85%;
+  text-align: center;
+  background-color: transparent;
+}
+
+.service-card:hover .service-card-btn {
+  background-color: var(--hvac-blue);
+  color: #ffffff;
+  border-color: var(--hvac-blue);
+  box-shadow: 0 6px 15px rgba(0, 210, 196, 0.25);
+  transform: translateY(-2px);
+}
+
