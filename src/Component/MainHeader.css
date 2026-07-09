@@ -1,90 +1,92 @@
-.logo_img{
-    width: 120px;
-}
-
-.navbar{
-  height: 100%;
-}
-
-.vl {
-    border-left: 2px solid green;
-    height: 50px;
-  
-  
-  }
-.callUs{
-  text-align: right;
-
-}
-@media screen and (max-width: 678px){
-  .mainNavbar{
-    display: none;
-    
-  }
-  
-}
-.mainpara{
-  margin-bottom: 0px;
-  color: #FFF;
-  font-size: 13px;
-  /* padding: 15px 0px; */
-}
-.schedule{
-  color: #FFF;
-  font-size: 13px;
-}
 .top-header-wrapper {
-  /* position: absolute; */
-  left: 0;
-  top: 0;
-  padding: 0;
-  width: 100%;
-  transition: 0.6s ease-in;
-  padding: 10px 0px; 
-  z-index: 2;
-  background-color:#2b2d42; ;
-  font-family: 'Roboto', sans-serif;
-}
-.social{
-  display: flex;
-  margin-bottom: 0px;
-  color: #FFF;
-}
-.btn{
-  background-color: #FFF;
-}
-.SocilIcon{
-  color: white;
+  background-color: #060E18;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'Outfit', sans-serif;
+  z-index: 1001;
 }
 
+@media (max-width: 768px) {
+  .top-header-wrapper {
+    display: none !important;
+  }
+}
+
+.mainpara {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mainpara svg {
+  color: var(--hvac-blue);
+  font-size: 14px;
+}
+
+.schedule {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.schedule svg {
+  color: var(--hvac-blue);
+  font-size: 14px;
+}
 
 .top-social {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .top-social li {
-  margin-right: 10px; /* Adjust this value for the amount of space you want */
-}
-
-.top-social li:last-child {
-  margin-right: 0; /* Remove margin for the last item */
+  display: inline-flex;
 }
 
 .SocilIcon {
-  color: white; /* Optional: To set the color to white for icons */
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
 .SocilIcon:hover {
-  color: #007bff; /* Optional: To change the icon color on hover */
+  color: var(--hvac-blue);
+  transform: translateY(-1px);
 }
-.requestProposal{
-  background-color: #f2ab26;
 
+/* Request Proposal Button */
+.requestProposal {
+  background-color: var(--hvac-orange) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  padding: 6px 16px !important;
+  border-radius: 6px !important;
+  transition: all var(--transition-fast) !important;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(255, 107, 53, 0.15);
 }
 
 .requestProposal:hover {
-  background: white; /* On hover, the color will be white */
+  background-color: var(--hvac-orange-hover) !important;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3) !important;
 }

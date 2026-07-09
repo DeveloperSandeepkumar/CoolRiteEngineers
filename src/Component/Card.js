@@ -1,78 +1,98 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const Card = ({ image, title, link }) => {
+const Card = ({ image, title, link, delayClass }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
+      className={`reveal reveal-up ${delayClass || ''}`}
       style={{
         ...styles.card,
         boxShadow: isHovered
-          ? '0 8px 20px rgba(0,0,0,0.2)'
-          : '0 2px 5px rgba(0,0,0,0.1)',
-        transform: isHovered ? 'scale(1.03)' : 'scale(1)',
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+          ? 'var(--shadow-lg)'
+          : 'var(--shadow-sm)',
+        transform: isHovered ? 'translateY(-6px)' : 'translateY(0)',
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img src={image} alt={title} style={styles.image} />
+      <div style={styles.imageContainer}>
+        <img 
+          src={image} 
+          alt={title} 
+          style={{
+            ...styles.image,
+            transform: isHovered ? 'scale(1.05)' : 'scale(1)'
+          }} 
+        />
+      </div>
       <h3 style={styles.title}>{title}</h3>
-<a
-  href={link}
-  style={styles.button}
-  onMouseEnter={(e) => {
-    e.target.style.backgroundColor = '#000';
-    e.target.style.color = '#fff';
-  }}
-  onMouseLeave={(e) => {
-    e.target.style.backgroundColor = '#fff';
-    e.target.style.color = '#000';
-  }}
->
-  Learn More
-</a>
+      <Link
+        to={link}
+        style={{
+          ...styles.button,
+          backgroundColor: isHovered ? 'var(--hvac-blue)' : 'transparent',
+          color: isHovered ? '#fff' : 'var(--primary-navy)',
+          borderColor: isHovered ? 'var(--hvac-blue)' : 'var(--border-color)',
+        }}
+      >
+        Learn More
+      </Link>
     </div>
   );
 };
 
 const styles = {
   card: {
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    width: '400px',
+    border: '1px solid var(--border-color)',
+    borderRadius: '12px',
+    width: '360px',
     padding: '16px',
-    margin: '10px',
+    margin: '15px',
     textAlign: 'center',
     cursor: 'pointer',
-    backgroundColor: '#fff',
+    backgroundColor: 'var(--card-bg)',
+    transition: 'transform var(--transition-normal), box-shadow var(--transition-normal)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  imageContainer: {
+    width: '100%',
+    height: '220px',
+    overflow: 'hidden',
+    borderRadius: '8px',
+    marginBottom: '16px',
   },
   image: {
     width: '100%',
-    height: '200px',
+    height: '100%',
     objectFit: 'cover',
-    borderRadius: '6px',
-    marginBottom: '12px',
+    transition: 'transform var(--transition-normal)',
   },
   title: {
-    fontSize: '1.5rem',
-    margin: '12px 0',
-    color: '#2c3e50',
+    fontSize: '18px',
     fontWeight: '600',
-    fontFamily: 'Segoe UI, Roboto, sans-serif',
+    color: 'var(--primary-navy)',
+    margin: '0 0 16px 0',
+    fontFamily: "'Outfit', sans-serif",
   },
   button: {
     display: 'inline-block',
-    padding: '5px 40px',
-    backgroundColor: '#fff',
-    color: '#000',
-    border: '2px solid #000',
-    borderRadius: '4px',
+    padding: '8px 24px',
+    border: '1px solid',
+    borderRadius: '6px',
     textDecoration: 'none',
     fontWeight: '600',
-    fontSize: '1rem',
-    transition: 'all 0.3s ease',
+    fontSize: '13px',
+    textTransform: 'uppercase',
+    letterSpacing: '0.5px',
+    transition: 'all var(--transition-fast)',
     cursor: 'pointer',
+    width: '80%',
+    textAlign: 'center',
   },
 };
 

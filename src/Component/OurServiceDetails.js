@@ -1,17 +1,17 @@
 import React from 'react';
 import Card from '../Component/Card';
-import Image1 from '../../src/Assets/Colrite_files/1.jpg'
-import Image2 from '../../src/Assets/Colrite_files/2.jpg'
-import Image3 from '../../src/Assets/Colrite_files/3.jpg'
-import Image4 from '../../src/Assets/Colrite_files/4.jpg'
-import Image5 from '../../src/Assets/Colrite_files/5.jpg'
-import Image6 from '../../src/Assets/Colrite_files/6.jpg'
-import Image7 from '../../src/Assets/Colrite_files/7.jpg'
-import Image8 from '../../src/Assets/Colrite_files/8.jpg'
-import Image9 from '../../src/Assets/Colrite_files/9.jpg'
-import Image10 from '../../src/Assets/Colrite_files/10.jpg'
-import Image11 from '../../src/Assets/Colrite_files/11.jpg'
-import Image12 from '../../src/Assets/Colrite_files/12.jpg'
+import Image1 from '../../src/Assets/Colrite_files/1.jpg';
+import Image2 from '../../src/Assets/Colrite_files/2.jpg';
+import Image3 from '../../src/Assets/Colrite_files/3.jpg';
+import Image4 from '../../src/Assets/Colrite_files/4.jpg';
+import Image5 from '../../src/Assets/Colrite_files/5.jpg';
+import Image6 from '../../src/Assets/Colrite_files/6.jpg';
+import Image7 from '../../src/Assets/Colrite_files/7.jpg';
+import Image8 from '../../src/Assets/Colrite_files/8.jpg';
+import Image9 from '../../src/Assets/Colrite_files/9.jpg';
+import Image10 from '../../src/Assets/Colrite_files/10.jpg';
+import Image11 from '../../src/Assets/Colrite_files/11.jpg';
+import Image12 from '../../src/Assets/Colrite_files/12.jpg';
 
 const cardsData = [
   {
@@ -26,62 +26,64 @@ const cardsData = [
   },
   {
     image: Image3,
-    title: 'VRV/VRF',
-    link: './vrv-vrf',
+    title: 'VRV / VRF Systems',
+    link: '/vrv-vrf',
   },
   {
     image: Image4,
-    title: 'Cassete AC',
-    link: './cassette-ac',
+    title: 'Cassette AC',
+    link: '/cassette-ac',
   },
   {
     image: Image5,
     title: 'Chiller AC',
-    link: './chiller-ac',
+    link: '/chiller-ac',
   },
   {
     image: Image6,
     title: 'AHU (Air Handling Unit)',
-    link: './ahu-services',
+    link: '/ahu-services',
   },
   {
     image: Image7,
-        title: 'FCU (Fall COil Unit)',
-    link: './fcu-services',
+    title: 'FCU (Fan Coil Unit)',
+    link: '/fcu-services',
   },
   {
     image: Image8,
     title: 'Package AC',
-    link: './package-ac',
+    link: '/package-ac',
   },
   {
     image: Image9,
-    title: 'Plumbing',
-    link: './plumbing',
+    title: 'Plumbing Services',
+    link: '/plumbing',
   },
   {
     image: Image10,
     title: 'Drainage System',
-    link: './drainage-system',
+    link: '/drainage-system',
   },
   {
     image: Image11,
     title: 'Fire Fighting',
-    link: './fire-fighting',
+    link: '/fire-fighting',
   },
   {
     image: Image12,
-    title: 'Electricals',
-    link: './electrical-services',
+    title: 'Electrical Services',
+    link: '/electrical-services',
   },
 ];
 
 const CardList = () => {
   return (
     <div style={styles.container}>
-      {cardsData.map((card, index) => (
-        <Card key={index} {...card} />
-      ))}
+      {cardsData.map((card, index) => {
+        // Stagger delays across 3 columns: 100ms, 200ms, 300ms
+        const delayClass = `delay-${((index % 3) + 1) * 100}`;
+        return <Card key={index} {...card} delayClass={delayClass} />;
+      })}
     </div>
   );
 };
@@ -91,6 +93,9 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
+    padding: '30px 10px',
+    maxWidth: '1200px',
+    margin: '0 auto',
   },
 };
 

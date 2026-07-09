@@ -46,7 +46,7 @@ const MepInfo = () => {
   const [readMore, setReadMore] = useState(false);
 
   return (
-    <div className="container my-5 py-4 border rounded shadow-sm bg-light">
+    <div className="container my-5 py-4 border rounded shadow-sm bg-light reveal reveal-up">
       <div className="row align-items-center">
         
         {/* Text Column */}

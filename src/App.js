@@ -15,12 +15,9 @@ import ProposalFormWithMap from "./Component/ProposalFormWithMap";
 import VendorRegistrationForm from "./Component/VendorRegistrationForm";
 import ContactUs from "./Component/ContactUs";
 import OurProduct from "./Component/OurProduct";
-// ✅ PascalCase fix
-import CoolRiteEngineer3D from "./Component/CoolRiteEngineer_3D";
-import CoolRiteEngineerV5 from "./Component/CoolRiteEngineer_v5";
+import Project from "./Component/Project";
+import Career from './Component/Career';
 
-import CoolriteMeasurement from "./Component/CoolriteMeasurement";
-import DataVoult from "./Component/DataVoult";
 const App = () => {
   return (
     <div className="App">
@@ -33,13 +30,13 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<AboutUs />} />
-         <Route path="/contactUs" element={<ContactUs />} />
-   <Route path="/OurProduct" element={<OurProduct />} />
-          {/* ✅ Fixed component names */}
-          <Route path="/CoolRiteEngineer_3D" element={<CoolRiteEngineer3D />} />
-          <Route path="/CoolRiteEngineer_v5" element={<CoolRiteEngineerV5 />} />
-   <Route path="/CoolriteMeasurement" element={<CoolriteMeasurement />} />
-   <Route path="/DataVoult" element={<DataVoult />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contactUs" element={<ContactUs />} />
+          <Route path="/ContactUs" element={<ContactUs />} />
+          <Route path="/OurProduct" element={<OurProduct />} />
+          <Route path="/ourproduct" element={<OurProduct />} />
+          <Route path="/Project" element={<Project />} />
+          <Route path="/project" element={<Project />} />
 
           {/* Dynamic services routes */}
           {services.map((service, index) => (
@@ -60,6 +57,8 @@ const App = () => {
 
           <Route path="/ProposalFormWithMap" element={<ProposalFormWithMap />} />
           <Route path="/VendorRegistrationForm" element={<VendorRegistrationForm />} />
+          <Route path="/Career" element={<Career />} />
+          <Route path="/career" element={<Career />} />
         </Routes>
 
         <Footer />

@@ -18,9 +18,7 @@
     width: 254px;
     height: 265px;
 }
-.card{
-    width: 16rem;
-}
+
 .Img_Card{
     display: flex;
 }
@@ -29,35 +27,109 @@
 }
 .dark-img {
     position: relative;
-  }
+    overflow: hidden; /* For zoom animation */
+}
   
-  .dark-img img {
+.dark-img img {
     display: block;
     width: 100%;
-  }
+}
   
-  .dark-img::before {
+.dark-img::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    z-index: 0;
-    background: rgba(0, 0, 0, .6);
-  }
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.55);
+}
 
-  .card-text{
+.carousel-caption.custom-caption {
+    z-index: 2;
+    text-align: center !important;
+    left: 10% !important;
+    right: 10% !important;
+    bottom: 20% !important;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carousel-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
+
+.carousel-subheading {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #e0e0e0;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    margin-bottom: 40px;
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+.carousel-item.active .fade-up {
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+.carousel-item.active .delay-1 {
+    animation-delay: 0.3s;
+}
+
+.carousel-item.active .delay-2 {
+    animation-delay: 0.6s;
+}
+
+.carousel-item.active .zoom-anim {
+    animation: zoomIn 10s linear forwards;
+}
+
+.card-text{
     text-align: center;
     font-weight: 600;
-  }
+}
 
-  @media screen and (max-width: 678px){
-    .card1{
-      margin:0 auto;
+@media screen and (max-width: 768px){
+    .carousel-heading {
+        font-size: 2rem;
     }
-    
-  }
+    .carousel-subheading {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+    .carousel-caption.custom-caption {
+        bottom: 10% !important;
+        left: 5% !important;
+        right: 5% !important;
+        width: 90%;
+        text-align: center !important;
+    }
+    .dark-img::before {
+        background: rgba(0, 0, 0, 0.6);
+    }
+    .card1{
+        margin:0 auto;
+    }
+}
 
   .button-78 {
     
@@ -190,7 +262,7 @@
 
   .carousel .dark-img img {
     width: 100%;
-    height: 500px; /* or any height you want */
+    height: 500px; /* restored original height */
     object-fit: cover;
   }
   .custom-btn {
@@ -247,66 +319,37 @@
   margin-top: 20px;
   flex-wrap: wrap;
 }
-/* Center content vertically & horizontally */
-.custom-caption {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  padding: 0 20px;
-}
-
-/* Headings */
-.carousel-heading {
-  font-size: 48px;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-.carousel-subheading {
-  font-size: 20px;
-  color: #ddd;
-  margin-bottom: 30px;
-}
-
-/* Button styling */
-.button-group {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
 
 .button-modern {
-  padding: 12px 30px;
+  padding: 12px 32px;
   font-size: 16px;
   font-weight: 500;
   color: #fff;
   background-color: transparent;
-  border: 2px solid #fff;
+  border: 2px solid rgba(255,255,255,0.8);
   border-radius: 30px;
   transition: all 0.3s ease;
   text-transform: uppercase;
   cursor: pointer;
+  letter-spacing: 1px;
 }
 
 .button-modern:hover {
   background-color: #fff;
-  color: #000;
+  color: #0a2540;
   border-color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
 /* Responsive tweaks */
 @media (max-width: 767px) {
   .carousel-heading {
-      font-size: 28px;
+      font-size: 28px !important;
   }
 
   .carousel-subheading {
-      font-size: 16px;
+      font-size: 16px !important;
   }
 
   .button-modern {
@@ -315,13 +358,6 @@
   }
 
   .button-group {
-      flex-direction: column;
       gap: 10px;
   }
 }
-.custom-caption {
-  background: rgba(0, 0, 0, 0.1); /* Optional dark overlay */
-  border-radius: 10px;
-  padding: 30px 20px;
-}
-
