@@ -271,12 +271,13 @@ export default function OurProjects() {
         maxWidth: "1280px",
         margin: "0 auto",
       }}>
-        {filteredProjects.map((p) => (
+        {filteredProjects.map((p, index) => (
           <div
             key={p.id}
             onMouseEnter={() => setHovered(p.id)}
             onMouseLeave={() => setHovered(null)}
             onClick={() => setActiveProject(p)}
+            className={`reveal reveal-up delay-${((index % 3) + 1) * 100}`}
             style={{
               position: "relative",
               overflow: "hidden",

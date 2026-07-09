@@ -71,7 +71,7 @@ const ServicePage = ({ bannerImage, mainImage, title, description, features }) =
       <div className="Get_touch">
         <div className="container-fluid px-4 my-4">
           <div className="row justify-content-center">
-            <div className="col-xl-10">
+            <div className="col-xl-10 reveal reveal-up">
               <div className="border-0 rounded-3 shadow-lg overflow-hidden">
                 <div className="card-body p-4">
                   <p style={{ textAlign:"left", fontSize: "25px", color: 'brown', fontWeight:'bold'}}>{title}</p>
@@ -93,7 +93,7 @@ const ServicePage = ({ bannerImage, mainImage, title, description, features }) =
       <div className="Get_touch">
         <div className="container-fluid px-4 my-4">
           <div className="row justify-content-center">
-            <div className="col-xl-10">
+            <div className="col-xl-10 reveal reveal-zoom">
               <div className="border-0 rounded-3 shadow-lg overflow-hidden">
                 <div className="card-body p-0">
                   <div className="row g-0">
