@@ -31,7 +31,7 @@ const Footer = () => {
                 className="footer-brand-logo" 
               />
               <p className="footer-brand-desc">
-                Most Innovative MEP Consultants & HVAC Contractors. Delivering energy-efficient cooling solutions, precise duct fabrication, and expert MEP installations with zero delays.
+                Most Innovative MEP Consultants & HVAC Contractors. Delivering energy-efficient cooling solutions, precise duct fabrication, and expert MEP installations across Baddi, Himachal Pradesh, Chandigarh, Mohali & Punjab.
               </p>
               <div className="footer-social-links">
                 <a href="https://facebook.com" target="_blank" rel="noreferrer" className="footer-social-icon" aria-label="Facebook">
@@ -81,12 +81,37 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* MEP Services Column */}
-          <div className="col-lg-3 col-md-6">
+          {/* MEP & Regional Location Links Column */}
+          <div className="col-lg-4 col-md-6">
             <div className="text-start">
-              <h5 className="footer-heading">MEP Services</h5>
+              <h5 className="footer-heading">Target Regions & Services</h5>
               <ul className="footer-links-list">
-                {services.slice(0, 5).map((service, index) => (
+                <li>
+                  <NavLink to="/locations/hvac-contractors-baddi-himachal" className="footer-link fw-semibold text-warning">
+                    <FaChevronRight style={{ fontSize: '10px' }} /> HVAC Contractors Baddi (HP)
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/locations/industrial-ducting-baddi" className="footer-link fw-semibold text-warning">
+                    <FaChevronRight style={{ fontSize: '10px' }} /> AC Ducting Baddi & Solan
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/locations/ahu-ventilation-system-baddi" className="footer-link fw-semibold text-warning">
+                    <FaChevronRight style={{ fontSize: '10px' }} /> AHU & Ventilation Baddi
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/locations/hvac-contractors-chandigarh-mohali" className="footer-link fw-semibold text-warning">
+                    <FaChevronRight style={{ fontSize: '10px' }} /> HVAC Chandigarh & Mohali
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/locations/industrial-hvac-mep-punjab" className="footer-link fw-semibold text-warning">
+                    <FaChevronRight style={{ fontSize: '10px' }} /> Industrial HVAC & MEP Punjab
+                  </NavLink>
+                </li>
+                {services.slice(0, 3).map((service, index) => (
                   <li key={index}>
                     <NavLink to={service.path} className="footer-link">
                       <FaChevronRight style={{ fontSize: '10px' }} /> {service.title}
@@ -144,7 +169,7 @@ const Footer = () => {
           <div className="col-12">
             <div className="footer-bottom">
               <div>
-                © {new Date().getFullYear()} CoolRite Engineers. All Rights Reserved.
+                © {new Date().getFullYear()} CoolRite Engineers. All Rights Reserved. Top Rated HVAC & MEP Contractors in Baddi, Himachal Pradesh, Chandigarh & Punjab.
               </div>
               <div className="footer-bottom-links">
                 <a href="https://CoolRiteEngineers.com/" className="footer-bottom-link">Privacy Policy</a>
