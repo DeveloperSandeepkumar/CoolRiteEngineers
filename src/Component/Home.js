@@ -16,9 +16,9 @@ import MepInfo from '../Component/Mep.js';
 import GetInTouch from '../Assets/GetInTouch.jpg';
 import HemantPic from '../Assets/hemant_gupta.png';
 import BasantPic from '../Assets/basant_gupta.png';
+import SEO from './SEO';
 import { FaPhoneAlt, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
-
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const teamMembers = [
   {
@@ -38,6 +38,39 @@ const teamMembers = [
     phone: "+918194839585",
     email: "coolriteengineers@gmail.com",
     bio: "Expert in project coordination, site execution management, and quality control. Committed to delivering seamless, energy-efficient, and timely HVAC installations."
+  }
+];
+
+const targetLocations = [
+  {
+    title: "Baddi & Nalagarh Industrial Belt (HP)",
+    slug: "/locations/hvac-contractors-baddi-himachal",
+    desc: "Specialized Pharma Cleanroom HVAC, GI & PI Sheet Ducting, double skin AHU units, and industrial ventilation in Baddi Phase 1, Phase 2, Barotiwala, & Nalagarh.",
+    tag: "Primary Industrial Focus"
+  },
+  {
+    title: "AC Ducting & Insulation Baddi",
+    slug: "/locations/industrial-ducting-baddi",
+    desc: "Precision rectangular & spiral duct fabrication, nitrile rubber insulation, acoustic lining, and air balancing for factories in Solan & Baddi.",
+    tag: "Factory Ducting Specialist"
+  },
+  {
+    title: "AHU & Cleanroom Ventilation Systems",
+    slug: "/locations/ahu-ventilation-system-baddi",
+    desc: "GMP & ISO class cleanroom air handling units, HEPA filtration setups, fresh air supply, and exhaust scrubbers across Himachal Pradesh.",
+    tag: "Pharma Grade Air Quality"
+  },
+  {
+    title: "Chandigarh, Mohali & Panchkula (Tricity)",
+    slug: "/locations/hvac-contractors-chandigarh-mohali",
+    desc: "Commercial VRV / VRF climate control, ductable split ACs, cassette units, and MEP engineering for corporate IT parks, hospitals, and showrooms.",
+    tag: "Commercial HVAC Leader"
+  },
+  {
+    title: "Industrial HVAC & Chiller Plants Punjab",
+    slug: "/locations/industrial-hvac-mep-punjab",
+    desc: "Statewide turnkey chiller plants, heavy-duty industrial exhaust, and MEP contracting across Ludhiana, Jalandhar, Amritsar, & Patiala.",
+    tag: "Statewide Execution"
   }
 ];
 
@@ -87,6 +120,13 @@ const Home = () => {
 
   return (
     <main>
+      <SEO 
+        title="CoolRite Engineers | Top HVAC & MEP Contractors in Baddi, Himachal & Punjab"
+        description="CoolRite Engineers (Cool Rite / Colrite) provides turnkey HVAC, AC ducting, AHU ventilation, chiller plants, and MEP engineering across Baddi (HP), Solan, Chandigarh, Mohali & Punjab."
+        keywords="HVAC contractors Baddi, industrial AC ducting Baddi, AHU ventilation system Baddi, MEP contractors Himachal Pradesh, HVAC Chandigarh Mohali, industrial HVAC Punjab"
+        canonicalUrl="https://www.coolriteengineers.com"
+      />
+
       {/* Carousel Section */}
       <section id="carouselExampleControls" className="carousel slide overlay" data-bs-ride="carousel">
         <div className="carousel-inner">
@@ -97,21 +137,21 @@ const Home = () => {
               <img 
                 src={CoolriteSlider} 
                 className="d-block w-100 zoom-anim" 
-                alt="CoolRite Engineers industrial HVAC services and central air conditioning installations by Colrite" 
+                alt="CoolRite Engineers industrial HVAC contractors and central air conditioning installations in Baddi Himachal Pradesh" 
               />
             </div>
 
             <div className="carousel-caption custom-caption">
               <h1 className="carousel-heading fade-up">CoolRite Engineers</h1>
-              <h5 className="carousel-subheading fade-up delay-1">High Performance MEP & HVAC Solutions For Industries</h5>
+              <h2 className="carousel-subheading fade-up delay-1 fs-4 text-white">#1 HVAC, AC Ducting & MEP Contractors in Baddi, Himachal & Punjab</h2>
 
-              <div className="button-group fade-up delay-2">
-                <button className="button-modern" onClick={() => navigate("/about")}>
-                  About Us
+              <div className="button-group fade-up delay-2 mt-3">
+                <button className="button-modern" onClick={() => navigate("/locations/hvac-contractors-baddi-himachal")}>
+                  Baddi HVAC Services
                 </button>
 
                 <button className="button-modern" onClick={() => navigate("/contactUs")}>
-                  Contact Us
+                  Contact Engineers
                 </button>
               </div>
             </div>
@@ -123,21 +163,21 @@ const Home = () => {
               <img 
                 src={CoolriteSlider2} 
                 className="d-block w-100 zoom-anim" 
-                alt="Professional AC ducting, air handling units, and chiller system installations by Cool Rite" 
+                alt="Professional industrial AC ducting, air handling units (AHU), and chiller system installations in Baddi and Chandigarh by CoolRite" 
               />
             </div>
 
             <div className="carousel-caption custom-caption">
-              <h1 className="carousel-heading fade-up">Premium HVAC Design</h1>
-              <h5 className="carousel-subheading fade-up delay-1">Accurate Air Balancing & Customized Duct Layouts</h5>
+              <h1 className="carousel-heading fade-up">Industrial HVAC & Ducting</h1>
+              <h2 className="carousel-subheading fade-up delay-1 fs-4 text-white">Pharma Cleanroom Ventilation & Precision GI/PI Sheet Duct Fabrication</h2>
 
-              <div className="button-group fade-up delay-2">
-                <button className="button-modern" onClick={() => navigate("/about")}>
-                  About Us
+              <div className="button-group fade-up delay-2 mt-3">
+                <button className="button-modern" onClick={() => navigate("/locations/industrial-ducting-baddi")}>
+                  Ducting Solutions
                 </button>
 
                 <button className="button-modern" onClick={() => navigate("/contactUs")}>
-                  Contact Us
+                  Get Quick Quote
                 </button>
               </div>
             </div>
@@ -149,17 +189,17 @@ const Home = () => {
               <img 
                 src={CoolriteSlider3} 
                 className="d-block w-100 zoom-anim" 
-                alt="Commercial ventilation, firefighting setups, and pipe insulation contracting work by Coolriteengineers" 
+                alt="Commercial ventilation, firefighting setups, and MEP engineering contracting across Punjab, Mohali & Baddi by CoolRite Engineers" 
               />
             </div>
 
             <div className="carousel-caption custom-caption">
-              <h1 className="carousel-heading font-weight-bold fade-up">Complete MEP Contracting</h1>
-              <h5 className="carousel-subheading fade-up delay-1">Consultancy With Zero Delays & High Efficiency BOQs</h5>
+              <h1 className="carousel-heading font-weight-bold fade-up">Turnkey MEP Contracting</h1>
+              <h2 className="carousel-subheading fade-up delay-1 fs-4 text-white">Mechanical, Electrical, Plumbing & Fire Safety Systems with Zero Delays</h2>
 
-              <div className="button-group fade-up delay-2">
-                <button className="button-modern" onClick={() => navigate("/about")}>
-                  About Us
+              <div className="button-group fade-up delay-2 mt-3">
+                <button className="button-modern" onClick={() => navigate("/locations/industrial-hvac-mep-punjab")}>
+                  Punjab MEP Projects
                 </button>
 
                 <button className="button-modern" onClick={() => navigate("/contactUs")}>
@@ -180,6 +220,36 @@ const Home = () => {
           <span className="carousel-control-next-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Next</span>
         </button>
+      </section>
+
+      {/* SEO Key Location Hub Section */}
+      <section className="py-5" style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
+        <div className="container">
+          <div className="text-center mb-5">
+            <span className="badge bg-primary text-white px-3 py-2 fs-6 mb-2">Regional HVAC Coverage</span>
+            <h2 className="fw-bold text-dark display-6">Target Service Hubs: Baddi, Himachal Pradesh & Punjab</h2>
+            <p className="text-muted fs-5 max-w-3xl mx-auto">
+              CoolRite Engineers specializes in high-efficiency industrial HVAC, pharma cleanrooms, GI sheet ducting, double-skin AHUs, and MEP consultancy across key regional industrial zones:
+            </p>
+          </div>
+
+          <div className="row g-4">
+            {targetLocations.map((loc, idx) => (
+              <div className="col-lg-4 col-md-6" key={idx}>
+                <div className="card h-100 border-0 shadow-sm p-4 hover-shadow transition-all" style={{ borderRadius: '12px', borderLeft: '4px solid var(--hvac-orange)' }}>
+                  <span className="badge bg-light text-primary border mb-3 w-fit-content px-3 py-1" style={{ width: 'fit-content' }}>
+                    {loc.tag}
+                  </span>
+                  <h3 className="h5 fw-bold text-dark mb-2">{loc.title}</h3>
+                  <p className="text-secondary small mb-4">{loc.desc}</p>
+                  <Link to={loc.slug} className="btn btn-outline-primary btn-sm fw-semibold mt-auto align-self-start">
+                    Explore {loc.title.split(' ')[0]} Hub &rarr;
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Info Section */}
@@ -276,16 +346,16 @@ const Home = () => {
                       <img 
                         src={GetInTouch} 
                         style={{ width: '100%', height: '520px', objectFit: 'cover' }} 
-                        alt="Get in touch with CoolRite Engineers for quick HVAC project proposals" 
+                        alt="Get in touch with CoolRite Engineers for quick HVAC project proposals in Baddi and Punjab" 
                       />
                     </div>
 
                     <div className="col-lg-6 p-4 p-md-5">
                       <div className="text-center text-lg-start mb-4">
                         <h3 className="fw-bold" style={{ color: 'var(--primary-navy)', fontFamily: 'Outfit, sans-serif' }}>
-                          Quick Enquiry
+                          Quick Enquiry & BOQ Estimate
                         </h3>
-                        <p className="text-muted">Fill out the form below to receive a response from our engineering consultants within 24 hours.</p>
+                        <p className="text-muted">Fill out the form below to receive a response from our HVAC engineering consultants within 24 hours.</p>
                       </div>
 
                       <form onSubmit={handleSubmit}>
@@ -377,7 +447,7 @@ const Home = () => {
         <img 
           src={ClientImg} 
           className="ClientReviwImg" 
-          alt="CoolRite Engineers industrial client site testing and commissioning overview" 
+          alt="CoolRite Engineers industrial client site testing and commissioning overview in Baddi Himachal" 
           style={{ objectFit: 'cover', maxHeight: '450px' }}
         />
       </section>

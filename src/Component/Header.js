@@ -11,6 +11,7 @@ import './Header.css'
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [dropdownOpenLocations, setDropdownOpenLocations] = useState(false)
   const [dropdownOpenOther, setDropdownOpenOther] = useState(false)
   const location = useLocation()
 
@@ -25,6 +26,11 @@ const Navbar = () => {
     setDropdownOpen(!dropdownOpen)
   }
 
+  const handleDropdownToggleLocations = (e) => {
+    e.preventDefault()
+    setDropdownOpenLocations(!dropdownOpenLocations)
+  }
+
   const handleDropdownToggleOther = (e) => {
     e.preventDefault()
     setDropdownOpenOther(!dropdownOpenOther)
@@ -32,7 +38,8 @@ const Navbar = () => {
 
   const closeNavbar = () => {
     setShowNavbar(false)
-    setDropdownOpen(false) 
+    setDropdownOpen(false)
+    setDropdownOpenLocations(false)
     setDropdownOpenOther(false)
     
     // Force CSS hover dropdowns to close temporarily on click
@@ -46,6 +53,7 @@ const Navbar = () => {
   useEffect(() => {
     setShowNavbar(false)
     setDropdownOpen(false)
+    setDropdownOpenLocations(false)
     setDropdownOpenOther(false)
   }, [location])
 
@@ -117,6 +125,40 @@ const Navbar = () => {
               <li><NavLink to="/" onClick={closeNavbar}>HOME</NavLink></li>
               <li><NavLink to="/About" onClick={closeNavbar}>ABOUT US</NavLink></li>
               
+              {/* Target Locations Dropdown for Strong SEO */}
+              <li>
+                <div className={`dropdown ${dropdownOpenLocations ? 'open' : ''} ${forceClose ? 'force-close' : ''}`}>
+                  <NavLink to="#" onClick={handleDropdownToggleLocations}>LOCATIONS</NavLink>
+                  <ul className={`dropdown-content ${dropdownOpenLocations ? 'show-mobile' : ''}`}>
+                    <li>
+                      <NavLink to="/locations/hvac-contractors-baddi-himachal" onClick={closeNavbar}>
+                        HVAC Baddi (Himachal)
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/locations/industrial-ducting-baddi" onClick={closeNavbar}>
+                        AC Ducting Baddi & Solan
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/locations/ahu-ventilation-system-baddi" onClick={closeNavbar}>
+                        AHU & Ventilation Baddi
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/locations/hvac-contractors-chandigarh-mohali" onClick={closeNavbar}>
+                        Chandigarh & Mohali
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/locations/industrial-hvac-mep-punjab" onClick={closeNavbar}>
+                        Industrial HVAC Punjab
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
               {/* MEP Services Dropdown */}
               <li>
                 <div className={`dropdown ${dropdownOpen ? 'open' : ''} ${forceClose ? 'force-close' : ''}`}>
@@ -149,15 +191,6 @@ const Navbar = () => {
                     </li>
                     <li>
                       <NavLink to="/" onClick={closeNavbar}>Our Clients</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/CoolRiteEngineer_3D" onClick={closeNavbar}>Design V1</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/CoolRiteEngineer_v5" onClick={closeNavbar}>Design V2</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/CoolriteMeasurement" onClick={closeNavbar}>Design V3</NavLink>
                     </li>
                   </ul>
                 </div>
