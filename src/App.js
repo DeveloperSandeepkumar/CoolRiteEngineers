@@ -74,8 +74,34 @@ const App = () => {
             <Route path="/locations/hvac-contractors-chandigarh-mohali" element={<LocationPage locationId="hvac-contractors-chandigarh-mohali" />} />
             <Route path="/locations/industrial-hvac-mep-punjab" element={<LocationPage locationId="industrial-hvac-mep-punjab" />} />
 
-            {/* Direct Location URL Aliases */}
+            {/* NEW: Vendor / Supplier / Company keyword routes for Baddi searches */}
+            <Route path="/locations/hvac-vendor-baddi-himachal" element={<LocationPage locationId="hvac-vendor-baddi-himachal" />} />
+            <Route path="/locations/hvac-supplier-baddi-himachal" element={<LocationPage locationId="hvac-supplier-baddi-himachal" />} />
+            <Route path="/locations/hvac-company-baddi-himachal" element={<LocationPage locationId="hvac-company-baddi-himachal" />} />
+
+            {/* Direct URL Aliases for top Google ranking */}
             <Route path="/hvac-contractors-baddi-himachal" element={<LocationPage locationId="hvac-contractors-baddi-himachal" />} />
+            <Route path="/hvac-vendor-baddi" element={<LocationPage locationId="hvac-vendor-baddi-himachal" />} />
+            <Route path="/hvac-supplier-baddi" element={<LocationPage locationId="hvac-supplier-baddi-himachal" />} />
+            <Route path="/hvac-company-baddi" element={<LocationPage locationId="hvac-company-baddi-himachal" />} />
+
+            {/* NEW: Chandigarh / Mohali / Panchkula Tricity Routes */}
+            <Route path="/locations/hvac-contractor-chandigarh" element={<LocationPage locationId="hvac-contractor-chandigarh" />} />
+            <Route path="/locations/hvac-vendor-chandigarh" element={<LocationPage locationId="hvac-vendor-chandigarh" />} />
+            <Route path="/locations/ac-ducting-services-mohali" element={<LocationPage locationId="ac-ducting-services-mohali" />} />
+            <Route path="/locations/mep-contractor-chandigarh-mohali" element={<LocationPage locationId="mep-contractor-chandigarh-mohali" />} />
+            {/* Tricity short aliases */}
+            <Route path="/hvac-chandigarh" element={<LocationPage locationId="hvac-contractor-chandigarh" />} />
+            <Route path="/hvac-mohali" element={<LocationPage locationId="hvac-vendor-chandigarh" />} />
+            <Route path="/ac-ducting-mohali" element={<LocationPage locationId="ac-ducting-services-mohali" />} />
+            <Route path="/mep-chandigarh" element={<LocationPage locationId="mep-contractor-chandigarh-mohali" />} />
+
+            {/* NEW: Punjab Statewide Routes */}
+            <Route path="/locations/hvac-contractor-punjab" element={<LocationPage locationId="hvac-contractor-punjab" />} />
+            <Route path="/locations/hvac-vendor-punjab" element={<LocationPage locationId="hvac-vendor-punjab" />} />
+            {/* Punjab short aliases */}
+            <Route path="/hvac-contractor-punjab" element={<LocationPage locationId="hvac-contractor-punjab" />} />
+            <Route path="/hvac-vendor-punjab" element={<LocationPage locationId="hvac-vendor-punjab" />} />
 
             <Route path="/ProposalFormWithMap" element={<ProposalFormWithMap />} />
             <Route path="/VendorRegistrationForm" element={<VendorRegistrationForm />} />

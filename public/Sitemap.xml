@@ -35,36 +35,96 @@
   <!-- Priority Location Pages -->
   <url>
     <loc>https://www.coolriteengineers.com/locations/hvac-contractors-baddi-himachal</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.coolriteengineers.com/locations/industrial-ducting-baddi</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.coolriteengineers.com/locations/ahu-ventilation-system-baddi</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.coolriteengineers.com/locations/hvac-contractors-chandigarh-mohali</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://www.coolriteengineers.com/locations/industrial-hvac-mep-punjab</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
+  <!-- NEW: HVAC Vendor / Supplier / Company Baddi keyword pages -->
+  <url>
+    <loc>https://www.coolriteengineers.com/locations/hvac-vendor-baddi-himachal</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.coolriteengineers.com/locations/hvac-supplier-baddi-himachal</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.coolriteengineers.com/locations/hvac-company-baddi-himachal</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <!-- NEW: Chandigarh / Mohali / Panchkula Tricity Location Pages -->
+  <url>
+    <loc>https://www.coolriteengineers.com/locations/hvac-contractor-chandigarh</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.coolriteengineers.com/locations/hvac-vendor-chandigarh</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.coolriteengineers.com/locations/ac-ducting-services-mohali</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.coolriteengineers.com/locations/mep-contractor-chandigarh-mohali</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- NEW: Punjab Statewide Location Pages -->
+  <url>
+    <loc>https://www.coolriteengineers.com/locations/hvac-contractor-punjab</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+  </url>
+  <url>
+    <loc>https://www.coolriteengineers.com/locations/hvac-vendor-punjab</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+  </url>
+
   <!-- Service Pages -->
+
   <url>
     <loc>https://www.coolriteengineers.com/ac-installation</loc>
     <lastmod>2026-08-10</lastmod>
