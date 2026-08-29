@@ -1,0 +1,190 @@
+/* LocationPage.css - Fully Responsive & Professional Design */
+
+.location-page-wrapper {
+  overflow-x: hidden;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Hero Section */
+.location-hero {
+  background: linear-gradient(135deg, #0A2540 0%, #13395E 60%, #0c233c 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0 50px 0;
+}
+
+.location-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(242, 171, 38, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.location-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(242, 171, 38, 0.18);
+  border: 1px solid rgba(242, 171, 38, 0.4);
+  color: #f2ab26;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+}
+
+.location-hero-title {
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+}
+
+.location-hero-subtitle {
+  font-size: clamp(0.98rem, 1.8vw, 1.15rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.location-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.location-cta-group .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.location-cta-group .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.location-survey-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-top: 4px solid #f2ab26;
+}
+
+/* Why Choose Section */
+.location-feature-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 22px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+  height: 100%;
+}
+
+.location-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(10, 37, 64, 0.1);
+  border-color: #cbd5e1;
+}
+
+/* Sector & Services Section */
+.location-sectors-box {
+  background: #0A2540;
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 10px 25px rgba(10, 37, 64, 0.15);
+}
+
+.location-sector-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.95rem;
+}
+
+.location-sector-item:last-child {
+  border-bottom: none;
+}
+
+.location-service-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 18px 20px;
+  transition: all 0.2s ease;
+}
+
+.location-service-card:hover {
+  background: #ffffff;
+  border-color: #f2ab26;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* FAQs */
+.location-faq-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
+
+.location-faq-card:hover {
+  border-color: #94a3b8;
+}
+
+/* Mobile & Tablet Responsive Media Queries */
+@media (max-width: 991px) {
+  .location-hero {
+    padding: 40px 0;
+    text-align: left;
+  }
+  
+  .location-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .location-cta-group .btn {
+    width: 100%;
+  }
+
+  .location-sectors-box {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .location-hero {
+    padding: 30px 12px;
+  }
+
+  .location-hero-badge {
+    font-size: 0.8rem;
+    padding: 4px 12px;
+  }
+
+  .location-feature-card {
+    padding: 16px;
+  }
+
+  .location-sectors-box {
+    padding: 20px 16px;
+  }
+}

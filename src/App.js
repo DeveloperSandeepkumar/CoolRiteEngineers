@@ -19,6 +19,7 @@ import Project from "./Component/Project";
 import Career from './Component/Career';
 import LocationPage from './Component/LocationPage';
 import SEO from './Component/SEO';
+import AppDownloadPopup from './Component/AppDownloadPopup';
 
 const App = () => {
   return (
@@ -112,6 +113,7 @@ const App = () => {
           <Footer />
           <ContactButtons />
           <ScrollTOP />
+          <AppDownloadPopup />
         </BrowserRouter>
       </div>
     </HelmetProvider>

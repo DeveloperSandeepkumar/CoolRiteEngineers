@@ -1,25 +1,24 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "CoolRite App",
+  "name": "CoolRite Engineers - HVAC & MEP Services",
+  "description": "Official CoolRite Engineers app for HVAC, AC Ducting, AHU, and MEP engineering contracting services in Baddi, Himachal Pradesh, Chandigarh, Mohali, and Punjab.",
   "icons": [
+    {
+      "src": "MainLogo.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait",
+  "theme_color": "#0A2540",
+  "background_color": "#0A2540",
+  "categories": ["business", "productivity", "utilities"]
 }
