@@ -17,7 +17,7 @@ const LocationPage = ({ locationId: propLocationId }) => {
     "name": `CoolRite Engineers - ${data.cityName}`,
     "description": data.metaDescription,
     "url": `https://www.coolriteengineers.com/locations/${data.slug}`,
-    "telephone": "+91-9882200000",
+    "telephone": "+91-7009167480",
     "areaServed": data.cityName,
     "address": {
       "@type": "PostalAddress",
@@ -52,10 +52,10 @@ const LocationPage = ({ locationId: propLocationId }) => {
                 <a href="#quote-form" className="btn btn-warning btn-lg fw-semibold shadow-sm">
                   Request Commercial Quote
                 </a>
-                <a href="tel:+919882200000" className="btn btn-outline-light btn-lg fw-semibold">
+                <a href="tel:+917009167480" className="btn btn-outline-light btn-lg fw-semibold">
                   <FaPhoneAlt className="me-2" /> Call Engineer
                 </a>
-                <a href="https://wa.me/919882200000" target="_blank" rel="noopener noreferrer" className="btn btn-success btn-lg fw-semibold">
+                <a href="https://wa.me/917009167480" target="_blank" rel="noopener noreferrer" className="btn btn-success btn-lg fw-semibold">
                   <FaWhatsapp className="me-2" /> WhatsApp Inquiry
                 </a>
               </div>

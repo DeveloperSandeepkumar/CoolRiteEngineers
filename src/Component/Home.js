@@ -35,7 +35,7 @@ const teamMembers = [
     role: "Director",
     initials: "BKG",
     photo: BasantPic,
-    phone: "+918194839585",
+    phone: "+917973418255",
     email: "coolriteengineers@gmail.com",
     bio: "Expert in project coordination, site execution management, and quality control. Committed to delivering seamless, energy-efficient, and timely HVAC installations."
   }

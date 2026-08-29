@@ -123,7 +123,7 @@ const ContactUs = () => {
             <div className="mb-4">
               <strong className="d-block text-uppercase small text-muted mb-1">📞 Phone Support</strong>
               <p className="mb-1"><a href="tel:+917009167480" className="text-decoration-none fw-bold" style={{ color: "var(--primary-navy)" }}>+91-7009167480</a></p>
-              <p className="mb-0"><a href="tel:+918194839585" className="text-decoration-none fw-bold" style={{ color: "var(--primary-navy)" }}>+91-8194839585</a></p>
+              <p className="mb-0"><a href="tel:+917973418255" className="text-decoration-none fw-bold" style={{ color: "var(--primary-navy)" }}>+91-7973418255</a></p>
             </div>
 
             <div className="mb-4">
@@ -134,7 +134,7 @@ const ContactUs = () => {
             <div className="mb-4">
               <strong className="d-block text-uppercase small text-muted mb-1">🏢 Registered Head Office</strong>
               <p className="text-muted" style={{ lineHeight: "1.6" }}>
-                SCO NO - 03 Village Malpur Upperla, Near Cipla Ltd., P.O Bhud, Teh Baddi, Distt Solan, Himachal Pradesh - 173205
+                SCO NO - 03 Village Malpur Upperla, Near Cipla Ltd., P.O Bhud, Baddi, Distt Solan, HP - 173205
               </p>
             </div>
 

@@ -17,7 +17,7 @@ const SEO = ({
     "alternateName": ["Cool Rite Engineers", "Colrite Engineers"],
     "image": "https://www.coolriteengineers.com/MainLogo.png",
     "url": "https://www.coolriteengineers.com",
-    "telephone": "+91-9882200000",
+    "telephone": "+91-7009167480",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
