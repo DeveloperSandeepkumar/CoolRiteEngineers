@@ -1,79 +1,28 @@
 // productsData.js - Comprehensive Industrial Products Catalog for CoolRite Engineers
 
-// 1. Mechanical / HVAC Images
-import ahuImg from "../Assets/products/ahu-components.jpg";
-import ductingImg from "../Assets/products/hvac-ducting-fittings.jpg";
-import dampersImg from "../Assets/products/dampers.jpg";
-import louversImg from "../Assets/products/louvers.jpg";
-import diffusersImg from "../Assets/products/diffusers-grilles.jpg";
-import filtersImg from "../Assets/products/filters-housings.jpg";
-import ventilationFansImg from "../Assets/products/ventilation-fans.jpg";
-import acousticImg from "../Assets/products/acoustic-products.jpg";
-import cleanroomImg from "../Assets/products/cleanroom-products.jpg";
-import insulationImg from "../Assets/products/insulation-accessories.jpg";
-import supportsImg from "../Assets/products/supports-brackets.jpg";
+// Genuine CoolRite Engineers Workshop & Manufacturing Photography
+import mainImg from "../Assets/GI_DUCT_Manufacturing_Products.jpg";
+import mainImg2 from "../Assets/GI_DUCT_Manufacturing_Products2.jpg";
+import circularDuct from "../Assets/Circular G.I Duct.png";
+import rectDuct from "../Assets/Rectangular G.I Duct.png";
+import soundProof from "../Assets/Sound Proof Insulation.jpg";
+import steamBoiler from "../Assets/Steam Boiler Insulation Work.png";
+import steamPipe from "../Assets/Steam Pipe Insulation.png";
+import armaflex from "../Assets/Armaflex Cold Insulation Work.jpg";
+import coldPipe from "../Assets/Cold Pipe Insulation.png";
+import kitchenHood from "../Assets/kitchenhood-manufacturing-trading-dubai.jpg";
 
-// 2. Electrical Images
-import elecEnclosuresImg from "../Assets/products/electrical-enclosures.jpg";
-import junctionBoxesImg from "../Assets/products/junction-boxes.jpg";
-import controlBoxesImg from "../Assets/products/control-boxes.jpg";
-import panelBoxesImg from "../Assets/products/panel-boxes.jpg";
-import meterBoxesImg from "../Assets/products/meter-boxes.jpg";
-import cableTraysImg from "../Assets/products/cable-trays.jpg";
-import cableTrayFittingsImg from "../Assets/products/cable-tray-fittings.jpg";
-import mountingPlatesImg from "../Assets/products/mounting-plates.jpg";
-import dbEnclosuresImg from "../Assets/products/db-enclosures.jpg";
-import instrumentBoxesImg from "../Assets/products/instrument-boxes.jpg";
-import machineHousingsImg from "../Assets/products/machine-housings.jpg";
-import customElecImg from "../Assets/products/custom-electrical-parts.jpg";
-
-// 3. Plumbing / MEP Images
-import pipeSupportsImg from "../Assets/products/pipe-supports.jpg";
-import pipeClampsImg from "../Assets/products/pipe-clamps.jpg";
-import plumbingBracketsImg from "../Assets/products/plumbing-brackets.jpg";
-import pipeHangersImg from "../Assets/products/pipe-hangers.jpg";
-import pipeSleevesImg from "../Assets/products/pipe-sleeves.jpg";
-import coverPlatesImg from "../Assets/products/cover-plates.jpg";
-import accessPanelsImg from "../Assets/products/access-panels.jpg";
-import drainCoversImg from "../Assets/products/drain-covers.jpg";
-import customPlumbImg from "../Assets/products/custom-plumbing-supports.jpg";
-
-// 4. Fire Fighting Images
-import fireHangersImg from "../Assets/products/fire-pipe-hangers.jpg";
-import fireBracketsImg from "../Assets/products/fire-brackets.jpg";
-import firePlatesImg from "../Assets/products/fire-equipment-plates.jpg";
-import fireEnclosuresImg from "../Assets/products/fire-enclosures.jpg";
-import fireAccessImg from "../Assets/products/fire-access-panels.jpg";
-import customFireImg from "../Assets/products/custom-fire-components.jpg";
-
-// 5. CNC Laser Cutting (MEP Expanded Images)
-import laserMsImg from "../Assets/products/laser-ms-cutting.jpg";
-import laserGiImg from "../Assets/products/laser-gi-cutting.jpg";
-import laserSsImg from "../Assets/products/laser-ss-cutting.jpg";
-import laserAlImg from "../Assets/products/laser-aluminium-cutting.jpg";
-import laserFlangesImg from "../Assets/products/laser-duct-flanges.jpg";
-import laserPipeShoesImg from "../Assets/products/laser-pipe-shoes.jpg";
-import laserDamperBladesImg from "../Assets/products/laser-damper-blades.jpg";
-import laserStrutImg from "../Assets/products/laser-strut-fittings.jpg";
-import laserPanelsImg from "../Assets/products/laser-perforated-panels.jpg";
-import laserGuardsImg from "../Assets/products/laser-machine-guards.jpg";
-import laserBasesImg from "../Assets/products/laser-motor-bases.jpg";
-import laserDrainGratesImg from "../Assets/products/laser-drain-grates.jpg";
-import laserSeismicImg from "../Assets/products/laser-seismic-braces.jpg";
-import laserBatchImg from "../Assets/products/laser-batch-production.jpg";
-
-// 6. Sheet Metal Manufacturing Images
-import sheetBoxesImg from "../Assets/products/sheet-boxes.jpg";
-import sheetCabinetsImg from "../Assets/products/sheet-cabinets.jpg";
-import sheetCoversImg from "../Assets/products/sheet-covers.jpg";
-import sheetGuardsImg from "../Assets/products/sheet-guards.jpg";
-import sheetBracketsImg from "../Assets/products/sheet-brackets.jpg";
-import sheetFramesImg from "../Assets/products/sheet-frames.jpg";
-import sheetPanelsImg from "../Assets/products/sheet-panels.jpg";
-import sheetDripTraysImg from "../Assets/products/sheet-drip-trays.jpg";
-import sheetBlowersImg from "../Assets/products/sheet-blower-housings.jpg";
-import sheetChutesImg from "../Assets/products/sheet-chutes-hoppers.jpg";
-import sheetCustomImg from "../Assets/products/sheet-custom-products.jpg";
+import as2 from "../Assets/as2.jpg";
+import as3 from "../Assets/as3.jpg";
+import as4 from "../Assets/as4.jpg";
+import as5 from "../Assets/as5.jpg";
+import as6 from "../Assets/as6.jpg";
+import as7 from "../Assets/as7.jpg";
+import as8 from "../Assets/as8.jpg";
+import as9 from "../Assets/as9.jpg";
+import as10 from "../Assets/as10.jpg";
+import as11 from "../Assets/as11.jpg";
+import as12 from "../Assets/as12.jpg";
 
 export const productCategories = [
   { id: "all", name: "All Products", icon: "FaThLarge" },
@@ -95,7 +44,7 @@ export const allProducts = [
     categoryName: "Mechanical / HVAC",
     name: "AHU Components",
     shortDesc: "Double skin Air Handling Unit panels, blower sections, cooling coils, and condensate drain pans.",
-    image: ahuImg,
+    image: as6,
     material: "Aluzinc / GI / SS 304",
     thickness: "0.8mm to 2.0mm",
     finish: "Powder Coated / Mill Finish",
@@ -114,7 +63,7 @@ export const allProducts = [
     categoryName: "Mechanical / HVAC",
     name: "HVAC Ducting & Fittings",
     shortDesc: "Rectangular, round & spiral galvanised iron (GI) ducting, transitions, plenums & elbows.",
-    image: ductingImg,
+    image: mainImg,
     material: "Galvanised Iron (GI) / Pre-Insulated (PI)",
     thickness: "24G, 22G, 20G, 18G, 16G (0.6mm - 1.6mm)",
     finish: "Zinc Coated 120-275 GSM",
@@ -131,9 +80,47 @@ export const allProducts = [
     id: "hvac-3",
     category: "hvac",
     categoryName: "Mechanical / HVAC",
+    name: "Spiral & Circular GI Ducts",
+    shortDesc: "Spiral wound round galvanised ducts, conical take-offs, and companion angle flanges.",
+    image: circularDuct,
+    material: "Galvanized Steel Lock-Seam",
+    thickness: "26G to 18G (0.5mm to 1.2mm)",
+    finish: "Pre-Galvanized Zinc 120-275 GSM",
+    applications: "Industrial exhaust, clean air distribution, exposed architectural HVAC",
+    standards: "SMACNA Round Duct Construction",
+    features: [
+      "High rigidity 4-ply spiral lock seam with zero sagging",
+      "Low air friction loss reducing fan power consumption",
+      "Factory fitted EPDM rubber gasket slide-in joints",
+      "Aesthetic exposed ceiling modern appearance"
+    ]
+  },
+  {
+    id: "hvac-4",
+    category: "hvac",
+    categoryName: "Mechanical / HVAC",
+    name: "Rectangular GI Air Ducts",
+    shortDesc: "Precision formed rectangular air ducts with integrated TDF/TDC flange joints and cross beading.",
+    image: rectDuct,
+    material: "Prime Galvanised Iron (GI)",
+    thickness: "24G, 22G, 20G, 18G, 16G",
+    finish: "Zinc Coated Hot Dip / Pre-Galvanized",
+    applications: "Central air conditioning, basement ventilation, hospital HVAC",
+    standards: "IS 655 / SMACNA Low & High Pressure",
+    features: [
+      "Automated auto-duct-line fabricated with precision L-sections",
+      "Reinforced internal tie-rods for static pressure up to 2000 Pa",
+      "Corner gasket seal preventing perimeter air leakage",
+      "Supplied in standard 4-foot segments ready for bolt-up"
+    ]
+  },
+  {
+    id: "hvac-5",
+    category: "hvac",
+    categoryName: "Mechanical / HVAC",
     name: "Dampers (Volume Control & Fire)",
     shortDesc: "Volume control dampers (VCD), motorized fire & smoke dampers, gravity louvers & non-return dampers.",
-    image: dampersImg,
+    image: as4,
     material: "GI Sheet / Aluminium / Stainless Steel",
     thickness: "1.0mm to 1.6mm extruded/formed",
     finish: "Galvanized / Anodized / Powder Coated",
@@ -147,12 +134,12 @@ export const allProducts = [
     ]
   },
   {
-    id: "hvac-4",
+    id: "hvac-6",
     category: "hvac",
     categoryName: "Mechanical / HVAC",
     name: "Louvers (Weather & Acoustic)",
     shortDesc: "Weather louvers, acoustic louvers, sand trap louvers & architectural intake/exhaust louvers.",
-    image: louversImg,
+    image: as7,
     material: "Extruded Aluminium / GI Sheet / SS 304",
     thickness: "1.2mm to 2.5mm",
     finish: "Powder Coated (RAL colors) / Anodized",
@@ -166,12 +153,12 @@ export const allProducts = [
     ]
   },
   {
-    id: "hvac-5",
+    id: "hvac-7",
     category: "hvac",
     categoryName: "Mechanical / HVAC",
     name: "Diffusers & Grilles",
     shortDesc: "Linear slot diffusers, round ceiling diffusers, double deflection supply & return grilles, jet nozzles.",
-    image: diffusersImg,
+    image: as2,
     material: "Extruded Aluminium / Mild Steel",
     thickness: "1.0mm to 1.5mm",
     finish: "Pure White Powder Coated (RAL 9010 / 9016)",
@@ -185,12 +172,12 @@ export const allProducts = [
     ]
   },
   {
-    id: "hvac-6",
+    id: "hvac-8",
     category: "hvac",
     categoryName: "Mechanical / HVAC",
     name: "Filters & Filter Housings",
     shortDesc: "Pre-filters G4, Microvee F7/F9, HEPA filters H13/H14 & Bag-In-Bag-Out (BIBO) housings.",
-    image: filtersImg,
+    image: as5,
     material: "GI / Stainless Steel 304 / 316L",
     thickness: "1.2mm to 2.0mm",
     finish: "Electro-polished / Powder Coated",
@@ -204,31 +191,31 @@ export const allProducts = [
     ]
   },
   {
-    id: "hvac-7",
+    id: "hvac-9",
     category: "hvac",
     categoryName: "Mechanical / HVAC",
-    name: "Fan / Ventilation Components",
-    shortDesc: "Centrifugal blower housings, axial fan casings, inline duct fans & industrial exhaust hoods.",
-    image: ventilationFansImg,
-    material: "Mild Steel / Galvanised Steel / SS 304",
-    thickness: "1.6mm to 4.0mm",
-    finish: "Epoxy Coated / Hot Dip Galvanized",
+    name: "Fan / Ventilation Components & Kitchen Hoods",
+    shortDesc: "Centrifugal blower housings, axial fan casings, inline duct fans & stainless steel commercial exhaust hoods.",
+    image: kitchenHood,
+    material: "Stainless Steel 304 / Galvanised Steel / MS",
+    thickness: "1.2mm to 4.0mm",
+    finish: "Satin 240 Grit / Epoxy Coated",
     applications: "Industrial fumes, kitchen ventilation, factory exhaust",
     standards: "AMCA 210 / IS 4894 Blower Standards",
     features: [
+      "Stainless steel baffle grease filters with drain trough",
       "Dynamically balanced aerofoil and backward curved impellers",
-      "Vibration isolator spring mounts & flexible duct connectors",
       "Heavy gauge scroll casing with inspection clean-out doors",
       "High temperature smoke extraction ratings (300°C for 2 hrs)"
     ]
   },
   {
-    id: "hvac-8",
+    id: "hvac-10",
     category: "hvac",
     categoryName: "Mechanical / HVAC",
     name: "Acoustic Products (Silencers & Attenuators)",
     shortDesc: "Rectangular & circular duct silencers, sound attenuators, acoustic panels & chiller enclosures.",
-    image: acousticImg,
+    image: soundProof,
     material: "Perforated GI Sheet / Acoustic Rockwool",
     thickness: "0.8mm to 1.5mm casing with 50-100mm infill",
     finish: "Zinc Coated / Powder Coated",
@@ -242,12 +229,12 @@ export const allProducts = [
     ]
   },
   {
-    id: "hvac-9",
+    id: "hvac-11",
     category: "hvac",
     categoryName: "Mechanical / HVAC",
     name: "Cleanroom Products (Pass Boxes & LAF)",
     shortDesc: "Dynamic/Static Pass Boxes, Laminar Air Flow (LAF) hoods, sterile garment cabinets & cleanroom plenums.",
-    image: cleanroomImg,
+    image: as12,
     material: "Stainless Steel 304 / 316L (Mirror/Matt Finish)",
     thickness: "1.2mm to 1.5mm",
     finish: "Satin 240 Grit / Mirror Finish",
@@ -261,12 +248,12 @@ export const allProducts = [
     ]
   },
   {
-    id: "hvac-10",
+    id: "hvac-12",
     category: "hvac",
     categoryName: "Mechanical / HVAC",
-    name: "Insulation Accessories",
+    name: "Thermal Insulation & Cladding Work",
     shortDesc: "Nitrile rubber sheets, XLPE foam, fiberglass tissue, aluminum cladding sheets & vapor barrier tapes.",
-    image: insulationImg,
+    image: armaflex,
     material: "Closed-cell Elastomeric / XLPE / Aluminum 26G",
     thickness: "6mm, 9mm, 13mm, 19mm, 25mm, 32mm, 50mm",
     finish: "Class 0 / Class 1 Fire Retardant",
@@ -279,25 +266,6 @@ export const allProducts = [
       "Self-adhesive high bond insulation backing"
     ]
   },
-  {
-    id: "hvac-11",
-    category: "hvac",
-    categoryName: "Mechanical / HVAC",
-    name: "Supports, Brackets & Accessories",
-    shortDesc: "Unistrut channels, threaded rod hangers, clevis hangers, beam clamps & vibration damping isolators.",
-    image: supportsImg,
-    material: "Mild Steel / Galvanised Steel / SS 304",
-    thickness: "2.0mm to 5.0mm (heavy gauge)",
-    finish: "Hot Dip Galvanized / Zinc Electroplated",
-    applications: "Duct suspension, piping routes, AHU ceiling suspensions",
-    standards: "MSS SP-58 / SMACNA Seismic Restraints",
-    features: [
-      "Heavy load bearing capacity with high safety factor",
-      "Continuous slotted C-channel profiles for flexible alignment",
-      "Anti-vibration rubber gaskets for acoustic decoupling",
-      "Anti-corrosive zinc plating for 15+ years service life"
-    ]
-  },
 
   /* ═══════════════════════════════════════════════════════════════
    * 2. ELECTRICAL
@@ -308,7 +276,7 @@ export const allProducts = [
     categoryName: "Electrical",
     name: "Electrical Enclosures (IP65/IP66)",
     shortDesc: "IP55/IP65/IP66 sheet metal wall mounting and floor standing electrical enclosures.",
-    image: elecEnclosuresImg,
+    image: as3,
     material: "CRCA Mild Steel / GI / SS 304",
     thickness: "1.2mm, 1.6mm, 2.0mm",
     finish: "Thermoset Epoxy Polyester Powder Coated (RAL 7035)",
@@ -327,7 +295,7 @@ export const allProducts = [
     categoryName: "Electrical",
     name: "Junction Boxes",
     shortDesc: "Custom fabricated terminal junction boxes with pre-punched knockouts and sealing gaskets.",
-    image: junctionBoxesImg,
+    image: as10,
     material: "CRCA Sheet Steel / SS 304 / Aluminium",
     thickness: "1.2mm to 1.6mm",
     finish: "Powder Coated / Brushed Stainless",
@@ -346,7 +314,7 @@ export const allProducts = [
     categoryName: "Electrical",
     name: "Control Boxes & Desks",
     shortDesc: "PLC control desks, automation consoles, push button stations & mimic operator panels.",
-    image: controlBoxesImg,
+    image: as9,
     material: "CRCA Sheet / SS 304",
     thickness: "1.6mm to 2.5mm",
     finish: "Two-Tone Powder Coated / Industrial Texture",
@@ -365,7 +333,7 @@ export const allProducts = [
     categoryName: "Electrical",
     name: "Panel Boxes & LT Distribution Boards",
     shortDesc: "Main LT distribution panel enclosures, motor control center (MCC) & power control center (PCC) boxes.",
-    image: panelBoxesImg,
+    image: as11,
     material: "CRCA / High Tensile Steel",
     thickness: "1.6mm, 2.0mm, 2.5mm",
     finish: "7-Tank Pre-treated Powder Coated (RAL 7032 / 7035)",
@@ -384,7 +352,7 @@ export const allProducts = [
     categoryName: "Electrical",
     name: "Meter Boxes",
     shortDesc: "Single phase and 3-phase digital energy meter boxes, multi-metering cabinets with transparent viewing windows.",
-    image: meterBoxesImg,
+    image: as5,
     material: "CRCA Sheet / Polycarbonate Viewing Window",
     thickness: "1.2mm to 1.6mm",
     finish: "Weatherproof Outdoor Powder Coated",
@@ -403,7 +371,7 @@ export const allProducts = [
     categoryName: "Electrical",
     name: "Cable Trays (Perforated & Ladder)",
     shortDesc: "Heavy-duty perforated, ladder type, and wire mesh cable management trays.",
-    image: cableTraysImg,
+    image: as8,
     material: "Galvanised Iron / Mild Steel / SS 304 / Aluminium",
     thickness: "1.2mm, 1.5mm, 2.0mm, 2.5mm, 3.0mm",
     finish: "Pre-Galvanized / Hot Dip Galvanized (BS EN ISO 1461) / Powder Coated",
@@ -422,7 +390,7 @@ export const allProducts = [
     categoryName: "Electrical",
     name: "Cable Tray Fittings",
     shortDesc: "Horizontal 90° bends, vertical inside/outside risers, tees, crosses, reducers & coupler plates.",
-    image: cableTrayFittingsImg,
+    image: as4,
     material: "Pre-Galvanised / Hot Dip Galvanised Steel",
     thickness: "1.2mm to 2.5mm",
     finish: "Hot Dip Galvanised / Zinc Plated",
@@ -441,7 +409,7 @@ export const allProducts = [
     categoryName: "Electrical",
     name: "Mounting Plates & Sub-Panels",
     shortDesc: "Galvanized and powder-coated gear trays, internal partition barriers, and DIN rail mounting plates.",
-    image: mountingPlatesImg,
+    image: as2,
     material: "Galvanised Steel / CRCA Steel",
     thickness: "1.5mm, 2.0mm, 2.5mm, 3.0mm",
     finish: "Electro-Galvanized (Yellow/White Passivation)",
@@ -460,7 +428,7 @@ export const allProducts = [
     categoryName: "Electrical",
     name: "DB / Panel Enclosures",
     shortDesc: "Modular distribution boards, consumer units, and outdoor feeder pillars.",
-    image: dbEnclosuresImg,
+    image: as3,
     material: "CRCA Sheet Steel",
     thickness: "1.2mm to 1.6mm",
     finish: "Powder Coated Off-White / Light Grey",
@@ -479,7 +447,7 @@ export const allProducts = [
     categoryName: "Electrical",
     name: "Instrument Boxes",
     shortDesc: "Protective sheet metal enclosures for pressure transmitters, flow meters, sensors, and recorders.",
-    image: instrumentBoxesImg,
+    image: as6,
     material: "Stainless Steel 304 / 316 / CRCA Steel",
     thickness: "1.2mm to 1.5mm",
     finish: "PU Painted / Glass Bead Blasted",
@@ -498,7 +466,7 @@ export const allProducts = [
     categoryName: "Electrical",
     name: "Machine & Equipment Housings",
     shortDesc: "Custom built heavy sheet metal protective housings and enclosures for industrial machinery controllers.",
-    image: machineHousingsImg,
+    image: as11,
     material: "CRCA Mild Steel / SS 304",
     thickness: "1.6mm to 3.0mm",
     finish: "Industrial Polyurethane / Epoxy Powder Coated",
@@ -517,7 +485,7 @@ export const allProducts = [
     categoryName: "Electrical",
     name: "Custom Electrical Sheet-Metal Parts",
     shortDesc: "Busbar support clamps, wire ducts, DIN brackets, terminal covers, and cable gland plates.",
-    image: customElecImg,
+    image: as7,
     material: "Copper, Aluminium, Brass, CRCA, SS",
     thickness: "0.8mm to 6.0mm",
     finish: "Tin Plated / Silver Plated / Zinc Plated / Powder Coated",
@@ -540,7 +508,7 @@ export const allProducts = [
     categoryName: "Plumbing / MEP",
     name: "Pipe Supports & Roller Chairs",
     shortDesc: "Heavy-duty base supports, saddle clamps, roller pipe chairs, and adjustable pipe pedestals.",
-    image: pipeSupportsImg,
+    image: as9,
     material: "Carbon Steel / Mild Steel / Hot Dip Galvanised",
     thickness: "4.0mm to 10.0mm",
     finish: "Hot Dip Galvanised / Red Oxide Primer",
@@ -559,7 +527,7 @@ export const allProducts = [
     categoryName: "Plumbing / MEP",
     name: "Rubber Lined Pipe Clamps",
     shortDesc: "Rubber lined EPDM split clamps, heavy duty riser clamps, U-bolts & beam clamps.",
-    image: pipeClampsImg,
+    image: as4,
     material: "Mild Steel / Galvanised Steel / SS 304",
     thickness: "2.0mm to 5.0mm",
     finish: "Electro-Galvanized (8-12 microns) / HDG",
@@ -578,7 +546,7 @@ export const allProducts = [
     categoryName: "Plumbing / MEP",
     name: "MEP Structural Brackets",
     shortDesc: "Cantilever arm brackets, triangular wall supports, 45° gusset brackets, and framing channels.",
-    image: plumbingBracketsImg,
+    image: as8,
     material: "Structural Mild Steel (IS 2062 Grade)",
     thickness: "2.5mm to 6.0mm",
     finish: "Hot Dip Galvanized / Epoxy Paint",
@@ -597,7 +565,7 @@ export const allProducts = [
     categoryName: "Plumbing / MEP",
     name: "Clevis & Swivel Pipe Hangers",
     shortDesc: "Adjustable clevis pipe hangers, swivel ring hangers, teardrop band hangers & pear hangers.",
-    image: pipeHangersImg,
+    image: as10,
     material: "Carbon Steel / Pre-Galvanized Steel",
     thickness: "2.0mm to 4.0mm",
     finish: "Zinc Plated / Hot Dip Galvanized",
@@ -616,7 +584,7 @@ export const allProducts = [
     categoryName: "Plumbing / MEP",
     name: "Wall & Floor Penetration Sleeves",
     shortDesc: "Galvanized and mild steel pipe passing sleeves, puddle flanges & core penetration collars.",
-    image: pipeSleevesImg,
+    image: coldPipe,
     material: "GI Pipe / MS Seamless Pipe / SS 304",
     thickness: "2.0mm to 4.5mm (Class B / Class C)",
     finish: "Hot Dip Galvanised / Bitumen Coated",
@@ -635,7 +603,7 @@ export const allProducts = [
     categoryName: "Plumbing / MEP",
     name: "Cover Plates & Escutcheons",
     shortDesc: "Architectural floor and wall escutcheon flange cover plates in stainless steel and chrome finish.",
-    image: coverPlatesImg,
+    image: as2,
     material: "Stainless Steel 304 / Chrome Plated Brass",
     thickness: "0.8mm to 1.2mm",
     finish: "Mirror Polished / Satin Brushed / Chrome Plated",
@@ -654,7 +622,7 @@ export const allProducts = [
     categoryName: "Plumbing / MEP",
     name: "MEP Access Panels (Drywall & Ceiling)",
     shortDesc: "Flush metal access doors, gypsum-insert ceiling panels, and inspection hatches for MEP valves.",
-    image: accessPanelsImg,
+    image: as12,
     material: "Galvanised Steel / Aluminium Extrusion",
     thickness: "1.0mm to 1.5mm",
     finish: "Powder Coated White / Paint-Ready",
@@ -673,7 +641,7 @@ export const allProducts = [
     categoryName: "Plumbing / MEP",
     name: "Drain & Utility Covers",
     shortDesc: "Stainless steel perforated floor drains, cleanouts, trench drain grates & heavy duty sump covers.",
-    image: drainCoversImg,
+    image: as7,
     material: "Stainless Steel 304 / 316 / Cast Iron / MS",
     thickness: "2.0mm to 6.0mm",
     finish: "Electro-polished / Hot Dip Galvanized",
@@ -692,7 +660,7 @@ export const allProducts = [
     categoryName: "Plumbing / MEP",
     name: "Custom Plumbing Supports & Manifolds",
     shortDesc: "Manifold distribution headers, pump vibration base skids, expansion loop guides & riser anchors.",
-    image: customPlumbImg,
+    image: steamPipe,
     material: "IS 2062 Grade Steel / Seamless Pipe",
     thickness: "Heavy Structural Gauge (4mm - 12mm)",
     finish: "Epoxy Primer & Polyurethane Topcoat",
@@ -715,7 +683,7 @@ export const allProducts = [
     categoryName: "Fire Fighting",
     name: "Fire Pipe Supports & Hangers (UL/FM)",
     shortDesc: "Heavy duty UL/FM listed clevis hangers, loop hangers, beam clamps & riser pipe clamps.",
-    image: fireHangersImg,
+    image: as9,
     material: "High Tensile Carbon Steel",
     thickness: "2.5mm to 6.0mm",
     finish: "Zinc Electroplated / Red Epoxy Powder Coated",
@@ -734,7 +702,7 @@ export const allProducts = [
     categoryName: "Fire Fighting",
     name: "Fire Brackets & Seismic Sway Braces",
     shortDesc: "Lateral and longitudinal seismic sway brace attachments, structural beam clamps & wall cantilever brackets.",
-    image: fireBracketsImg,
+    image: as8,
     material: "Ductile Iron / Forged Steel / Structural MS",
     thickness: "4.0mm to 8.0mm",
     finish: "Hot Dip Galvanised / Red Powder Coated",
@@ -753,7 +721,7 @@ export const allProducts = [
     categoryName: "Fire Fighting",
     name: "Fire Pump Equipment Mounting Plates",
     shortDesc: "Fire pump base plates, jockey pump mounting skids, diesel engine controller brackets & valve stands.",
-    image: firePlatesImg,
+    image: as11,
     material: "Heavy Structural Steel (IS 2062)",
     thickness: "6.0mm to 16.0mm base plates",
     finish: "Fire Red (RAL 3000) Polyurethane Coated",
@@ -772,7 +740,7 @@ export const allProducts = [
     categoryName: "Fire Fighting",
     name: "Fire-Rated Enclosure Cabinets",
     shortDesc: "Fire hose reel cabinets, fire extinguisher boxes, breeching inlet enclosures & hydrant valve covers.",
-    image: fireEnclosuresImg,
+    image: as6,
     material: "CRCA Mild Steel / Stainless Steel 304",
     thickness: "1.2mm, 1.6mm, 2.0mm",
     finish: "Signal Red (RAL 3000) High Gloss Epoxy Polyester Powder Coated",
@@ -791,7 +759,7 @@ export const allProducts = [
     categoryName: "Fire Fighting",
     name: "Fire-Rated Access Panels (2 Hours)",
     shortDesc: "1-Hour and 2-Hour fire-rated certified access doors for drywall and masonry fire shafts.",
-    image: fireAccessImg,
+    image: as12,
     material: "Galvanised Steel with Ceramic Fiber Infill",
     thickness: "1.5mm casing with 40mm fire insulation",
     finish: "Intumescent Powder Coated / Paint Grade",
@@ -810,7 +778,7 @@ export const allProducts = [
     categoryName: "Fire Fighting",
     name: "Custom Fabricated Fire Manifolds & Headers",
     shortDesc: "2-way and 4-way breeching inlet headers, test header manifolds, foam tank skids & sprinkler risers.",
-    image: customFireImg,
+    image: steamBoiler,
     material: "Seamless Carbon Steel (ASTM A106 / IS 1239 Heavy)",
     thickness: "Class C Heavy Gauge",
     finish: "Hydrostatic Tested & Fire Red Epoxy Coated",
@@ -833,7 +801,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "MS Laser Cutting (Mild Steel)",
     shortDesc: "High precision fiber laser cutting of Mild Steel (MS) sheets & heavy structural plates up to 20mm thickness.",
-    image: laserMsImg,
+    image: mainImg2,
     material: "Mild Steel (IS 2062, CRCA, HRCA, Corten)",
     thickness: "0.5mm to 20.0mm",
     finish: "Clean Burr-Free Cut Edge, Ready for Welding/Bending",
@@ -852,7 +820,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "GI Laser Cutting (Galvanised Iron)",
     shortDesc: "Precision Galvanised Iron (GI) laser cutting with zero zinc burning and oxide-free edges.",
-    image: laserGiImg,
+    image: rectDuct,
     material: "Galvanised Iron (GI) Sheets (GP / GC)",
     thickness: "0.6mm to 4.0mm",
     finish: "Clean Zinc-Preserved Cut Edges",
@@ -871,7 +839,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "SS Laser Cutting (Stainless Steel)",
     shortDesc: "Stainless Steel 304, 316, and 316L fiber laser cutting with pure nitrogen assist for mirror-smooth edges.",
-    image: laserSsImg,
+    image: as12,
     material: "Stainless Steel 304, 304L, 316, 316L, 430",
     thickness: "0.5mm to 12.0mm",
     finish: "Bright, Oxide-Free Nitrogen Cut (No Pickling Needed)",
@@ -890,7 +858,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "Aluminium Laser Cutting",
     shortDesc: "Burr-free, non-reflective laser cutting of Aluminium alloys (1xxx, 3xxx, 5xxx, 6xxx series).",
-    image: laserAlImg,
+    image: as2,
     material: "Aluminium Sheets & Plates (Alloy 1050, 3003, 5052, 6061, 6082)",
     thickness: "0.8mm to 10.0mm",
     finish: "Burr-Free, Smooth Edge",
@@ -909,7 +877,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "Laser Cut HVAC Duct Flanges & Angle Rings",
     shortDesc: "Precision laser cut circular and rectangular duct flanges, companion rings, and TDF/TDC corner brackets.",
-    image: laserFlangesImg,
+    image: circularDuct,
     material: "GI Sheet / Mild Steel / SS 304",
     thickness: "1.6mm to 6.0mm",
     finish: "Zinc Plated / Hot Dip Galvanized / Raw",
@@ -928,7 +896,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "Laser Cut Pipe Shoes & Saddle Base Plates",
     shortDesc: "Heavy duty laser cut pipe shoe gussets, saddle support curves, and guide brackets for insulated lines.",
-    image: laserPipeShoesImg,
+    image: as9,
     material: "Carbon Steel IS 2062 Grade E250 / E350",
     thickness: "4.0mm to 12.0mm",
     finish: "Hot Dip Galvanised / Epoxy Primed",
@@ -947,7 +915,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "Laser Cut Damper Blades & Linkage Arms",
     shortDesc: "Aerofoil damper blade profiles, drive linkage levers, axle brackets & quadrant sector plates.",
-    image: laserDamperBladesImg,
+    image: as4,
     material: "GI / Aluminium / SS 304",
     thickness: "1.0mm to 3.0mm",
     finish: "Mill Finish / Anodized / Zinc Plated",
@@ -966,7 +934,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "Laser Cut Unistrut Connectors & Base Plates",
     shortDesc: "Slotted C-channel connectors, 90° angle brackets, flat splice plates & beam clamp clips.",
-    image: laserStrutImg,
+    image: as8,
     material: "Mild Steel / Galvanized Steel / SS 316",
     thickness: "4.0mm to 6.0mm",
     finish: "Hot Dip Galvanized (BS 729) / Electro-Zinc",
@@ -985,7 +953,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "Laser Cut Perforated & Acoustic Panels",
     shortDesc: "Custom pattern perforated acoustic panels, ventilation grilles, and architectural facade screens.",
-    image: laserPanelsImg,
+    image: soundProof,
     material: "Aluminium / SS 304 / GI / MS",
     thickness: "0.8mm to 3.0mm",
     finish: "Anodized / PVDF Coated / Powder Coated",
@@ -1004,7 +972,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "Laser Cut Machine Covers & Safety Guards",
     shortDesc: "Safety interlock machine covers, mesh inspection windows, and protective belt/chain shrouds.",
-    image: laserGuardsImg,
+    image: as3,
     material: "Mild Steel / Stainless Steel / Clear Polycarbonate Hybrid",
     thickness: "1.2mm to 3.0mm",
     finish: "Safety Yellow (RAL 1023) / Textured Black",
@@ -1023,7 +991,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "Laser Cut Motor & Compressor Bases",
     shortDesc: "Heavy duty vibration isolator mounting bases, motor slide rails, and compressor pump skids.",
-    image: laserBasesImg,
+    image: as11,
     material: "Heavy Plate Steel (IS 2062)",
     thickness: "5.0mm to 16.0mm",
     finish: "Anti-Corrosion Epoxy Primer + Polyurethane",
@@ -1042,7 +1010,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "Laser Cut Drainage Grates & Sump Covers",
     shortDesc: "Stainless steel laser cut floor drain gratings, trench slotted covers, and sediment strainers.",
-    image: laserDrainGratesImg,
+    image: as7,
     material: "Stainless Steel 304 / 316 / Heavy Mild Steel",
     thickness: "2.0mm to 8.0mm",
     finish: "Electro-Polished / Glass Bead Blasted / Hot Dip Galvanized",
@@ -1061,7 +1029,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "Laser Cut Seismic Sway Brace Plates",
     shortDesc: "Structural pipe sway brace attachments, swivel beam clamps & seismic anchor base plates.",
-    image: laserSeismicImg,
+    image: as8,
     material: "High Tensile Carbon Steel",
     thickness: "5.0mm to 10.0mm",
     finish: "Hot Dip Galvanised / Red Signal Epoxy",
@@ -1080,7 +1048,7 @@ export const allProducts = [
     categoryName: "CNC Laser Cutting",
     name: "Custom DXF Cutting & Automated Batch Production",
     shortDesc: "Direct CAD-to-Laser manufacturing for OEM batch production and same-day prototypes.",
-    image: laserBatchImg,
+    image: as6,
     material: "All Sheet Metals (MS, SS, GI, Al, Brass)",
     thickness: "0.5mm to 20.0mm",
     finish: "As Specified by Client Drawing",
@@ -1103,7 +1071,7 @@ export const allProducts = [
     categoryName: "General Sheet Metal Manufacturing",
     name: "Sheet Metal Utility Boxes",
     shortDesc: "Custom fabricated utility boxes, battery cases, IP-rated enclosures, and tool storage boxes.",
-    image: sheetBoxesImg,
+    image: as3,
     material: "CRCA / GI / Aluminium / SS 304",
     thickness: "1.0mm to 2.0mm",
     finish: "Powder Coated / Silk Screen Printed",
@@ -1122,7 +1090,7 @@ export const allProducts = [
     categoryName: "General Sheet Metal Manufacturing",
     name: "Industrial Cabinets & Racks",
     shortDesc: "Floor standing server racks, tool storage lockers, chemical safety cabinets & telecom enclosures.",
-    image: sheetCabinetsImg,
+    image: as10,
     material: "High Tensile Steel Sheet / SS 304",
     thickness: "1.2mm, 1.6mm, 2.0mm",
     finish: "Durable Texture Powder Coated (RAL 7035 / 9005)",
@@ -1141,7 +1109,7 @@ export const allProducts = [
     categoryName: "General Sheet Metal Manufacturing",
     name: "Equipment Covers & Weather Shrouds",
     shortDesc: "Protective weather shrouds, rain hoods, fan cowls, and heat exchanger aesthetic covers.",
-    image: sheetCoversImg,
+    image: as7,
     material: "Aluminium / GI / Polyurethane Coated Steel",
     thickness: "1.2mm to 2.5mm",
     finish: "Weatherproof UV-Resistant Powder Coating",
@@ -1160,7 +1128,7 @@ export const allProducts = [
     categoryName: "General Sheet Metal Manufacturing",
     name: "Safety Guards & Barrier Fencing",
     shortDesc: "OSHA compliant machine perimeter guards, conveyor safety railings & robotic cell fencing.",
-    image: sheetGuardsImg,
+    image: as8,
     material: "Steel Tube Frame + Expanded Metal Mesh / Sheet Metal",
     thickness: "1.6mm to 3.0mm",
     finish: "High-Visibility Safety Yellow & Black",
@@ -1179,7 +1147,7 @@ export const allProducts = [
     categoryName: "General Sheet Metal Manufacturing",
     name: "Heavy-Duty Formed Brackets & Mounts",
     shortDesc: "Precision CNC sheared, punched, laser cut & press brake formed mounting brackets.",
-    image: sheetBracketsImg,
+    image: as4,
     material: "MS / GI / SS 304 / Aluminium",
     thickness: "1.5mm to 8.0mm",
     finish: "Electro-Zinc Plated / Hot Dip Galvanized / E-Coated",
@@ -1198,7 +1166,7 @@ export const allProducts = [
     categoryName: "General Sheet Metal Manufacturing",
     name: "Structural Frames & Skid Chassis",
     shortDesc: "Welded square/rectangular tube and angle iron structural chassis, machine beds & skids.",
-    image: sheetFramesImg,
+    image: as11,
     material: "IS 4923 Hollow Sections / IS 2062 Plates",
     thickness: "2.0mm to 6.0mm wall thickness",
     finish: "Shot Blasted, Epoxy Primed & Polyurethane Topcoat",
@@ -1217,7 +1185,7 @@ export const allProducts = [
     categoryName: "General Sheet Metal Manufacturing",
     name: "Modular Architectural Panels & Fascias",
     shortDesc: "Architectural wall cladding panels, instrument fascia plates, and acoustic partition panels.",
-    image: sheetPanelsImg,
+    image: as2,
     material: "Aluminium Composite (ACP) / SS 304 / GI / CRCA",
     thickness: "0.8mm to 2.0mm",
     finish: "PVDF / Anodized / Powder Coated / Hairline Finish",
@@ -1236,7 +1204,7 @@ export const allProducts = [
     categoryName: "General Sheet Metal Manufacturing",
     name: "Drip Pans & Condensate Drain Trays",
     shortDesc: "Stainless steel and GI drain pans, secondary chemical containment trays & oil drip collectors.",
-    image: sheetDripTraysImg,
+    image: as5,
     material: "Stainless Steel 304 / 316 / Heavy GI",
     thickness: "1.2mm to 2.0mm",
     finish: "Seamless TIG Welded & Water-Leak Tested",
@@ -1255,7 +1223,7 @@ export const allProducts = [
     categoryName: "General Sheet Metal Manufacturing",
     name: "Blower & Equipment Scroll Housings",
     shortDesc: "Spiral centrifugal blower scroll housings, motor protective cowls & turbine enclosures.",
-    image: sheetBlowersImg,
+    image: kitchenHood,
     material: "CRCA Mild Steel / SS 304 / Corten Steel",
     thickness: "1.6mm to 4.0mm",
     finish: "Epoxy Enamel Painted / Hot Dip Galvanised",
@@ -1274,7 +1242,7 @@ export const allProducts = [
     categoryName: "General Sheet Metal Manufacturing",
     name: "Industrial Chutes, Hoppers & Silos",
     shortDesc: "Heavy gauge material handling hoppers, conical transitions, discharge chutes & bins.",
-    image: sheetChutesImg,
+    image: as9,
     material: "Mild Steel / Hardox Abrasion Resistant Steel / SS 304",
     thickness: "2.5mm to 8.0mm",
     finish: "Epoxy Lined / Food Grade Polished",
@@ -1293,7 +1261,7 @@ export const allProducts = [
     categoryName: "General Sheet Metal Manufacturing",
     name: "Custom Sheet Metal Products",
     shortDesc: "End-to-end bespoke sheet metal engineering fabricated strictly to client drawings and specifications.",
-    image: sheetCustomImg,
+    image: mainImg,
     material: "MS, SS, GI, Aluminium, Brass, Copper",
     thickness: "0.5mm to 20.0mm",
     finish: "Any standard industrial finish (Plated, Painted, Powder Coated, Anodized)",
