@@ -1,154 +1,263 @@
-import React, { useState } from "react";
-
-// ✅ Images
-import mainImg from "../Assets/GI_DUCT_Manufacturing_Products.jpg";
-import soundProof from "../Assets/Sound Proof Insulation.jpg";
-import steamBoiler from "../Assets/Steam Boiler Insulation Work.png";
-import steamPipe from "../Assets/Steam Pipe Insulation.png";
-import thermoPipe from "../Assets/Thermocouple Pipe Section Insulation Work.jpg";
-
-import as2 from "../Assets/as2.jpg";
-import as3 from "../Assets/as3.jpg";
-import as4 from "../Assets/as4.jpg";
-import as5 from "../Assets/as5.jpg";
-import as6 from "../Assets/as6.jpg";
-import as7 from "../Assets/as7.jpg";
-import as8 from "../Assets/as8.jpg";
-import as9 from "../Assets/as9.jpg";
-import as10 from "../Assets/as10.jpg";
-import as11 from "../Assets/as11.jpg";
-import as12 from "../Assets/as12.jpg";
-
-// ✅ Products
-const products = [
-  { id: 1, name: "GI Duct Manufacturing", image: mainImg, alt: "Galvanised Iron GI Duct manufacturing for commercial HVAC systems" },
-  { id: 2, name: "Sound Proof Insulation", image: soundProof, alt: "Acoustic and soundproof insulation services for HVAC ducts" },
-  { id: 3, name: "Steam Boiler Insulation", image: steamBoiler, alt: "Thermal steam boiler insulation contracting services" },
-  { id: 4, name: "Steam Pipeline Insulation", image: steamPipe, alt: "High temperature steam pipeline insulation cladding work" },
-  { id: 5, name: "Thermocouple Pipe Insulation", image: thermoPipe, alt: "Thermocouple pipe section insulation and cladding engineering" },
-  { id: 6, name: "Duct Fabrication", image: as2, alt: "Custom HVAC sheet metal duct fabrication at site" },
-  { id: 7, name: "Duct Installation", image: as3, alt: "Industrial AC duct installation and air distribution setup" },
-  { id: 8, name: "Duct Bending Work", image: as4, alt: "Precision sheet metal duct bending and forming services" },
-  { id: 9, name: "Duct Assembly", image: as5, alt: "HVAC rectangular duct assembling and joint sealing" },
-  { id: 10, name: "Air Flow System", image: as6, alt: "Centralized air distribution and flow management system" },
-  { id: 11, name: "Ventilation System", image: as7, alt: "Industrial mechanical ventilation and smoke extract system" },
-  { id: 12, name: "Industrial Ducting", image: as8, alt: "Heavy duty industrial ducting solutions for manufacturing plants" },
-  { id: 13, name: "Site Installation", image: as9, alt: "MEP site installation of HVAC units and chilled water lines" },
-  { id: 14, name: "Completed Project", image: as10, alt: "Finished commercial VRV air conditioning project handover" },
-  { id: 15, name: "Commercial HVAC Work", image: as11, alt: "Large scale commercial HVAC chiller and piping installation" },
-  { id: 16, name: "Final Installation", image: as12, alt: "Final testing and commissioning of cleanroom HVAC systems" },
-];
+import React, { useState, useMemo } from "react";
+import { productCategories, allProducts } from "./productsData";
+import SEO from "./SEO";
+import "./OurProduct.css";
+import { 
+  FaThLarge, 
+  FaFan, 
+  FaBolt, 
+  FaWater, 
+  FaFireExtinguisher, 
+  FaCrosshairs, 
+  FaIndustry, 
+  FaSearch, 
+  FaCheckCircle, 
+  FaPhoneAlt, 
+  FaWhatsapp, 
+  FaTimes, 
+  FaArrowRight 
+} from "react-icons/fa";
 
 export default function OurProduct() {
-  const [hovered, setHovered] = useState(null);
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  // Category Icon Resolver
+  const getCategoryIcon = (iconName) => {
+    switch (iconName) {
+      case "FaFan": return <FaFan />;
+      case "FaBolt": return <FaBolt />;
+      case "FaWater": return <FaWater />;
+      case "FaFireExtinguisher": return <FaFireExtinguisher />;
+      case "FaCrosshairs": return <FaCrosshairs />;
+      case "FaIndustry": return <FaIndustry />;
+      default: return <FaThLarge />;
+    }
+  };
+
+  // Filtered Products
+  const filteredProducts = useMemo(() => {
+    return allProducts.filter((product) => {
+      const matchesCategory = activeCategory === "all" || product.category === activeCategory;
+      const matchesSearch = 
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.material.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.applications.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [activeCategory, searchQuery]);
 
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        background: "var(--bg-slate)",
-        fontFamily: "'Outfit', sans-serif",
-        padding: "60px 20px",
-      }}
-    >
-      {/* Header */}
-      <div style={{ textAlign: "center", marginBottom: "50px" }}>
-        <p
-          style={{
-            fontSize: "12px",
-            letterSpacing: "4px",
-            color: "var(--hvac-blue)",
-            textTransform: "uppercase",
-            fontWeight: "700",
-            marginBottom: "8px",
-          }}
-        >
-          Our Offerings
-        </p>
+    <div className="products-page-wrapper">
+      <SEO 
+        title="Manufactured Products | HVAC, Electrical, Plumbing, Fire Fighting, CNC Laser & Sheet Metal | CoolRite Engineers"
+        description="Explore CoolRite Engineers manufactured product catalog: AHU components, GI ducting, electrical enclosures, cable trays, pipe supports, fire fighting headers, CNC laser cutting, and custom sheet metal."
+        canonicalUrl="https://www.coolriteengineers.com/OurProduct"
+      />
 
-        <h1
-          style={{
-            fontSize: "36px",
-            fontWeight: "700",
-            color: "var(--primary-navy)",
-            margin: "0",
-          }}
-        >
-          HVAC & MEP Solutions
-        </h1>
-        <p style={{ color: "var(--text-muted)", fontSize: "15px", marginTop: "10px", maxWidth: "600px", margin: "10px auto 0" }}>
-          Explore our range of premium quality manufactured ducting, industrial insulation, and custom MEP engineering products.
-        </p>
-      </div>
+      {/* Hero Banner */}
+      <section className="products-hero-banner">
+        <div className="container">
+          <span className="products-hero-badge">Engineering & Manufacturing Excellence</span>
+          <h1 className="products-hero-title">Industrial Manufactured Products</h1>
+          <p className="products-hero-subtitle">
+            CoolRite Engineers manufactures high-precision HVAC components, electrical panels, plumbing supports, fire safety hardware, CNC laser cut parts, and custom sheet metal solutions.
+          </p>
 
-      {/* Grid */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-          gap: "30px",
-          maxWidth: "1200px",
-          margin: "0 auto",
-        }}
-      >
-        {products.map((p) => (
-          <div
-            key={p.id}
-            onMouseEnter={() => setHovered(p.id)}
-            onMouseLeave={() => setHovered(null)}
-            style={{
-              background: "var(--card-bg)",
-              borderRadius: "12px",
-              overflow: "hidden",
-              cursor: "pointer",
-              transition: "transform var(--transition-normal), box-shadow var(--transition-normal)",
-              boxShadow:
-                hovered === p.id
-                  ? "var(--shadow-xl)"
-                  : "var(--shadow-md)",
-              transform:
-                hovered === p.id ? "translateY(-6px)" : "translateY(0)",
-              border: "1px solid var(--border-color)",
-            }}
-          >
-            {/* Image Container */}
-            <div style={{ position: "relative", height: "240px", overflow: "hidden" }}>
-              <img
-                src={p.image}
-                alt={p.alt}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  transition: "transform 0.5s ease",
-                  transform:
-                    hovered === p.id ? "scale(1.06)" : "scale(1)",
-                }}
-              />
-
-              {/* Hover Text Reveal */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  width: "100%",
-                  background: "linear-gradient(to top, rgba(11, 25, 44, 0.9), rgba(11, 25, 44, 0.4))",
-                  color: "#fff",
-                  padding: "16px",
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  textAlign: "center",
-                  letterSpacing: "0.5px",
-                  transition: "opacity var(--transition-fast)",
-                  opacity: hovered === p.id ? 1 : 0.9,
-                }}
-              >
-                {p.name}
-              </div>
-            </div>
+          {/* Search Bar */}
+          <div className="products-search-box">
+            <FaSearch className="products-search-icon" />
+            <input 
+              type="text"
+              className="products-search-input"
+              placeholder="Search products (e.g. AHU, Cable Tray, Laser Cutting, Dampers)..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
-        ))}
+        </div>
+      </section>
+
+      {/* Category Filter Pills */}
+      <div className="container">
+        <div className="products-filter-container">
+          {productCategories.map((cat) => {
+            const count = cat.id === "all" 
+              ? allProducts.length 
+              : allProducts.filter(p => p.category === cat.id).length;
+
+            return (
+              <button
+                key={cat.id}
+                className={`category-tab-btn ${activeCategory === cat.id ? "active" : ""}`}
+                onClick={() => setActiveCategory(cat.id)}
+              >
+                {getCategoryIcon(cat.icon)}
+                <span>{cat.name}</span>
+                <span className="category-count-badge">{count}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Results Counter */}
+        <div className="d-flex justify-content-between align-items-center mb-4 px-2">
+          <p className="text-muted small mb-0">
+            Showing <strong>{filteredProducts.length}</strong> products
+            {activeCategory !== "all" && ` in ${productCategories.find(c => c.id === activeCategory)?.name}`}
+          </p>
+          {searchQuery && (
+            <button 
+              className="btn btn-sm btn-outline-secondary rounded-pill"
+              onClick={() => setSearchQuery("")}
+            >
+              Clear Search
+            </button>
+          )}
+        </div>
+
+        {/* Product Cards Grid */}
+        {filteredProducts.length === 0 ? (
+          <div className="text-center py-5 bg-white rounded-3 shadow-sm my-4">
+            <h4 className="fw-bold text-dark mb-2">No Products Found</h4>
+            <p className="text-muted mb-3">Try clearing your search query or switching categories.</p>
+            <button 
+              className="btn btn-primary rounded-pill px-4"
+              style={{ background: "#0A2540", borderColor: "#0A2540" }}
+              onClick={() => { setSearchQuery(""); setActiveCategory("all"); }}
+            >
+              View All Products
+            </button>
+          </div>
+        ) : (
+          <div className="row g-4">
+            {filteredProducts.map((product) => (
+              <div className="col-12 col-md-6 col-lg-4" key={product.id}>
+                <div className="product-card" onClick={() => setSelectedProduct(product)}>
+                  
+                  {/* Image Container */}
+                  <div className="product-image-container">
+                    <span className="product-cat-tag">{product.categoryName}</span>
+                    <img 
+                      src={product.image} 
+                      alt={`${product.name} manufacturing by CoolRite Engineers`}
+                      className="product-card-img"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Body Content */}
+                  <div className="product-card-body">
+                    <h3 className="product-card-title">{product.name}</h3>
+                    <p className="product-card-desc">{product.shortDesc}</p>
+
+                    <div className="product-spec-pills">
+                      <span className="product-spec-pill"><strong>Material:</strong> {product.material.split('/')[0]}</span>
+                      <span className="product-spec-pill"><strong>Gauge:</strong> {product.thickness.split(',')[0]}</span>
+                    </div>
+
+                    <button className="product-inquire-btn">
+                      View Specs & Inquire <FaArrowRight style={{ fontSize: "0.8rem" }} />
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
       </div>
-    </main>
+
+      {/* Product Detail Modal */}
+      {selectedProduct && (
+        <div className="product-modal-backdrop" onClick={() => setSelectedProduct(null)}>
+          <div className="product-modal-card" onClick={(e) => e.stopPropagation()}>
+            
+            {/* Header */}
+            <div className="product-modal-header">
+              <button 
+                className="product-modal-close-btn"
+                onClick={() => setSelectedProduct(null)}
+                aria-label="Close"
+              >
+                <FaTimes />
+              </button>
+              <span className="badge bg-warning text-dark px-3 py-1 mb-2 fw-bold">
+                {selectedProduct.categoryName}
+              </span>
+              <h2 className="h3 fw-bold text-white mb-0">{selectedProduct.name}</h2>
+            </div>
+
+            {/* Body */}
+            <div className="product-modal-body">
+              <p className="lead fs-6 text-muted mb-4">{selectedProduct.shortDesc}</p>
+
+              <h4 className="fw-bold mb-3" style={{ color: "#0A2540", fontSize: "1.1rem" }}>Technical Specifications</h4>
+              <table className="product-spec-table">
+                <tbody>
+                  <tr>
+                    <th>Material</th>
+                    <td>{selectedProduct.material}</td>
+                  </tr>
+                  <tr>
+                    <th>Thickness / Gauge</th>
+                    <td>{selectedProduct.thickness}</td>
+                  </tr>
+                  <tr>
+                    <th>Surface Finish</th>
+                    <td>{selectedProduct.finish}</td>
+                  </tr>
+                  <tr>
+                    <th>Applications</th>
+                    <td>{selectedProduct.applications}</td>
+                  </tr>
+                  <tr>
+                    <th>Compliance Standards</th>
+                    <td>{selectedProduct.standards}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h4 className="fw-bold mb-3" style={{ color: "#0A2540", fontSize: "1.1rem" }}>Key Engineering Highlights</h4>
+              <ul className="product-modal-features">
+                {selectedProduct.features.map((feat, idx) => (
+                  <li key={idx}>
+                    <FaCheckCircle className="text-success flex-shrink-0 mt-1" />
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Action Buttons */}
+              <div className="product-modal-actions">
+                <a 
+                  href={`https://wa.me/917009167480?text=${encodeURIComponent(`Hello CoolRite Engineers, I am interested in inquiring about ${selectedProduct.name} (${selectedProduct.categoryName}). Please share quote and specifications.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="product-modal-quote-btn"
+                >
+                  <FaWhatsapp style={{ fontSize: "1.2rem" }} />
+                  Request WhatsApp Quote
+                </a>
+
+                <a 
+                  href="tel:+917009167480"
+                  className="product-modal-call-btn"
+                >
+                  <FaPhoneAlt />
+                  Call Engineer
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      )}
+
+    </div>
   );
 }
